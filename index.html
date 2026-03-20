@@ -438,11 +438,20 @@ body{font-family:var(--font-body);background:var(--bg);background-image:radial-g
 // ═══ TRACKING ═══
 var API_URL='https://script.google.com/macros/s/AKfycbzi3HBVY-wOStn2WPJhYQWjR55fTsOTORnKcRv6sG9gOTqdFMdwEgQoeJWo3J7-qADM/exec';
 var session='rc_'+Date.now();
+
+// ═══ DEV DEVICE TAG ═══
+// Visit once per device: ?dev=sam-laptop, ?dev=sam-phone, etc.
+// Events with a dev_tag are auto-excluded from dashboard metrics.
+var urlParams=new URLSearchParams(window.location.search);
+var devParam=urlParams.get('dev');
+if(devParam)localStorage.setItem('rc-dev-tag',devParam);
+var devTag=localStorage.getItem('rc-dev-tag')||'';
+
 var surveyState={stage:null,needs:[],sits:[],insurance:null,county:null};
 
 function track(event,resource,resource_url,action_type){
   if(!API_URL)return;
-  var p={event:event,resource:resource||'',resource_url:resource_url||'',action_type:action_type||'',session:session,stage:surveyState.stage||'',needs:surveyState.needs||[],county:surveyState.county||''};
+  var p={event:event,resource:resource||'',resource_url:resource_url||'',action_type:action_type||'',session:session,stage:surveyState.stage||'',needs:surveyState.needs||[],county:surveyState.county||'',dev_tag:devTag};
   try{navigator.sendBeacon?navigator.sendBeacon(API_URL,JSON.stringify(p)):fetch(API_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(p)})}catch(e){}
 }
 
