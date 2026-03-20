@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free recovery and reentry resource navigator for Maine. Find treatment, housing, legal aid, benefits, transportation, and more.">
+<meta name="author" content="Whysice">
+<meta name="copyright" content="© 2025–2026 Whysice">
+<meta name="theme-color" content="#0D2818">
+<!-- Open Graph -->
+<meta property="og:title" content="RecoveryConnect — Maine Reentry Resource Navigator">
+<meta property="og:description" content="Free recovery and reentry resource navigator for Maine. Find treatment, housing, legal aid, benefits, transportation, and more.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://recovery-connect.netlify.app/">
+<meta property="og:image" content="https://recovery-connect.netlify.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RecoveryConnect — Recovery and reentry resources across Maine. Free to use, always.">
+<meta property="og:site_name" content="RecoveryConnect">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RecoveryConnect — Maine Reentry Resource Navigator">
+<meta name="twitter:description" content="Free recovery and reentry resource navigator for Maine. Treatment, housing, legal aid, benefits & more.">
+<meta name="twitter:image" content="https://recovery-connect.netlify.app/og-image.png">
+<meta name="twitter:image:alt" content="RecoveryConnect — Recovery and reentry resources across Maine">
+<title>RecoveryConnect — Maine Reentry Resource Navigator</title>
+<!-- Plausible Analytics (privacy-friendly, no cookies, GDPR compliant) -->
+<script defer data-domain="recovery-connect.netlify.app" src="https://plausible.io/js/script.js"></script>
+<style>
+:root {
+  --bg: #081F12;
+  --bg-panel: #0E2A18;
+  --bg-card: #133520;
+  --bg-card-hover: #1A4A2E;
+  --accent: #E53E3E;
+  --accent-dark: #C53030;
+  --accent-glow: rgba(229,62,62,0.08);
+  --accent-light: rgba(229,62,62,0.1);
+  --accent-warm: #E53E3E;
+  --crisis: #FBD38D;
+  --crisis-bg: rgba(251,211,141,0.08);
+  --success: #68D391;
+  --info: #90CDF4;
+  --info-bg: rgba(144,205,244,0.08);
+  --tx: #F0F4F0;
+  --tx2: #C8D5CC;
+  --tx3: #8DA396;
+  --bd: rgba(255,255,255,0.12);
+  --bd-active: rgba(229,62,62,0.4);
+  --r: 12px;
+  --rs: 8px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.2);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.3);
+  --ease: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --bar-w: 68px;
+  --panel-w: 380px;
+  --font-body: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
+  --font-display: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
+}
+
+/* ═══ LIGHT THEME ═══ */
+[data-theme="light"] {
+  --bg: #F2EDE7;
+  --bg-panel: #FEFCFA;
+  --bg-card: #FFF8F2;
+  --bg-card-hover: #FFF1E8;
+  --accent: #C53030;
+  --accent-dark: #9B2C2C;
+  --accent-glow: rgba(197,48,48,0.07);
+  --accent-light: rgba(197,48,48,0.08);
+  --accent-warm: #C53030;
+  --crisis: #DC2626;
+  --crisis-bg: rgba(220,38,38,0.05);
+  --success: #16A34A;
+  --info: #2563EB;
+  --info-bg: rgba(37,99,235,0.06);
+  --tx: #1A2E1F;
+  --tx2: #3D5744;
+  --tx3: #7A9484;
+  --bd: #D4CEC6;
+  --bd-active: rgba(197,48,48,0.3);
+  --shadow: 0 4px 20px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .icon-bar { background: #FAF7F3; box-shadow: 2px 0 16px rgba(0,0,0,0.04); }
+[data-theme="light"] .panel { box-shadow: 4px 0 30px rgba(0,0,0,0.06); }
+[data-theme="light"] .logo-mark { box-shadow: 0 4px 12px rgba(197,48,48,0.2); }
+[data-theme="light"] .cta-open { box-shadow: 0 4px 14px rgba(197,48,48,0.25); }
+[data-theme="light"] .cta-open:hover { box-shadow: 0 6px 20px rgba(197,48,48,0.3); }
+[data-theme="light"] .toast { color: #fff; }
+[data-theme="light"] body { background-image: radial-gradient(ellipse at 30% 10%,rgba(197,48,48,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(22,163,74,0.02) 0%,transparent 40%); }
+[data-theme="light"] .icon-bar .sb-btn { color: #7A9484; }
+[data-theme="light"] .icon-bar .sb-btn:hover { color: var(--accent); background: rgba(197,48,48,0.06); }
+[data-theme="light"] .icon-bar .sb-btn.active { color: var(--accent); background: rgba(197,48,48,0.08); }
+[data-theme="light"] .icon-bar .sb-btn.crisis-btn { color: #DC2626; }
+[data-theme="light"] .icon-bar .sb-btn.crisis-btn:hover,
+[data-theme="light"] .icon-bar .sb-btn.crisis-btn.active { color: #DC2626; background: rgba(220,38,38,0.06); }
+
+/* ═══ THEME TOGGLE ═══ */
+.theme-toggle{width:56px;min-height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px;border:none;background:transparent;color:var(--tx3);cursor:pointer;font-size:1.1rem;transition:var(--ease);font-family:var(--font-body);position:relative;padding:4px 2px}
+.theme-toggle:hover{background:rgba(229,62,62,0.08);color:var(--accent)}
+.theme-toggle .sb-label{font-size:.6rem;letter-spacing:.01em;line-height:1}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(ellipse at 30% 10%,rgba(229,62,62,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(104,211,145,0.03) 0%,transparent 40%);color:var(--tx);line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-height:100vh;text-rendering:optimizeLegibility}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+.skip-link{position:absolute;top:-100%;left:8px;background:var(--accent);color:#fff;padding:8px 16px;border-radius:var(--rs);z-index:9999;font-size:14px;text-decoration:none;font-weight:600}
+.skip-link:focus{top:8px}
+
+/* ═══ WIDGET CONTAINER ═══ */
+.widget-wrap{position:fixed;top:0;left:0;height:100vh;display:flex;z-index:1000;pointer-events:none}
+.widget-wrap>*{pointer-events:auto}
+
+/* ═══ ICON SIDEBAR — KARA STYLE ═══ */
+.icon-bar{width:var(--bar-w);height:100vh;background:#061A0E;border-right:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:2px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;z-index:2;box-shadow:2px 0 16px rgba(0,0,0,0.25);flex-shrink:0}
+.icon-bar::-webkit-scrollbar{display:none}
+
+.sb-btn{width:56px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:transparent;border:none;border-radius:10px;cursor:pointer;color:var(--tx3);font-size:.6rem;letter-spacing:.01em;transition:var(--ease);padding:4px 2px;position:relative;font-family:var(--font-body);flex-shrink:0}
+.sb-btn .sb-icon{font-size:1.25rem;line-height:1;transition:var(--ease)}
+.sb-btn .sb-label{line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:54px}
+.sb-btn:hover{background:rgba(229,62,62,0.08);color:var(--accent);transform:scale(1.03)}
+.sb-btn:active{transform:scale(0.96)}
+.sb-btn.active{color:#fff;background:rgba(229,62,62,0.14)}
+.sb-btn.active::before{content:'';position:absolute;left:0;top:10px;bottom:10px;width:3px;background:var(--accent);border-radius:0 3px 3px 0}
+.sb-btn.crisis-btn{color:var(--crisis)}
+.sb-btn.crisis-btn:hover,.sb-btn.crisis-btn.active{color:#fff;background:rgba(251,211,141,0.12)}
+.sb-btn.crisis-btn.active::before{background:var(--crisis)}
+
+.sb-div{width:36px;height:1px;background:rgba(255,255,255,0.08);margin:4px 0;flex-shrink:0}
+
+.sidebar-footer{margin-top:auto;padding-top:6px;display:flex;flex-direction:column;align-items:center;gap:2px}
+
+/* ═══ MAIN PANEL ═══ */
+.panel{width:var(--panel-w);height:100vh;background:var(--bg-panel);border-right:1px solid var(--bd);overflow-y:auto;overflow-x:hidden;transform:translateX(-100%);transition:transform var(--ease);scrollbar-width:thin;scrollbar-color:var(--tx3) transparent;box-shadow:4px 0 30px rgba(0,0,0,0.3)}
+.panel.open{transform:translateX(0)}
+.panel::-webkit-scrollbar{width:4px}
+.panel::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
+
+.panel-hdr{position:sticky;top:0;background:var(--bg-panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--bd);padding:14px 18px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.panel-title{font-size:17px;font-weight:700;color:var(--accent);letter-spacing:-.01em;font-family:var(--font-display)}
+.panel-hdr-actions{display:flex;align-items:center;gap:4px}
+.panel-action-btn{width:30px;height:30px;border:none;border-radius:8px;background:transparent;color:var(--tx3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:var(--ease);font-family:inherit}
+.panel-action-btn:hover{background:var(--bg-card);color:var(--tx)}
+
+.panel-body{padding:18px 20px 40px}
+
+/* ═══ WELCOME HEADER ═══ */
+.welcome-hdr{text-align:center;padding:8px 0 16px;animation:fadeIn .4s ease both}
+.welcome-hdr .logo-mark{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;box-shadow:0 4px 12px rgba(229,62,62,0.3)}
+.welcome-hdr h2{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-.01em;margin-bottom:4px;font-family:var(--font-display)}
+.welcome-hdr p{font-size:14px;color:var(--tx2);line-height:1.65;max-width:300px;margin:0 auto}
+
+/* ═══ CRISIS BANNER ═══ */
+.crisis-banner{background:var(--crisis-bg);border:1.5px solid rgba(220,38,38,0.15);border-radius:var(--r);padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:fadeIn .3s ease both}
+.crisis-banner .ci{font-size:18px;flex-shrink:0;margin-top:0}
+.crisis-banner .ct{font-size:13.5px;color:var(--tx2);line-height:1.6}
+.crisis-banner .ct strong{color:var(--crisis);font-weight:700}
+.crisis-banner a{color:var(--crisis);text-decoration:none;font-weight:700;border-bottom:1.5px solid rgba(220,38,38,0.3);transition:var(--ease)}
+.crisis-banner a:hover{border-bottom-color:var(--crisis)}
+
+/* ═══ INFO BANNER ═══ */
+.info-banner{background:var(--info-bg);border:1.5px solid rgba(37,99,235,0.12);border-radius:var(--r);padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:fadeIn .3s ease both}
+.info-banner .ci{font-size:16px;flex-shrink:0;margin-top:1px}
+.info-banner .ct{font-size:13px;color:var(--tx2);line-height:1.6}
+.info-banner a{color:var(--info);text-decoration:none;font-weight:600}
+
+/* ═══ STAGE SELECTOR ═══ */
+.stage-label{font-size:14px;font-weight:600;color:var(--tx2);margin-bottom:12px;text-align:center;font-family:var(--font-display)}
+.stage-sel{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.stage-card{background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all var(--ease);display:flex;align-items:center;gap:12px;font-family:inherit;text-align:left;width:100%;color:var(--tx);animation:fadeIn .35s ease both}
+.stage-card:active{transform:scale(0.98)}
+.stage-card:nth-child(1){animation-delay:.05s}
+.stage-card:nth-child(2){animation-delay:.1s}
+.stage-card:nth-child(3){animation-delay:.15s}
+.stage-card:hover{background:var(--bg-card-hover);border-color:var(--bd-active);transform:translateY(-1px);box-shadow:var(--shadow)}
+.stage-card.active{border-color:var(--accent);background:rgba(229,62,62,0.08)}
+.stage-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.stage-card:nth-child(1) .stage-icon{background:rgba(229,62,62,0.1)}
+.stage-card:nth-child(2) .stage-icon{background:rgba(229,62,62,0.1)}
+.stage-card:nth-child(3) .stage-icon{background:rgba(104,211,145,0.1)}
+.stage-info{flex:1}
+.stage-name{font-size:15px;font-weight:700;color:var(--accent);font-family:var(--font-display)}
+.stage-desc{font-size:12.5px;color:var(--tx2);margin-top:3px;line-height:1.5}
+.stage-arrow{color:var(--tx3);font-size:16px;transition:var(--ease)}
+.stage-card:hover .stage-arrow{color:var(--accent);transform:translateX(2px)}
+
+/* ═══ RESOURCE SECTIONS ═══ */
+.res-section{margin-bottom:10px;animation:fadeIn .3s ease both}
+.res-section:nth-child(2){animation-delay:.05s}
+.res-section:nth-child(3){animation-delay:.1s}
+.res-section:nth-child(4){animation-delay:.15s}
+.res-section:nth-child(5){animation-delay:.2s}
+.res-section:nth-child(6){animation-delay:.25s}
+.res-section:nth-child(7){animation-delay:.3s}
+
+.sec-toggle{width:100%;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;color:var(--tx);font-family:var(--font-display);font-size:14px;font-weight:600;transition:var(--ease);text-align:left}
+.sec-toggle:hover{background:var(--bg-card-hover);border-color:var(--bd-active)}
+.sec-toggle.open{border-radius:var(--r) var(--r) 0 0;border-bottom-color:transparent;background:rgba(229,62,62,0.08)}
+.sec-toggle .si{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--accent-glow)}
+.sec-toggle .chev{margin-left:auto;font-size:11px;color:var(--tx3);transition:transform var(--ease)}
+.sec-toggle.open .chev{transform:rotate(180deg);color:var(--accent)}
+.sec-toggle .badge{background:var(--accent-glow);color:var(--accent);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px}
+
+.sec-content{background:var(--bg-card);border:1.5px solid var(--bd);border-top:none;border-radius:0 0 var(--r) var(--r);padding:10px;display:none}
+.sec-content.open{display:block}
+
+/* ═══ RESOURCE CARDS ═══ */
+.rcard{background:var(--bg-panel);border:1.5px solid var(--bd);border-radius:10px;padding:14px 16px;margin-bottom:8px;transition:var(--ease)}
+.rcard:last-child{margin-bottom:0}
+.rcard:hover{border-color:var(--bd-active);box-shadow:0 2px 12px rgba(46,125,91,0.08)}
+
+.rcard .rh{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.rcard .rn{font-size:14.5px;font-weight:700;color:var(--accent);line-height:1.35;font-family:var(--font-display)}
+.rcard .rtag{font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:.4px;flex-shrink:0;margin-top:2px}
+.tag-free{background:rgba(22,163,74,0.1);color:var(--success)}
+.tag-call{background:rgba(229,62,62,0.1);color:var(--accent)}
+.tag-online{background:rgba(139,92,246,0.1);color:#A78BFA}
+.tag-location{background:rgba(217,119,6,0.1);color:#F6AD55}
+
+.rcard .rd{font-size:13px;color:var(--tx2);margin-top:6px;line-height:1.65}
+.rcard .ra{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.rbtn{font-family:var(--font-body);font-size:12px;font-weight:600;padding:7px 12px;border-radius:7px;border:1.5px solid var(--bd);background:transparent;color:var(--tx2);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:var(--ease)}
+.rbtn:hover{background:var(--bg-card);color:var(--tx);border-color:var(--bd-active)}
+.rbtn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.rbtn.primary:hover{background:var(--accent-dark)}
+.rbtn.green{background:var(--success);border-color:var(--success);color:#fff}
+.rbtn.green:hover{background:#15803D}
+.rbtn.directions{background:var(--accent-warm);border-color:var(--accent-warm);color:#fff}
+.rbtn.directions:hover{background:#B45309}
+.rcard .raddr{font-size:12px;color:var(--tx3);margin-top:5px;display:flex;align-items:center;gap:5px}
+.rcard .raddr .pin{font-size:12px}
+.dir-result{font-size:11px;color:var(--accent);font-weight:600;margin-top:4px;padding:6px 10px;background:rgba(229,62,62,0.08);border-radius:var(--rs);display:none;align-items:center;gap:6px;animation:fadeIn .25s ease}
+.dir-result.show{display:flex}
+.dir-result .dir-time{font-weight:700}
+.dir-result .dir-dist{color:var(--tx2);font-weight:500}
+
+/* ═══ FEEDBACK & SHARE ROW ═══ */
+.rcard-actions{display:flex;gap:4px;margin-top:10px;padding-top:8px;border-top:1px solid var(--bd);align-items:center;justify-content:space-between;flex-wrap:wrap}
+.rfb{display:flex;gap:3px;align-items:center}
+.rfb-label{font-size:10px;color:var(--tx3);margin-right:2px;font-weight:500}
+.rfb button{padding:5px 9px;font-size:12px;border:1.5px solid var(--bd);border-radius:6px;background:var(--bg-panel);cursor:pointer;color:var(--tx3);transition:var(--ease);font-family:inherit;min-width:36px}
+.rfb button.y:hover,.rfb button.y.act{border-color:var(--success);color:var(--success);background:rgba(22,163,74,0.05)}
+.rfb button.n:hover,.rfb button.n.act{border-color:var(--crisis);color:var(--crisis);background:rgba(220,38,38,0.04)}
+
+/* Share button */
+.share-btn{padding:5px 10px;font-size:11px;border:1.5px solid var(--bd);border-radius:6px;background:var(--bg-panel);cursor:pointer;color:var(--tx3);transition:var(--ease);font-family:inherit;display:inline-flex;align-items:center;gap:4px;font-weight:500}
+.share-btn:hover{border-color:var(--info);color:var(--info);background:rgba(144,205,244,0.05)}
+.share-btn.copied{border-color:var(--success);color:var(--success);background:rgba(22,163,74,0.05)}
+
+/* ═══ BACK BUTTON ═══ */
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13.5px;font-weight:600;color:var(--tx3);background:none;border:none;cursor:pointer;padding:0;margin-bottom:14px;transition:var(--ease)}
+.back-btn:hover{color:var(--accent);transform:translateX(-2px)}
+
+.priority-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--accent);margin-bottom:12px;padding-left:2px;font-family:var(--font-display)}
+
+/* ═══ ABOUT SECTION ═══ */
+.about-section{animation:fadeIn .3s ease both}
+.about-section h3{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:8px;font-family:var(--font-display)}
+.about-section p{font-size:13.5px;color:var(--tx2);line-height:1.65;margin-bottom:12px}
+.about-section .stat-row{display:flex;gap:8px;margin:14px 0}
+.about-section .stat{flex:1;background:rgba(229,62,62,0.08);border-radius:var(--r);padding:12px;text-align:center}
+.about-section .stat .num{font-size:22px;font-weight:700;color:var(--accent)}
+.about-section .stat .label{font-size:10px;font-weight:600;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.about-section .updated{font-size:11px;color:var(--tx3);font-style:italic;padding-top:8px;border-top:1px solid var(--bd);margin-top:12px}
+
+/* ═══ COPYRIGHT FOOTER ═══ */
+.site-footer{font-size:10px;color:var(--tx3);text-align:center;padding:16px 12px 8px;border-top:1px solid var(--bd);margin-top:20px;line-height:1.6}
+.site-footer a{color:var(--tx3);text-decoration:none;border-bottom:1px dotted var(--tx3)}
+.site-footer a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.site-footer .license-badge{display:inline-block;background:rgba(229,62,62,0.1);color:var(--accent);font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.3px;margin-left:4px}
+
+/* ═══ DEMO / LANDING PAGE ═══ */
+.demo-page{margin-left:var(--bar-w);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;transition:margin-left var(--ease)}
+.demo-page.shifted{margin-left:calc(var(--bar-w) + var(--panel-w))}
+.demo-content{text-align:center;max-width:460px;animation:fadeIn .5s ease both}
+.demo-content .hero-icon{font-size:48px;margin-bottom:12px}
+.demo-content h1{font-size:32px;font-weight:700;color:var(--tx);letter-spacing:-.02em;margin-bottom:6px;font-family:var(--font-display)}
+.demo-content h1 span{color:var(--accent)}
+.demo-content p{font-size:16px;color:var(--tx2);line-height:1.65}
+.demo-content .hint{font-size:12.5px;color:var(--tx3);margin-top:24px;display:flex;align-items:center;justify-content:center;gap:8px}
+.demo-content .hint span{display:inline-block;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.2);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--accent)}
+.cta-open{margin-top:20px;padding:13px 30px;font-size:16px;font-weight:700;background:var(--accent);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-family:var(--font-display);transition:var(--ease);box-shadow:0 4px 14px rgba(229,62,62,0.3);letter-spacing:-.01em}
+.cta-open:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(229,62,62,0.4)}
+.cta-open:active{transform:translateY(0);box-shadow:0 2px 8px rgba(229,62,62,0.3)}
+
+/* ═══ TOAST ═══ */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--tx);color:#fff;padding:10px 18px;border-radius:var(--r);font-size:13px;font-weight:600;font-family:inherit;opacity:0;transition:all .25s var(--ease);z-index:99999;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.ok{background:var(--success)}
+
+/* ═══ PRINT ═══ */
+@media print{
+  .widget-wrap{position:static !important;height:auto !important}
+  .icon-bar{display:none !important}
+  .panel{position:static !important;transform:none !important;width:100% !important;height:auto !important;border:none !important;box-shadow:none !important;overflow:visible !important}
+  .panel-hdr{position:static !important}
+  .panel-action-btn{display:none !important}
+  .demo-page{display:none !important}
+  .sec-content{display:block !important}
+  .sec-toggle .chev{display:none !important}
+  .sec-toggle{pointer-events:none}
+  .rfb{display:none !important}
+  .share-btn{display:none !important}
+  .rcard-actions{display:none !important}
+  .rbtn.directions{display:none !important}
+  .dir-result{display:none !important}
+  .rcard{break-inside:avoid;page-break-inside:avoid}
+  .res-section{break-inside:avoid;page-break-inside:avoid}
+  .toast{display:none !important}
+  .skip-link{display:none !important}
+  .theme-toggle{display:none !important}
+  body{background:#fff !important;color:#1E293B !important}
+  *{color:#1E293B !important}
+  .rcard .rn{color:#C53030 !important}
+  .panel-title{color:#C53030 !important}
+  .about-section h3{color:#C53030 !important}
+  .rbtn{border-color:#CBD5E0 !important}
+  .rbtn.primary,.rbtn.green{color:#fff !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .site-footer{border-top-color:#E2E8F0 !important}
+  a[href]::after{content:" (" attr(href) ")";font-size:9px;color:#64748B !important;word-break:break-all}
+  .rbtn a[href]::after,.site-footer a[href]::after{content:none}
+  @page{margin:0.75in}
+}
+
+/* ═══ MOBILE 640px ═══ */
+@media(max-width:640px){
+  :root{--bar-w:100%;--panel-w:100vw}
+  .widget-wrap{flex-direction:column-reverse;height:100vh}
+  .icon-bar{width:100%;height:60px;flex-direction:row;padding:0 4px;gap:0;overflow-x:auto;overflow-y:hidden;order:2;box-shadow:0 -2px 12px rgba(0,0,0,0.2)}
+  .sb-div{width:1px;height:28px;margin:0 2px}
+  .sb-btn{width:48px;min-height:48px;font-size:.5rem;flex-shrink:0}
+  .sb-btn .sb-icon{font-size:1.1rem}
+  .sb-btn.active::before{left:12px;right:12px;top:auto;bottom:0;width:auto;height:3px;border-radius:3px 3px 0 0}
+  .panel{width:100vw;height:calc(100vh - 60px);border-right:none}
+  .panel.open{transform:translateX(0)}
+  .demo-page{display:none}
+  .panel-body{padding:14px 14px 40px}
+  .theme-toggle{width:48px;min-height:48px}
+}
+
+/* ═══ MOBILE 360px — small phones ═══ */
+@media(max-width:360px){
+  .sb-btn{width:42px;min-height:42px;font-size:.45rem}
+  .sb-btn .sb-icon{font-size:1rem}
+  .panel-hdr{padding:10px 12px}
+  .panel-title{font-size:14px}
+  .panel-body{padding:10px 10px 32px}
+  .welcome-hdr h2{font-size:17px}
+  .welcome-hdr p{font-size:12.5px}
+  .stage-card{padding:10px 12px;gap:8px}
+  .stage-icon{width:34px;height:34px;font-size:16px}
+  .stage-name{font-size:13.5px}
+  .stage-desc{font-size:11px}
+  .rcard{padding:10px 12px}
+  .rcard .rn{font-size:13.5px}
+  .rcard .rd{font-size:12px}
+  .rbtn{font-size:11px;padding:6px 9px}
+  .crisis-banner{padding:8px 10px;gap:7px}
+  .crisis-banner .ct{font-size:12px}
+  .sec-toggle{font-size:13px;padding:10px 11px}
+  .about-section .stat .num{font-size:18px}
+  .rcard-actions{gap:3px}
+  .rfb-label{display:none}
+  .share-btn{font-size:10px;padding:4px 7px}
+}
+</style>
+</head>
+<body>
+<a href="#mainPanel" class="skip-link">Skip to navigator</a>
+
+<div class="widget-wrap" role="complementary" aria-label="RecoveryConnect Resource Navigator">
+  <nav class="icon-bar" role="navigation" aria-label="Resource categories">
+    <button class="sb-btn crisis-btn" data-panel="crisis" aria-label="Crisis Resources"><span class="sb-icon">🆘</span><span class="sb-label">Crisis</span></button>
+    <div class="sb-div"></div>
+    <button class="sb-btn" data-panel="home" aria-label="Find Resources"><span class="sb-icon">🏠</span><span class="sb-label">Home</span></button>
+    <div class="sb-div"></div>
+    <button class="sb-btn" data-panel="mat" aria-label="MAT & Naloxone"><span class="sb-icon">💊</span><span class="sb-label">MAT</span></button>
+    <button class="sb-btn" data-panel="mental" aria-label="Mental Health"><span class="sb-icon">🧠</span><span class="sb-label">Mental</span></button>
+    <button class="sb-btn" data-panel="basic" aria-label="Food, ID, Needs"><span class="sb-icon">🍽️</span><span class="sb-label">Needs</span></button>
+    <button class="sb-btn" data-panel="housing" aria-label="Housing"><span class="sb-icon">🏡</span><span class="sb-label">Housing</span></button>
+    <button class="sb-btn" data-panel="transport" aria-label="Transportation"><span class="sb-icon">🚌</span><span class="sb-label">Transit</span></button>
+    <button class="sb-btn" data-panel="benefits" aria-label="Benefits"><span class="sb-icon">📋</span><span class="sb-label">Benefits</span></button>
+    <button class="sb-btn" data-panel="legal" aria-label="Legal Aid"><span class="sb-icon">⚖️</span><span class="sb-label">Legal</span></button>
+    <button class="sb-btn" data-panel="employment" aria-label="Employment"><span class="sb-icon">💼</span><span class="sb-label">Jobs</span></button>
+    <button class="sb-btn" data-panel="reentry" aria-label="Reentry Support"><span class="sb-icon">🤝</span><span class="sb-label">Reentry</span></button>
+    <div class="sb-div"></div>
+    <button class="sb-btn" data-panel="jails" aria-label="County Jails & Facilities"><span class="sb-icon">🏛️</span><span class="sb-label">Jails</span></button>
+    <button class="sb-btn" data-panel="data" aria-label="MDOC Data & Reports"><span class="sb-icon">📊</span><span class="sb-label">Data</span></button>
+    <div class="sidebar-footer">
+      <div class="sb-div"></div>
+      <button class="sb-btn" data-panel="about" aria-label="About RecoveryConnect"><span class="sb-icon">ℹ️</span><span class="sb-label">About</span></button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark mode" title="Toggle theme">🌙<span class="sb-label">Theme</span></button>
+      <button class="sb-btn" id="printBtn" aria-label="Print resources" onclick="window.print()"><span class="sb-icon">🖨️</span><span class="sb-label">Print</span></button>
+    </div>
+  </nav>
+
+  <main class="panel" id="mainPanel" role="region" aria-label="Resource details">
+    <div class="panel-hdr">
+      <span class="panel-title" id="pTitle">RecoveryConnect</span>
+      <div class="panel-hdr-actions">
+        <button class="panel-action-btn" aria-label="Print this page" onclick="window.print()" title="Print">🖨️</button>
+        <button class="panel-action-btn" aria-label="Close panel" id="pClose" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="panel-body" id="pBody"></div>
+  </main>
+</div>
+
+<div class="demo-page" id="demo">
+  <div class="demo-content">
+    <div class="hero-icon">🌿</div>
+    <h1>Recovery<span>Connect</span></h1>
+    <p>Recovery and reentry resources across Maine — treatment, housing, legal aid, benefits, and more. Free to use, always.</p>
+    <button class="cta-open" onclick="showPanel('home')">Find Resources →</button>
+    <div class="hint">or click any icon on the left to start</div>
+    <div style="margin-top:32px;font-size:10px;color:var(--tx3)">© 2025–2026 Whysice · RecoveryConnect is Open Source (MIT)</div>
+  </div>
+</div>
+
+<noscript>
+  <div style="max-width:600px;margin:60px auto;padding:24px;text-align:center;font-family:system-ui,sans-serif;color:#1E293B">
+    <h1 style="font-size:24px;margin-bottom:12px">RecoveryConnect</h1>
+    <p style="margin-bottom:16px">This tool requires JavaScript to run. Please enable JavaScript in your browser settings.</p>
+    <p><strong>Need help right now?</strong> Call <a href="tel:988">988</a> (Suicide & Crisis Lifeline) or <a href="tel:18006624357">1-800-662-4357</a> (SAMHSA).</p>
+  </div>
+</noscript>
+<div class="toast" id="toast" role="alert" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+(function(){
+'use strict';
+
+// ═══ TRACKING ═══
+var API_URL='https://script.google.com/macros/s/AKfycbzi3HBVY-wOStn2WPJhYQWjR55fTsOTORnKcRv6sG9gOTqdFMdwEgQoeJWo3J7-qADM/exec';
+var session='rc_'+Date.now();
+var surveyState={stage:null,needs:[],sits:[],insurance:null,county:null};
+
+function track(event,resource,resource_url,action_type){
+  if(!API_URL)return;
+  var p={event:event,resource:resource||'',resource_url:resource_url||'',action_type:action_type||'',session:session,stage:surveyState.stage||'',needs:surveyState.needs||[],county:surveyState.county||''};
+  try{navigator.sendBeacon?navigator.sendBeacon(API_URL,JSON.stringify(p)):fetch(API_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(p)})}catch(e){}
+}
+
+function plausible(eventName,props){
+  if(window.plausible){window.plausible(eventName,{props:props||{}})}
+}
+
+function toast(m,t){var e=document.getElementById('toast');e.textContent=m;e.className='toast show'+(t?' '+t:'');setTimeout(function(){e.className='toast'},2500)}
+
+function shareResource(name,phone,url){
+  var shareUrl=url||'https://recovery-connect.netlify.app/';
+  var shareText=name+(phone?' — '+phone:'');
+  if(navigator.share){
+    navigator.share({title:name,text:shareText+'\nFound on RecoveryConnect',url:shareUrl}).then(function(){
+      track('share',name,shareUrl,'native_share');
+      plausible('Share',{resource:name,method:'native'});
+    }).catch(function(){});
+    return;
+  }
+  var copyText=shareText+'\n'+shareUrl+'\n— Found on RecoveryConnect (recovery-connect.netlify.app)';
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(copyText).then(function(){
+      toast('Copied! Paste in a text or message.','ok');
+      track('share',name,shareUrl,'clipboard');
+      plausible('Share',{resource:name,method:'clipboard'});
+    }).catch(function(){
+      fallbackCopy(copyText,name,shareUrl);
+    });
+  }else{
+    fallbackCopy(copyText,name,shareUrl);
+  }
+}
+
+function fallbackCopy(text,name,url){
+  var ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');toast('Copied! Paste in a text or message.','ok');track('share',name,url,'clipboard')}
+  catch(e){toast('Couldn\'t copy — try long-pressing the link instead')}
+  document.body.removeChild(ta);
+}
+
+// ═══ RESOURCE DATA ═══
+var R={
+  crisis:{title:'Need Help Now',resources:[
+    {n:'988 Suicide & Crisis Lifeline',d:'Free, confidential, 24/7. Maine-based crisis specialists are ready to talk.',tg:'call',ph:'988',u:'https://988lifeline.org'},
+    {n:'SAMHSA National Helpline',d:'Free treatment referrals around the clock. English and Spanish available.',tg:'call',ph:'1-800-662-4357',u:'https://samhsa.gov'},
+    {n:'Never Use Alone',d:'Operators stay on the line while you use and send help if needed. No judgment.',tg:'call',ph:'1-800-484-3731'},
+    {n:'Maine Crisis Line',d:'24/7 crisis assessment, stabilization, and crisis residential services.',tg:'call',ph:'1-888-568-1112'},
+    {n:'Peer Support Warmline',d:'Talk to someone who\'s been there. Lived experience staff — not a crisis line, just real human support.',tg:'call',ph:'1-866-771-9276'},
+    {n:'211 Maine',d:'Food, shelter, transportation, financial help — whatever you need, they can point you in the right direction.',tg:'call',ph:'211',u:'https://211maine.org'}
+  ]},
+  mat:{title:'MAT & Naloxone',sections:{
+    'Medication-Assisted Treatment':[
+      {n:'Better Life Partners',d:'Same-day buprenorphine starts. Telehealth + in-person anywhere in Maine. Sliding scale available.',tg:'call',ph:'866-679-0831',u:'https://betterlifepartners.com/maine'},
+      {n:'Presque Isle CTC',d:'MAT with methadone & Suboxone. Individual and group counseling. Accepts Medicaid & most insurance.',tg:'call',ph:'207-707-3001',u:'https://www.ctcprograms.com/location/presque-isle-comprehensive-treatment-center/',addr:'11 North St, Presque Isle, ME 04769'},
+      {n:'Bangor CTC',d:'Outpatient MAT — methadone & Suboxone. 689 Odlin Rd, Bangor.',tg:'call',ph:'855-935-0915',u:'https://www.ctcprograms.com/location/bangor-comprehensive-treatment-center/',addr:'689 Odlin Rd, Suite 1, Bangor, ME 04401'},
+      {n:'South Portland CTC',d:'Outpatient MAT — methadone & Suboxone. 400 Western Ave, South Portland.',tg:'call',ph:'866-394-2309',u:'https://www.ctcprograms.com/location/south-portland-comprehensive-treatment-center/',addr:'400 Western Ave, South Portland, ME 04106'},
+      {n:'Waterville CTC',d:'Outpatient MAT — methadone & Suboxone. 40 Airport Rd, Waterville.',tg:'call',ph:'877-715-8330',u:'https://www.ctcprograms.com/location/waterville-comprehensive-treatment-center/',addr:'40 Airport Rd, Waterville, ME 04901'},
+      {n:'Rumford CTC',d:'Outpatient MAT — methadone, buprenorphine, Suboxone, Sublocade & Vivitrol. Serves Oxford County area.',tg:'call',ph:'207-977-2363',u:'https://www.ctcprograms.com/location/rumford-comprehensive-treatment-center/',addr:'134 Franklin St, Rumford, ME 04276'},
+      {n:'HCRC Portland',d:'Methadone & buprenorphine. Individual, group, and family counseling.',tg:'call',ph:'207-503-6746',addr:'22 Bramhall St, Portland, ME 04102'},
+      {n:'HCRC Lewiston',d:'Methadone & buprenorphine. MaineCare transport eligible.',tg:'call',ph:'207-503-6693',addr:'60 Strawberry Ave, Lewiston, ME 04240'},
+      {n:'MaineHealth MOUD',d:'Hub-and-spoke model. Intensive + primary care options statewide.',tg:'call',ph:'844-292-0111'},
+      {n:'AMHC (Northern/Downeast)',d:'Fort Kent to Ellsworth. Rapid MAT starts + peer support.',tg:'call',ph:'207-498-6431'},
+      {n:'MaineGeneral MAT',d:'Augusta & Waterville. Sliding scale fees available.',tg:'call',ph:'207-621-3750'},
+      {n:'MDOC Behavioral Health',d:'Covers MAT costs for uninsured individuals with opioid use disorder. Email ICM.OBH@maine.gov',tg:'free'}
+    ],
+    'Free Naloxone / Narcan':[
+      {n:'Maine Access Points',d:'Free naloxone mailed to you anywhere in Maine. Also has safer use supplies.',tg:'free',ph:'207-319-8823',u:'https://maineaccesspoints.org'},
+      {n:'Get Maine Naloxone',d:'Find free distribution points near you.',tg:'free',u:'https://getmainenaloxone.org'},
+      {n:'Know Your Options — County Liaisons',d:'Every county has a local naloxone liaison who can help.',tg:'free',u:'https://knowyouroptions.me/get-naloxone'}
+    ]
+  }},
+  mental:{title:'Mental Health',sections:{
+    'Crisis & Immediate Help':[
+      {n:'988 Lifeline',d:'Call or text 988. Free, 24/7. Maine-based specialists.',tg:'call',ph:'988'},
+      {n:'Peer Support Warmline',d:'Talk with someone who gets it. Lived experience, not crisis — just human connection.',tg:'call',ph:'866-771-9276'},
+      {n:'NAMI Maine',d:'Support groups, family education, crisis navigation.',tg:'call',ph:'800-464-5767',u:'https://namimaine.org'}
+    ],
+    'Community Treatment':[
+      {n:'MaineHealth Behavioral Health',d:'Counseling, inpatient, crisis services, and MOUD statewide.',tg:'call',ph:'844-292-0111'},
+      {n:'MaineGeneral Counseling',d:'Augusta & Waterville. Trauma, substance use, and mental health. Sliding scale.',tg:'call',ph:'207-621-3750'}
+    ]
+  }},
+  basic:{title:'Basic Needs',sections:{
+    'Food & Nutrition':[
+      {n:'Good Shepherd Food Bank Map',d:'~600 food programs across Maine. No ID needed for community meals.',tg:'free',u:'https://gsfb.org/food-map'},
+      {n:'211 Maine — Food',d:'Find SNAP, WIC, food pantries, and meal programs near you.',tg:'call',ph:'211'},
+      {n:'SNAP (Food Supplement Program)',d:'Monthly benefits to buy groceries. Apply online, by phone, or in person at any DHHS office.',tg:'free',ph:'1-855-797-4357',u:'https://www.maine.gov/dhhs/ofi/programs-services/food-supplement'},
+      {n:'My Maine Connection — Apply Online',d:'Apply for SNAP, MaineCare, TANF, and other benefits all in one place.',tg:'online',u:'https://www.mymaineconnection.gov'}
+    ],
+    'ID Documents':[
+      {n:'Maine BMV — State ID',d:'Non-driver ID: $30. Need 2 forms of ID + proof of residency.',tg:'location',u:'https://maine.gov/sos/bmv/driver-licenses-and-ids/id'},
+      {n:'Maine Vital Records (Birth Certificate)',d:'$15 by mail. You can request from your correctional facility before release.',tg:'call',ph:'207-287-3181'},
+      {n:'SSA — Free SS Card Replacement',d:'Replacement Social Security card is free. Apply online, by mail, or in person.',tg:'free',ph:'800-772-1213',u:'https://ssa.gov'},
+      {n:'MPAC — ID Video Guide',d:'Step-by-step video guide for getting your ID after incarceration.',tg:'online',u:'https://maineprisoneradvocacy.org/resources'}
+    ]
+  }},
+  housing:{title:'Housing',sections:{
+    'Housing Resources':[
+      {n:'211 Maine — Housing',d:'Emergency shelters, transitional housing, Section 8, and public housing listings.',tg:'call',ph:'211'},
+      {n:'Maine Housing Authority',d:'Rental assistance, homelessness prevention programs statewide.',tg:'call',ph:'207-626-4600',u:'https://mainehousing.org',addr:'26 Edison Dr, Augusta, ME 04330'},
+      {n:'Preble Street',d:'Portland & Bangor. Emergency shelter, food, and health services.',tg:'free',ph:'207-775-0026',u:'https://preblestreet.org',addr:'252 Oxford St, Portland, ME 04101'}
+    ]
+  }},
+  transport:{title:'Transportation',sections:{
+    'Statewide':[
+      {n:'ModiVCare (MaineCare)',d:'Free medical transportation for MaineCare members.',tg:'call',ph:'855-608-5174'},
+      {n:'GoMaine Carpool',d:'Free carpool matching service. Earn rewards for sharing rides.',tg:'free',u:'https://gomaine.org'}
+    ],
+    'By Region':[
+      {n:'Regional Transportation Program',d:'Cumberland County shared-ride service.',tg:'location',ph:'207-774-2666',addr:'127 St John St, Portland, ME 04102'},
+      {n:'Aroostook Regional Transportation',d:'Aroostook County area.',tg:'location',ph:'207-498-2556',addr:'1 Edgemont Dr, Presque Isle, ME 04769'},
+      {n:'Western Maine Transportation',d:'Androscoggin, Franklin, Oxford counties.',tg:'location',ph:'207-364-7171',addr:'9 Market Square, South Paris, ME 04281'},
+      {n:'Waldo CAP Transit',d:'Waldo, Knox, Sagadahoc, Lincoln counties. $2/ride.',tg:'location',ph:'855-930-7900',addr:'9 Field St, Belfast, ME 04915'},
+      {n:'Downeast Community Partners',d:'Hancock and Washington counties.',tg:'location',ph:'207-664-2424',addr:'248 Bucksport Rd, Ellsworth, ME 04605'},
+      {n:'Kennebec Valley CAP',d:'Kennebec and Somerset counties.',tg:'location',ph:'207-474-8487',addr:'101 Water St, Skowhegan, ME 04976'}
+    ]
+  }},
+  benefits:{title:'Benefits & Heating',sections:{
+    'Apply for Benefits':[
+      {n:'My Maine Connection',d:'Apply for SNAP, MaineCare, TANF online. Or call — available Mon–Fri 7am–4pm.',tg:'online',ph:'1-855-797-4357',u:'https://www.mymaineconnection.gov'},
+      {n:'Maine DHHS Office for Family Independence',d:'Central hub for benefits. SNAP, MaineCare, TANF, disability determinations.',tg:'call',ph:'1-855-797-4357',u:'https://www.maine.gov/dhhs/ofi'},
+      {n:'Maine Consumer Health Assistance',d:'Free help figuring out MaineCare eligibility.',tg:'free',ph:'800-965-7476'}
+    ],
+    'SNAP (Food Benefits)':[
+      {n:'SNAP Benefits',d:'Monthly grocery benefits for low-income households. No asset limit in Maine.',tg:'free',ph:'1-855-797-4357',u:'https://www.maine.gov/dhhs/ofi/programs-services/food-supplement'},
+      {n:'Pine Tree Legal — SNAP Guide',d:'Plain-language guide to applying, getting approved, and keeping your benefits.',tg:'online',u:'https://www.ptla.org/Maine-SNAP-Guide'},
+      {n:'EBT Card Balance',d:'Check your Pine Tree Card / EBT balance anytime.',tg:'call',ph:'1-800-477-7428'}
+    ],
+    'Heating Assistance (LIHEAP/HEAP)':[
+      {n:'HEAP — Home Energy Assistance',d:'Helps pay for heating costs. Apply through your local Community Action Agency or online. Season runs Aug–May.',tg:'free',ph:'1-800-452-4668',u:'https://www.mainehousing.org/programs-services/energy/energydetails/liheap'},
+      {n:'HEAP Crisis Assistance (ECIP)',d:'If you have 7 days or less of fuel, you may qualify for emergency delivery. Apply for HEAP first, then contact your local CAA.',tg:'call',ph:'1-800-452-4668'},
+      {n:'Find Your Local CAA',d:'Community Action Agencies handle HEAP applications. Find yours by zip code on the MaineHousing site.',tg:'online',u:'https://www.mainehousing.org/programs-services/energy/energydetails/liheap'}
+    ],
+    'Disability':[
+      {n:'Social Security Administration',d:'SSI/SSDI. Getting SSI automatically qualifies you for MaineCare.',tg:'call',ph:'800-772-1213',u:'https://ssa.gov'}
+    ]
+  }},
+  legal:{title:'Legal Aid & Record Relief',sections:{
+    'Free Legal Aid':[
+      {n:'Pine Tree Legal Assistance',d:'Maine\'s largest free civil legal aid. Housing, benefits, family law and more.',tg:'free',ph:'207-774-8211',u:'https://ptla.org',addr:'88 Federal St, Portland, ME 04101'},
+      {n:'Cumberland Legal Aid',d:'Free legal help from UMaine Law students at MCC.',tg:'free',ph:'207-780-4370'},
+      {n:'Maine Volunteer Lawyers Project',d:'Pro bono attorneys for family law, bankruptcy, employment.',tg:'free',ph:'207-774-4348',u:'https://vlp.org'},
+      {n:'Maine Equal Justice',d:'Legal help if your benefits are denied. Also does policy advocacy.',tg:'free',ph:'207-626-7058',u:'https://maineequaljustice.org'}
+    ],
+    'Record Sealing':[
+      {n:'Maine Courts — Sealing Info',d:'Form CR-218. Class E crimes eligible after a 4-year waiting period.',tg:'online',u:'https://courts.maine.gov/help/criminal/sealing.html'}
+    ]
+  }},
+  employment:{title:'Employment & Training',sections:{
+    'Job Search & Training':[
+      {n:'Maine CareerCenter',d:'Free job search, resume help, and training programs statewide.',tg:'free',u:'https://mainecareercenter.gov'},
+      {n:'MCDLearn — Free Online Courses',d:'Free online courses and training. Certificates in a range of topics to build your skills.',tg:'free',u:'https://mcdlearn.org/courses.php'},
+      {n:'Vocational Rehabilitation',d:'Employment support for people with disabilities.',tg:'free',ph:'800-698-4440'},
+      {n:'Goodwill of Northern NE',d:'Job training, placement, and career development.',tg:'free',u:'https://goodwillnne.org'}
+    ]
+  }},
+  reentry:{title:'Reentry Support',sections:{
+    'Maine Reentry Organizations':[
+      {n:'Maine DOC Reentry Team',d:'Case management, outreach, and advocacy for people leaving incarceration.',tg:'free',u:'https://maine.gov/corrections/programs/reentry'},
+      {n:'Maine Reentry Network',d:'Weekly Zoom meetings every Tuesday at 9:30 AM. Open to all.',tg:'free',u:'https://reentrymaine.org'},
+      {n:'Maine Prisoner Advocacy Coalition',d:'Case management, ID help, and system advocacy.',tg:'free',u:'https://maineprisoneradvocacy.org'},
+      {n:'Maine Inside Out',d:'Led by formerly incarcerated people. Art, advocacy, and justice work.',tg:'free',u:'https://maineinsideout.org'},
+      {n:'Restorative Justice Project',d:'Mentoring programs in Knox, Waldo + 4 other counties.',tg:'free'}
+    ]
+  }},
+  jails:{title:'County Jails & Facilities',sections:{
+    'Southern Maine':[
+      {n:'Cumberland County Jail',d:'CARA Program, MAT, mental health, housing assistance, recovery coaching, RULE Program. Education: HiSET/GED, college prep, computer skills, career development.',tg:'location',ph:'207-774-5939',addr:'Portland, ME'},
+      {n:'York County Jail',d:'Recovery services, MAT, mental health, employment readiness, housing assistance, case management. Education: HiSET/GED, college prep, vocational training.',tg:'location',ph:'207-324-1113',addr:'Alfred, ME'},
+      {n:'Two Bridges Regional Jail',d:'Recovery support, MAT, mental health, case management, employment prep. Serves Lincoln and Sagadahoc counties. Education: HiSET/GED, vocational programs.',tg:'location',ph:'207-882-7332',addr:'Wiscasset, ME'}
+    ],
+    'Central Maine':[
+      {n:'Kennebec County Correctional Facility',d:'STRIVE Program, MAT, mental health, employment services, housing coordination. Education: HiSET/GED, vocational, career planning.',tg:'location',ph:'207-623-2270',addr:'Augusta, ME'},
+      {n:'Androscoggin County Jail',d:'Substance use disorder treatment, mental health, employment readiness, recovery coaching. Education: HiSET/GED, computer literacy, financial literacy.',tg:'location',ph:'207-753-2500',addr:'Auburn, ME'},
+      {n:'Somerset County Jail',d:'Substance use treatment, mental health, community reentry. Education: adult education, GED.',tg:'location',ph:'207-474-9591',addr:'Madison, ME'},
+      {n:'Franklin County Detention Center',d:'Substance use treatment, mental health support, case management. Education: GED prep, basic education.',tg:'location',ph:'207-778-2680',addr:'Farmington, ME'},
+      {n:'Oxford County Jail',d:'Substance use services, mental health, reentry planning. Education: GED prep, adult education.',tg:'location',ph:'207-743-6336',addr:'South Paris, ME'}
+    ],
+    'Midcoast & Downeast':[
+      {n:'Knox County Jail',d:'Recovery support, case management, community resources. Education: basic education, life skills.',tg:'location',ph:'207-594-0429',addr:'Rockland, ME'},
+      {n:'Waldo County Jail',d:'Recovery coaching, mental health, community support. Education: adult education, life skills.',tg:'location',ph:'207-338-6786',addr:'Belfast, ME'},
+      {n:'Hancock County Jail',d:'Recovery services, mental health, community connections. Education: adult education, computer skills.',tg:'location',ph:'207-667-7575',addr:'Ellsworth, ME'},
+      {n:'Washington County Jail',d:'Substance use services, case management, reentry support. Education: basic education, GED prep.',tg:'location',ph:'207-255-4422',addr:'Machias, ME'}
+    ],
+    'Northern Maine':[
+      {n:'Penobscot County Jail',d:'RISE Program, MAT, mental health, recovery coaching, employment services, housing. Education: HiSET/GED, college programs, vocational training.',tg:'location',ph:'207-947-4585',addr:'Bangor, ME'},
+      {n:'Aroostook County Jail',d:'Substance use disorder treatment, MAT program, case management, community reintegration. Education: adult basic education, GED prep, workforce development.',tg:'location',ph:'207-532-3471',addr:'Houlton, ME'},
+      {n:'Piscataquis County Jail',d:'Recovery services, case management. Education: basic education, life skills.',tg:'location',ph:'207-564-3304',addr:'Dover-Foxcroft, ME'}
+    ],
+    'State Facilities (MDOC)':[
+      {n:'Maine State Prison',d:'State prison for men. Programs include education, vocational training, substance use treatment, and reentry planning.',tg:'location',ph:'207-273-5300',addr:'807 Cushing Rd, Warren, ME 04864'},
+      {n:'Maine Correctional Center',d:'Medium/minimum security. Houses Women\'s Center. Programs, education, MAT available.',tg:'location',ph:'207-893-7000',addr:'17 Mallison Falls Rd, Windham, ME 04062'},
+      {n:'Mountain View Correctional Facility',d:'Medium security men\'s facility. Programs, education, vocational training.',tg:'location',ph:'207-764-0400',addr:'1182 Dover Rd, Charleston, ME 04422'},
+      {n:'Bolduc Correctional Facility',d:'Minimum security. Work release, community transition programs.',tg:'location',ph:'207-273-5000',addr:'516 Cushing Rd, Warren, ME 04864'},
+      {n:'Southern Maine Women\'s Reentry Center',d:'Women\'s community reentry programs and transition support.',tg:'location',ph:'207-893-7000',addr:'Windham, ME'},
+      {n:'Long Creek Youth Development Center',d:'Juvenile facility. Education, treatment, and reentry services for youth.',tg:'location',ph:'207-822-6600',addr:'675 Westbrook St, South Portland, ME 04106'}
+    ]
+  }},
+  data:{title:'MDOC Data & Reports',sections:{
+    'Reports & Statistics':[
+      {n:'MDOC Weekly Reports',d:'Weekly population counts and facility statistics from Maine DOC.',tg:'online',u:'https://www.maine.gov/corrections/about/data-reporting/reports-statistics'},
+      {n:'MDOC Monthly Reports',d:'Monthly statistical reports on admissions, releases, and population trends.',tg:'online',u:'https://www.maine.gov/corrections/about/data-reporting/reports-statistics'},
+      {n:'MDOC Year-End Reports',d:'Annual comprehensive reports on corrections data, demographics, and outcomes.',tg:'online',u:'https://www.maine.gov/corrections/about/data-reporting/reports-statistics'},
+      {n:'MAT Reports',d:'Medication-Assisted Treatment data from Maine DOC facilities.',tg:'online',u:'https://www.maine.gov/corrections/about/data-reporting/reports-statistics'}
+    ],
+    'Compliance & Oversight':[
+      {n:'PREA Annual Reports',d:'Prison Rape Elimination Act compliance reports for all Maine facilities.',tg:'online',u:'https://www.maine.gov/corrections/about/data-reporting/compliance'},
+      {n:'Facility PREA Reports',d:'Individual facility PREA audit reports and corrective action plans.',tg:'online',u:'https://www.maine.gov/corrections/about/data-reporting/compliance'}
+    ],
+    'Policies & Contact':[
+      {n:'MDOC Policies & Rulemaking',d:'Current department policies and proposed rulemaking.',tg:'online',u:'https://www.maine.gov/corrections/about/policies-rulemaking'},
+      {n:'DOC Complaint/Feedback Form',d:'Submit a compliment or complaint about any Maine DOC facility or service.',tg:'online',u:'https://www.maine.gov/corrections/contact/oprform'},
+      {n:'MDOC Central Office',d:'Maine Department of Corrections, 25 Tyson Drive, 3rd floor, Augusta, ME 04333.',tg:'call',ph:'207-287-2711',addr:'25 Tyson Drive, Augusta, ME 04333'}
+    ]
+  }}
+};
+
+var STAGES=[
+  {id:'pre',icon:'📋',name:'Pre-Release',desc:'Still incarcerated, planning your next steps',
+   pri:['basic','benefits','reentry','housing','legal','mat'],
+   labels:{basic:'Get Documents Ready',benefits:'Start Benefits Applications',reentry:'Connect with Case Managers',housing:'Line Up Housing',legal:'Understand Your Record',mat:'Plan MAT Treatment'}},
+  {id:'just',icon:'🚪',name:'Just Released',desc:'First 72 hours to 2 weeks out',
+   pri:['mat','basic','benefits','transport','housing','mental'],
+   labels:{mat:'Get Treatment Today',basic:'Food, ID & Immediate Needs',benefits:'Apply for MaineCare & SNAP',transport:'Get a Ride',housing:'Find Safe Shelter',mental:'Talk to Someone'}},
+  {id:'building',icon:'🌱',name:'Building Forward',desc:'30+ days out — stabilizing & growing',
+   pri:['employment','legal','mental','housing','reentry','mat'],
+   labels:{employment:'Find Work & Training',legal:'Seal Your Record',mental:'Ongoing Support',housing:'Stable Housing',reentry:'Community & Mentorship',mat:'Continue Treatment'}}
+];
+
+// ═══ RENDER HELPERS ═══
+var tagCls={free:'tag-free',call:'tag-call',online:'tag-online',location:'tag-location'};
+var tagLbl={free:'Free',call:'Call',online:'Online',location:'In-Person'};
+var iconMap={legal:'⚖️',transport:'🚌',mat:'💊',benefits:'📋',mental:'🧠',basic:'🍽️',reentry:'🤝',housing:'🏡',employment:'💼',jails:'🏛️',data:'📊'};
+
+function card(r){
+  var ph=r.ph?r.ph.replace(/[^0-9+]/g,''):'';
+  var h='<div class="rcard"><div class="rh"><span class="rn">'+r.n+'</span>';
+  if(r.tg)h+='<span class="rtag '+tagCls[r.tg]+'">'+tagLbl[r.tg]+'</span>';
+  h+='</div><div class="rd">'+r.d+'</div>';
+  if(r.addr)h+='<div class="raddr"><span class="pin">📍</span>'+r.addr+'</div>';
+  h+='<div class="ra">';
+  if(r.ph)h+='<a href="tel:'+ph+'" class="rbtn green" data-trk="click" data-rn="'+esc(r.n)+'" data-ru="'+r.ph+'" data-at="phone">📞 '+r.ph+'</a>';
+  if(r.u)h+='<a href="'+r.u+'" target="_blank" rel="noopener" class="rbtn primary" data-trk="click" data-rn="'+esc(r.n)+'" data-ru="'+r.u+'" data-at="web">🔗 Website</a>';
+  if(r.addr)h+='<button class="rbtn directions" data-addr="'+esc(r.addr)+'" data-rn="'+esc(r.n)+'" aria-label="Get directions to '+esc(r.n)+'">🧭 Directions</button>';
+  h+='</div>';
+  if(r.addr)h+='<div class="dir-result" id="dir_'+esc(r.n).replace(/[^a-zA-Z0-9]/g,'_')+'"></div>';
+  h+='<div class="rcard-actions">';
+  h+='<span class="rfb"><span class="rfb-label">Helpful?</span><button class="y" data-rn="'+esc(r.n)+'" title="Still accurate">👍</button><button class="n" data-rn="'+esc(r.n)+'" title="Needs updating">👎</button></span>';
+  h+='<button class="share-btn" data-sn="'+esc(r.n)+'" data-sph="'+(r.ph||'')+'" data-su="'+(r.u||'')+'" title="Share this resource">📤 Share</button>';
+  h+='</div>';
+  h+='</div>';
+  return h;
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function footerHTML(){
+  return '<div class="site-footer">© 2025–2026 <a href="https://github.com/Whysice" target="_blank" rel="noopener">Whysice</a> · <a href="https://github.com/Whysice/recoveryconnect" target="_blank" rel="noopener">Open Source</a> <span class="license-badge">MIT</span><br>RecoveryConnect — Built with care in Maine</div>';
+}
+
+function renderCrisis(){
+  var h='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In immediate danger? Call 911.</strong><br>Everything below is free, confidential, and available 24/7.</div></div>';
+  R.crisis.resources.forEach(function(r){h+=card(r)});
+  h+='<div style="margin-top:16px;padding:12px;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);font-size:11px;color:var(--tx3);line-height:1.6"><strong style="color:var(--tx2)">⚠️ Important</strong><br>RecoveryConnect is a resource directory only and is not a substitute for professional medical, legal, or crisis advice. If you are in immediate physical danger, call <strong>911</strong>. For a mental health or substance use crisis, call or text <strong>988</strong>.</div>';
+  h+=footerHTML();
+  return h;
+}
+
+function renderHome(){
+  var h='<div class="welcome-hdr"><div class="logo-mark">🌿</div><h2>Welcome</h2><p>Navigate recovery and reentry resources across Maine. Everything listed here is free or low-cost — no barriers, no judgment.</p></div>';
+  h+='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> or <a href="tel:18006624357">1-800-662-4357</a> anytime, day or night.</div></div>';
+  h+='<p class="stage-label">Where are you right now?</p>';
+  h+='<div class="stage-sel">';
+  STAGES.forEach(function(s){
+    h+='<button class="stage-card" data-stage="'+s.id+'"><div class="stage-icon">'+s.icon+'</div><div class="stage-info"><div class="stage-name">'+s.name+'</div><div class="stage-desc">'+s.desc+'</div></div><span class="stage-arrow">→</span></button>';
+  });
+  h+='</div>';
+  h+='<div class="info-banner"><span class="ci">💡</span><div class="ct">You can also browse categories directly using the icons on the left sidebar.</div></div>';
+  h+=footerHTML();
+  return h;
+}
+
+function renderStage(stageId){
+  var s=STAGES.find(function(x){return x.id===stageId});
+  if(!s)return'';
+  var h='<button class="back-btn" data-back="home">← Back to stages</button>';
+  h+='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> anytime.</div></div>';
+  h+='<p class="priority-label">✦ Priority for '+s.name+'</p>';
+  var first=true;
+  s.pri.forEach(function(k){
+    var cat=R[k];if(!cat)return;
+    var label=s.labels[k]||cat.title;
+    var all=cat.sections?Object.values(cat.sections).reduce(function(a,b){return a.concat(b)},[]):(cat.resources||[]);
+    var openClass=first?' open':'';
+    h+='<div class="res-section"><button class="sec-toggle'+openClass+'" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si">'+(iconMap[k]||'📌')+'</span>'+label+'<span class="badge">'+all.length+'</span><span class="chev">▼</span></button><div class="sec-content'+openClass+'">';
+    all.forEach(function(r){h+=card(r)});
+    h+='</div></div>';
+    first=false;
+  });
+  h+=footerHTML();
+  return h;
+}
+
+function renderCategory(key){
+  var cat=R[key];if(!cat)return'';
+  var h='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> anytime.</div></div>';
+  if(cat.sections){
+    var first=true;
+    Object.keys(cat.sections).forEach(function(name){
+      var res=cat.sections[name];
+      var openClass=first?' open':'';
+      h+='<div class="res-section"><button class="sec-toggle'+openClass+'" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si">'+(iconMap[key]||'📌')+'</span>'+name+'<span class="badge">'+res.length+'</span><span class="chev">▼</span></button><div class="sec-content'+openClass+'">';
+      res.forEach(function(r){h+=card(r)});
+      h+='</div></div>';
+      first=false;
+    });
+  }else if(cat.resources){
+    cat.resources.forEach(function(r){h+=card(r)});
+  }
+  h+='<div style="font-size:11px;color:var(--tx3);text-align:center;margin-top:16px;font-style:italic">Resources last verified: February 2026</div>';
+  if(key==='data'||key==='jails'){
+    h+='<div style="margin-top:14px;padding:14px;background:rgba(144,205,244,0.08);border:1.5px solid rgba(37,99,235,0.12);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6;text-align:center"><strong style="color:var(--info)">🔬 Want more detail?</strong><br>Explore facility programs, policies, statistics, 175+ years of history, and 44 primary source documents on the <a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener" style="color:var(--info);font-weight:600">Maine DOC Research Platform →</a></div>';
+  }
+  h+=footerHTML();
+  return h;
+}
+
+function renderAbout(){
+  var h='<div class="about-section">';
+  h+='<div class="welcome-hdr" style="padding-bottom:12px"><div class="logo-mark">🌿</div><h2>About RecoveryConnect</h2></div>';
+  h+='<p>RecoveryConnect is a <strong>free, open resource navigator</strong> for individuals navigating reentry and recovery in Maine. Our goal is to connect people with the right resources at the right time — whether you\'re planning your release, just came home, or building forward.</p>';
+  h+='<p>Every resource listed here has been individually verified by our team. We update this tool regularly and welcome feedback on any listing that needs attention.</p>';
+  h+='<div class="stat-row"><div class="stat"><div class="num">100+</div><div class="label">Resources</div></div><div class="stat"><div class="num">12</div><div class="label">Categories</div></div><div class="stat"><div class="num">16</div><div class="label">Counties</div></div></div>';
+  h+='<h3 style="margin-top:16px">🏛️ For Probation & Reentry Staff</h3>';
+  h+='<p>RecoveryConnect can be embedded on any website or shared as a direct link. We track usage analytics (no personal data) to understand which resources get used most. We\'d love to partner with your office to make sure this tool serves your clients well.</p>';
+  h+='<div style="margin-top:14px;padding:14px;background:rgba(144,205,244,0.08);border:1.5px solid rgba(37,99,235,0.12);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6"><strong style="color:var(--info)">🔬 Maine DOC Research Platform</strong><br>Need facility details, program eligibility, MDOC policies, recidivism data, or historical documents? Visit our companion research platform.<br><a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener" style="color:var(--info);font-weight:600;display:inline-flex;align-items:center;gap:4px;margin-top:6px">Explore the MDOC Platform →</a></div>';
+  h+='<h3 style="margin-top:12px">📊 How Resources Are Organized</h3>';
+  h+='<p>Resources are organized by <strong>stage of reentry</strong> (Pre-Release, Just Released, Building Forward) and by <strong>category</strong> (MAT, Housing, Legal Aid, etc). The stage-based view automatically prioritizes the most urgent resources first.</p>';
+  h+='<div class="updated">Resources last verified: February 2026 · Built with care in Maine</div>';
+  h+='<h3 style="margin-top:12px">♿ Accessibility</h3>';
+  h+='<p>RecoveryConnect is committed to digital accessibility. This tool is designed to meet <strong>WCAG 2.1 Level AA</strong> standards. Features include keyboard navigation, screen reader support, semantic HTML structure, and focus indicators. If you experience any accessibility barriers, please contact us.</p>';
+  h+='<h3 style="margin-top:12px">⚠️ Disclaimer</h3>';
+  h+='<p>RecoveryConnect is a resource directory only. It is not a substitute for professional medical, legal, or crisis advice. Resource availability may change without notice. Always verify current information by contacting providers directly. If you are in immediate danger, call <strong>911</strong>. For mental health or substance use crises, call or text <strong>988</strong>.</p>';
+  h+='<div style="margin-top:16px;padding:12px;background:rgba(229,62,62,0.08);border-radius:var(--r);font-size:12px;color:var(--tx2);line-height:1.6"><strong style="color:var(--accent)">📄 Open Source — MIT License</strong><br>RecoveryConnect is free and open source software by <strong>Whysice</strong>. Anyone can use, modify, and share this tool. We just ask that you keep the attribution. <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener" style="color:var(--accent)">Learn more about the MIT License →</a></div>';
+  h+=footerHTML();
+  h+='</div>';
+  return h;
+}
+
+// ═══ NAVIGATION ═══
+var curPanel=null,panelOpen=false;
+
+function showPanel(id){
+  var panel=document.querySelector('.panel');
+  var body=document.getElementById('pBody');
+  var title=document.getElementById('pTitle');
+  var demo=document.getElementById('demo');
+
+  document.querySelectorAll('.sb-btn').forEach(function(b){b.classList.remove('active')});
+  var ab=document.querySelector('.sb-btn[data-panel="'+id+'"]');
+  if(ab)ab.classList.add('active');
+
+  var content='',tt='RecoveryConnect';
+
+  if(id==='crisis'){content=renderCrisis();tt='🆘 Need Help Now';track('panel_view','crisis');plausible('Panel View',{panel:'crisis'})}
+  else if(id==='home'){content=renderHome();tt='🌿 Find Resources';track('panel_view','home');plausible('Panel View',{panel:'home'})}
+  else if(id==='about'){content=renderAbout();tt='ℹ️ About';track('panel_view','about');plausible('Panel View',{panel:'about'})}
+  else if(id.indexOf('stage_')===0){
+    var sid=id.replace('stage_','');
+    content=renderStage(sid);
+    var st=STAGES.find(function(x){return x.id===sid});
+    tt=st?st.icon+' '+st.name:'Resources';
+    surveyState.stage=sid;
+    track('panel_view','stage_'+sid);
+    plausible('Stage Selected',{stage:sid});
+  }
+  else if(R[id]){content=renderCategory(id);tt=R[id].title;track('panel_view',id);plausible('Panel View',{panel:id})}
+
+  body.innerHTML=content;
+  title.textContent=tt;
+  panel.classList.add('open');
+  if(demo)demo.classList.add('shifted');
+  
+  panelOpen=true;curPanel=id;
+  body.scrollTop=0;
+
+  wireEvents(body);
+}
+window.showPanel=showPanel;
+
+function closePanel(){
+  document.querySelector('.panel').classList.remove('open');
+  var demo=document.getElementById('demo');
+  if(demo)demo.classList.remove('shifted');
+  document.querySelectorAll('.sb-btn').forEach(function(b){b.classList.remove('active')});
+  panelOpen=false;curPanel=null;
+}
+
+function wireEvents(root){
+  root.querySelectorAll('[data-toggle]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var c=this.nextElementSibling;
+      this.classList.toggle('open');
+      c.classList.toggle('open');
+      this.setAttribute('aria-expanded',c.classList.contains('open'));
+    });
+  });
+  root.querySelectorAll('[data-stage]').forEach(function(btn){
+    btn.addEventListener('click',function(){showPanel('stage_'+this.dataset.stage)});
+  });
+  root.querySelectorAll('[data-back]').forEach(function(btn){
+    btn.addEventListener('click',function(){showPanel(this.dataset.back)});
+  });
+  root.querySelectorAll('[data-trk="click"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      track('click',this.dataset.rn,this.dataset.ru,this.dataset.at);
+      plausible('Resource Click',{resource:this.dataset.rn,type:this.dataset.at});
+    });
+  });
+  root.querySelectorAll('.rfb button').forEach(function(b){
+    b.addEventListener('click',function(){
+      this.closest('.rfb').querySelectorAll('button').forEach(function(x){x.classList.remove('act')});
+      this.classList.add('act');
+      var up=this.classList.contains('y');
+      track(up?'thumbs_up':'thumbs_down',this.dataset.rn,'','feedback');
+      plausible('Feedback',{resource:this.dataset.rn,type:up?'thumbs_up':'thumbs_down'});
+      toast(up?'Thanks for confirming!':'Thanks — we\'ll look into it','ok');
+    });
+  });
+  root.querySelectorAll('.share-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      shareResource(this.dataset.sn,this.dataset.sph,this.dataset.su);
+      var b=this;
+      b.classList.add('copied');
+      b.innerHTML='✓ Copied';
+      setTimeout(function(){b.classList.remove('copied');b.innerHTML='📤 Share'},2000);
+    });
+  });
+  root.querySelectorAll('.rbtn.directions').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var addr=this.dataset.addr;
+      var rn=this.dataset.rn;
+      var resultId='dir_'+rn.replace(/[^a-zA-Z0-9]/g,'_');
+      var resultEl=document.getElementById(resultId);
+      var dirBtn=this;
+      dirBtn.textContent='📍 Locating...';
+      dirBtn.disabled=true;
+      if(!navigator.geolocation){
+        window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(addr)+'&travelmode=driving','_blank');
+        dirBtn.textContent='🧭 Directions';
+        dirBtn.disabled=false;
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(function(pos){
+        var lat=pos.coords.latitude;
+        var lng=pos.coords.longitude;
+        var origin=lat+','+lng;
+        var mapsUrl='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(origin)+'&destination='+encodeURIComponent(addr)+'&travelmode=driving';
+        if(resultEl){
+          resultEl.innerHTML='🚗 <a href="'+mapsUrl+'" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px solid var(--accent)">Open in Google Maps</a> <span class="dir-dist">for turn-by-turn directions from your location</span>';
+          resultEl.classList.add('show');
+        }
+        window.open(mapsUrl,'_blank');
+        dirBtn.textContent='🧭 Directions';
+        dirBtn.disabled=false;
+        track('directions',rn,addr,'directions');
+        plausible('Directions',{resource:rn});
+      },function(err){
+        window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(addr)+'&travelmode=driving','_blank');
+        dirBtn.textContent='🧭 Directions';
+        dirBtn.disabled=false;
+        if(resultEl){
+          resultEl.innerHTML='📍 <span class="dir-dist">Location access denied. Google Maps will ask for your location.</span>';
+          resultEl.classList.add('show');
+        }
+      },{enableHighAccuracy:false,timeout:8000,maximumAge:300000});
+    });
+  });
+}
+
+// ═══ INIT ═══
+document.querySelectorAll('.sb-btn[data-panel]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var id=this.dataset.panel;
+    if(panelOpen&&curPanel===id)closePanel();
+    else showPanel(id);
+  });
+});
+document.getElementById('pClose').addEventListener('click',closePanel);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panelOpen)closePanel()});
+
+// ═══ THEME TOGGLE ═══
+var themeBtn=document.getElementById('themeToggle');
+var savedTheme=localStorage.getItem('rc-theme')||'dark';
+document.documentElement.setAttribute('data-theme',savedTheme);
+themeBtn.childNodes[0].textContent=savedTheme==='dark'?'☀️':'🌙';
+themeBtn.setAttribute('aria-label',savedTheme==='dark'?'Switch to light mode':'Switch to dark mode');
+themeBtn.addEventListener('click',function(){
+  var cur=document.documentElement.getAttribute('data-theme')||'dark';
+  var next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('rc-theme',next);
+  themeBtn.childNodes[0].textContent=next==='dark'?'☀️':'🌙';
+  themeBtn.setAttribute('aria-label',next==='dark'?'Switch to light mode':'Switch to dark mode');
+  document.querySelector('meta[name="theme-color"]').setAttribute('content',next==='dark'?'#0D2818':'#F5F0EB');
+});
+
+if(window.innerWidth<=640){
+  showPanel('home');
+}
+})();
+</script>
+</body>
+</html>
