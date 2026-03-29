@@ -54,6 +54,7 @@
   --panel-w: min(420px, calc(100vw - var(--bar-w)));
   --font-body: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
   --font-display: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
+  --mob-bar-h: 56px;
 }
 [data-theme="light"] {
   --bg: #F2EDE7;--bg-panel: #FEFCFA;--bg-card: #FFF8F2;--bg-card-hover: #FFF1E8;
@@ -138,10 +139,10 @@ body{font-family:var(--font-body);background:var(--bg);background-image:radial-g
 .stage-card:nth-child(1) .stage-icon{background:rgba(229,62,62,0.1)}
 .stage-card:nth-child(2) .stage-icon{background:rgba(229,62,62,0.1)}
 .stage-card:nth-child(3) .stage-icon{background:rgba(104,211,145,0.1)}
-.stage-info{flex:1}
+.stage-info{flex:1;min-width:0}
 .stage-name{font-size:15px;font-weight:700;color:var(--accent);font-family:var(--font-display)}
 .stage-desc{font-size:12.5px;color:var(--tx2);margin-top:3px;line-height:1.5}
-.stage-arrow{color:var(--tx3);font-size:16px;transition:var(--ease)}
+.stage-arrow{color:var(--tx3);font-size:16px;transition:var(--ease);flex-shrink:0}
 .stage-card:hover .stage-arrow{color:var(--accent);transform:translateX(2px)}
 .res-section{margin-bottom:10px;animation:fadeIn .3s ease both}
 .res-section:nth-child(2){animation-delay:.05s}.res-section:nth-child(3){animation-delay:.1s}.res-section:nth-child(4){animation-delay:.15s}.res-section:nth-child(5){animation-delay:.2s}.res-section:nth-child(6){animation-delay:.25s}.res-section:nth-child(7){animation-delay:.3s}
@@ -149,9 +150,9 @@ body{font-family:var(--font-body);background:var(--bg);background-image:radial-g
 .sec-toggle:hover{background:var(--bg-card-hover);border-color:var(--bd-active)}
 .sec-toggle.open{border-radius:var(--r) var(--r) 0 0;border-bottom-color:transparent;background:rgba(229,62,62,0.08)}
 .sec-toggle .si{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--accent-glow)}
-.sec-toggle .chev{margin-left:auto;font-size:11px;color:var(--tx3);transition:transform var(--ease)}
+.sec-toggle .chev{margin-left:auto;font-size:11px;color:var(--tx3);transition:transform var(--ease);flex-shrink:0}
 .sec-toggle.open .chev{transform:rotate(180deg);color:var(--accent)}
-.sec-toggle .badge{background:var(--accent-glow);color:var(--accent);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px}
+.sec-toggle .badge{background:var(--accent-glow);color:var(--accent);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:4px;flex-shrink:0}
 .sec-content{background:var(--bg-card);border:1.5px solid var(--bd);border-top:none;border-radius:0 0 var(--r) var(--r);padding:10px;display:none}
 .sec-content.open{display:block}
 .rcard{background:var(--bg-panel);border:1.5px solid var(--bd);border-radius:10px;padding:14px 16px;margin-bottom:8px;transition:var(--ease)}
@@ -220,49 +221,262 @@ body{font-family:var(--font-body);background:var(--bg);background-image:radial-g
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast.ok{background:var(--success)}
 
-/* ═══ RESPONSIVE SCALING ═══ */
-@media(max-width:900px) and (min-width:641px){
-  :root{--panel-w:calc(100vw - var(--bar-w))}
-}
-@media(min-width:901px) and (max-width:1200px){
-  :root{--panel-w:min(480px, calc(100vw - var(--bar-w) - 40px))}
-}
-@media(min-width:1201px){
-  :root{--panel-w:min(560px, calc(50vw))}
-}
-
 /* ═══ FEEDBACK CARDS ═══ */
 .feedback-card{background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);padding:16px 18px;cursor:pointer;transition:all var(--ease);display:flex;align-items:center;gap:14px;font-family:inherit;text-align:left;width:100%;color:var(--tx);margin-bottom:10px}
 .feedback-card:hover{background:var(--bg-card-hover);border-color:var(--bd-active);transform:translateY(-1px);box-shadow:var(--shadow)}
 .feedback-card .fc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;background:var(--accent-glow)}
-.feedback-card .fc-info{flex:1}
+.feedback-card .fc-info{flex:1;min-width:0}
 .feedback-card .fc-title{font-size:15px;font-weight:700;color:var(--accent);font-family:var(--font-display)}
 .feedback-card .fc-desc{font-size:12.5px;color:var(--tx2);margin-top:3px;line-height:1.5}
-.feedback-card .fc-arrow{color:var(--tx3);font-size:16px;transition:var(--ease)}
+.feedback-card .fc-arrow{color:var(--tx3);font-size:16px;transition:var(--ease);flex-shrink:0}
 .feedback-card:hover .fc-arrow{color:var(--accent);transform:translateX(2px)}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — COMPLETE REWRITE
+   ═══════════════════════════════════════════════════ */
+
+/* ─── Desktop large (1201px+) ─── */
+@media(min-width:1201px){
+  :root{--panel-w:min(560px, calc(50vw))}
+}
+
+/* ─── Desktop medium (901–1200px) ─── */
+@media(min-width:901px) and (max-width:1200px){
+  :root{--panel-w:min(480px, calc(100vw - var(--bar-w) - 40px))}
+}
+
+/* ─── Tablet (641–900px) ─── */
+@media(max-width:900px) and (min-width:641px){
+  :root{--panel-w:calc(100vw - var(--bar-w))}
+  .panel-body{padding:16px 18px 40px}
+  .rcard .ra{gap:8px}
+  .rbtn{padding:9px 14px;font-size:13px;min-height:40px}
+}
+
+/* ─── MOBILE (≤640px) — full rewrite ─── */
+@media(max-width:640px){
+  :root{
+    --bar-w: 0px; /* bar is repositioned to bottom, not left */
+    --panel-w: 100vw;
+    --mob-bar-h: 56px;
+  }
+
+  .widget-wrap{
+    flex-direction:column;
+    height:100vh;
+    width:100vw;
+  }
+
+  /* ── Bottom navigation bar ── */
+  .icon-bar{
+    width:100%;
+    height:var(--mob-bar-h);
+    flex-direction:row;
+    padding:0 2px;
+    gap:0;
+    overflow-x:auto;
+    overflow-y:hidden;
+    order:2;
+    box-shadow:0 -2px 12px rgba(0,0,0,0.25);
+    border-right:none;
+    border-top:1px solid var(--bd);
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+    /* safe area for phones with gesture bars / notches */
+    padding-bottom:env(safe-area-inset-bottom, 0px);
+  }
+
+  .sb-div{
+    width:1px;
+    height:28px;
+    margin:0 1px;
+  }
+
+  /* Bigger, more tappable buttons */
+  .sb-btn{
+    width:52px;
+    min-height:var(--mob-bar-h);
+    font-size:.55rem;
+    flex-shrink:0;
+    scroll-snap-align:center;
+    border-radius:8px;
+    padding:4px 2px;
+  }
+  .sb-btn .sb-icon{font-size:1.15rem}
+
+  /* Active indicator: bottom bar instead of left bar */
+  .sb-btn.active::before{
+    left:10px;
+    right:10px;
+    top:auto;
+    bottom:2px;
+    width:auto;
+    height:3px;
+    border-radius:3px 3px 0 0;
+  }
+
+  .theme-toggle{
+    width:52px;
+    min-height:var(--mob-bar-h);
+  }
+
+  /* Sidebar footer items go inline in mobile bar */
+  .sidebar-footer{
+    margin-top:0;
+    padding-top:0;
+    flex-direction:row;
+    gap:0;
+  }
+
+  /* ── Panel takes full screen above bottom bar ── */
+  .panel{
+    width:100vw;
+    height:calc(100vh - var(--mob-bar-h) - env(safe-area-inset-bottom, 0px));
+    border-right:none;
+    order:1;
+  }
+  .panel.open{transform:translateX(0)}
+
+  /* Hide desktop hero */
+  .demo-page{display:none}
+
+  /* ── Panel content — generous mobile spacing ── */
+  .panel-hdr{
+    padding:12px 16px;
+    min-height:48px;
+  }
+  .panel-title{
+    font-size:16px;
+  }
+  .panel-action-btn{
+    width:36px;
+    height:36px;
+    font-size:17px;
+  }
+  .panel-body{
+    padding:16px 16px 32px;
+  }
+
+  /* ── Welcome / home screen ── */
+  .welcome-hdr h2{font-size:20px}
+  .welcome-hdr p{font-size:14px;max-width:100%}
+
+  /* ── Stage cards — full width, comfortable tap ── */
+  .stage-card{
+    padding:14px 14px;
+    gap:10px;
+    min-height:64px;
+  }
+  .stage-icon{width:40px;height:40px;font-size:18px;border-radius:10px}
+  .stage-name{font-size:15px}
+  .stage-desc{font-size:12.5px}
+
+  /* ── Crisis banner ── */
+  .crisis-banner{padding:10px 12px;gap:8px}
+  .crisis-banner .ct{font-size:13px}
+
+  /* ── Section toggles ── */
+  .sec-toggle{font-size:14px;padding:12px 12px;gap:8px;min-height:48px}
+  .sec-toggle .si{width:26px;height:26px;font-size:13px}
+
+  /* ── Resource cards — readable on mobile ── */
+  .rcard{
+    padding:14px 14px;
+  }
+  .rcard .rn{font-size:15px;line-height:1.4}
+  .rcard .rd{font-size:13.5px;line-height:1.6;margin-top:6px}
+  .rcard .raddr{font-size:12.5px;margin-top:6px}
+
+  /* ── Action buttons — 44px minimum touch target ── */
+  .rbtn{
+    font-size:13px;
+    padding:10px 14px;
+    min-height:44px;
+    border-radius:8px;
+  }
+  .rcard .ra{
+    gap:8px;
+    margin-top:10px;
+  }
+
+  /* ── Feedback & share — bigger tap targets ── */
+  .rfb button{
+    padding:8px 12px;
+    font-size:14px;
+    min-width:44px;
+    min-height:36px;
+  }
+  .share-btn{
+    padding:8px 12px;
+    font-size:12px;
+    min-height:36px;
+  }
+  .rcard-actions{
+    gap:6px;
+    padding-top:10px;
+    margin-top:10px;
+  }
+
+  /* ── Feedback cards ── */
+  .feedback-card{padding:14px 14px;gap:12px}
+  .feedback-card .fc-icon{width:40px;height:40px;font-size:20px}
+  .feedback-card .fc-title{font-size:14.5px}
+  .feedback-card .fc-desc{font-size:12.5px}
+
+  /* ── About section ── */
+  .about-section h3{font-size:15.5px}
+  .about-section p{font-size:13.5px}
+  .about-section .stat-row{gap:6px}
+  .about-section .stat{padding:10px 8px}
+  .about-section .stat .num{font-size:20px}
+
+  /* ── Back button ── */
+  .back-btn{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+
+  /* ── Info banner (sidebar hint) — hide on mobile since there's no left sidebar ── */
+  .info-banner .ct{font-size:13px}
+
+  /* ── Toast positioned above bottom bar ── */
+  .toast{
+    bottom:calc(var(--mob-bar-h) + env(safe-area-inset-bottom, 0px) + 12px);
+  }
+
+  /* ── Site footer ── */
+  .site-footer{
+    padding:16px 16px 24px;
+    /* extra bottom padding so footer doesn't hide behind bottom bar on scroll */
+    margin-bottom:8px;
+  }
+}
+
+/* ─── Very small phones (≤360px) ─── */
+@media(max-width:360px){
+  .sb-btn{width:46px;font-size:.5rem}
+  .sb-btn .sb-icon{font-size:1rem}
+  .panel-hdr{padding:10px 12px}
+  .panel-title{font-size:15px}
+  .panel-body{padding:14px 12px 28px}
+  .welcome-hdr h2{font-size:18px}
+  .welcome-hdr p{font-size:13px}
+  .stage-card{padding:12px 12px;gap:8px}
+  .stage-icon{width:36px;height:36px;font-size:16px}
+  .stage-name{font-size:14px}
+  .stage-desc{font-size:12px}
+  .rcard{padding:12px 12px}
+  .rcard .rn{font-size:14px}
+  .rcard .rd{font-size:13px}
+  .rbtn{font-size:12.5px;padding:9px 12px;min-height:42px}
+  .crisis-banner{padding:10px 10px;gap:7px}
+  .crisis-banner .ct{font-size:12.5px}
+  .sec-toggle{font-size:13.5px;padding:11px 10px}
+  .about-section .stat .num{font-size:18px}
+  .rcard-actions{gap:4px}
+  .share-btn{font-size:11px;padding:7px 10px}
+}
 
 /* ═══ PRINT ═══ */
 @media print{
   .widget-wrap{position:static!important;height:auto!important}.icon-bar{display:none!important}.panel{position:static!important;transform:none!important;width:100%!important;height:auto!important;border:none!important;box-shadow:none!important;overflow:visible!important}.panel-hdr{position:static!important}.panel-action-btn{display:none!important}.demo-page{display:none!important}.sec-content{display:block!important}.sec-toggle .chev{display:none!important}.sec-toggle{pointer-events:none}.rfb{display:none!important}.share-btn{display:none!important}.rcard-actions{display:none!important}.rbtn.directions{display:none!important}.dir-result{display:none!important}.rcard{break-inside:avoid;page-break-inside:avoid}.res-section{break-inside:avoid;page-break-inside:avoid}.toast{display:none!important}.skip-link{display:none!important}.theme-toggle{display:none!important}body{background:#fff!important;color:#1E293B!important}*{color:#1E293B!important}.rcard .rn{color:#C53030!important}.panel-title{color:#C53030!important}.about-section h3{color:#C53030!important}.rbtn{border-color:#CBD5E0!important}.rbtn.primary,.rbtn.green{color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.site-footer{border-top-color:#E2E8F0!important}a[href]::after{content:" (" attr(href) ")";font-size:9px;color:#64748B!important;word-break:break-all}.rbtn a[href]::after,.site-footer a[href]::after{content:none}@page{margin:0.75in}
-}
-
-/* ═══ MOBILE 640px ═══ */
-@media(max-width:640px){
-  :root{--bar-w:100%;--panel-w:100vw}
-  .widget-wrap{flex-direction:column-reverse;height:100vh}
-  .icon-bar{width:100%;height:60px;flex-direction:row;padding:0 4px;gap:0;overflow-x:auto;overflow-y:hidden;order:2;box-shadow:0 -2px 12px rgba(0,0,0,0.2)}
-  .sb-div{width:1px;height:28px;margin:0 2px}
-  .sb-btn{width:48px;min-height:48px;font-size:.5rem;flex-shrink:0}
-  .sb-btn .sb-icon{font-size:1.1rem}
-  .sb-btn.active::before{left:12px;right:12px;top:auto;bottom:0;width:auto;height:3px;border-radius:3px 3px 0 0}
-  .panel{width:100vw;height:calc(100vh - 60px);border-right:none}
-  .panel.open{transform:translateX(0)}
-  .demo-page{display:none}
-  .panel-body{padding:14px 14px 40px}
-  .theme-toggle{width:48px;min-height:48px}
-}
-@media(max-width:360px){
-  .sb-btn{width:42px;min-height:42px;font-size:.45rem}.sb-btn .sb-icon{font-size:1rem}.panel-hdr{padding:10px 12px}.panel-title{font-size:14px}.panel-body{padding:10px 10px 32px}.welcome-hdr h2{font-size:17px}.welcome-hdr p{font-size:12.5px}.stage-card{padding:10px 12px;gap:8px}.stage-icon{width:34px;height:34px;font-size:16px}.stage-name{font-size:13.5px}.stage-desc{font-size:11px}.rcard{padding:10px 12px}.rcard .rn{font-size:13.5px}.rcard .rd{font-size:12px}.rbtn{font-size:11px;padding:6px 9px}.crisis-banner{padding:8px 10px;gap:7px}.crisis-banner .ct{font-size:12px}.sec-toggle{font-size:13px;padding:10px 11px}.about-section .stat .num{font-size:18px}.rcard-actions{gap:3px}.rfb-label{display:none}.share-btn{font-size:10px;padding:4px 7px}
 }
 </style>
 </head>
@@ -332,7 +546,7 @@ function card(r){var ph=r.ph?r.ph.replace(/[^0-9+]/g,''):'';var h='<div class="r
 function esc(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function footerHTML(){return '<div class="site-footer">© 2025–2026 <a href="https://github.com/Whysice" target="_blank" rel="noopener">Whysice</a> · <a href="https://github.com/Whysice/recoveryconnect" target="_blank" rel="noopener">Open Source</a> <span class="license-badge">MIT</span><br>RecoveryConnect — Built with care in Maine</div>'}
 function renderCrisis(){var h='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In immediate danger? Call 911.</strong><br>Everything below is free, confidential, and available 24/7.</div></div>';R.crisis.resources.forEach(function(r){h+=card(r)});h+='<div style="margin-top:16px;padding:12px;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);font-size:11px;color:var(--tx3);line-height:1.6"><strong style="color:var(--tx2)">⚠️ Important</strong><br>RecoveryConnect is a resource directory only and is not a substitute for professional medical, legal, or crisis advice. If you are in immediate physical danger, call <strong>911</strong>. For a mental health or substance use crisis, call or text <strong>988</strong>.</div>';h+=footerHTML();return h}
-function renderHome(){var h='<div class="welcome-hdr"><div class="logo-mark">🌿</div><h2>Welcome</h2><p>Navigate recovery and reentry resources across Maine. Everything listed here is free or low-cost — no barriers, no judgment.</p></div>';h+='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> or <a href="tel:18006624357">1-800-662-4357</a> anytime, day or night.</div></div>';h+='<p class="stage-label">Where are you right now?</p><div class="stage-sel">';STAGES.forEach(function(s){h+='<button class="stage-card" data-stage="'+s.id+'"><div class="stage-icon">'+s.icon+'</div><div class="stage-info"><div class="stage-name">'+s.name+'</div><div class="stage-desc">'+s.desc+'</div></div><span class="stage-arrow">→</span></button>'});h+='</div>';h+='<div class="info-banner"><span class="ci">💡</span><div class="ct">You can also browse categories directly using the icons on the left sidebar.</div></div>';h+=footerHTML();return h}
+function renderHome(){var h='<div class="welcome-hdr"><div class="logo-mark">🌿</div><h2>Welcome</h2><p>Navigate recovery and reentry resources across Maine. Everything listed here is free or low-cost — no barriers, no judgment.</p></div>';h+='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> or <a href="tel:18006624357">1-800-662-4357</a> anytime, day or night.</div></div>';h+='<p class="stage-label">Where are you right now?</p><div class="stage-sel">';STAGES.forEach(function(s){h+='<button class="stage-card" data-stage="'+s.id+'"><div class="stage-icon">'+s.icon+'</div><div class="stage-info"><div class="stage-name">'+s.name+'</div><div class="stage-desc">'+s.desc+'</div></div><span class="stage-arrow">→</span></button>'});h+='</div>';h+='<div class="info-banner"><span class="ci">💡</span><div class="ct">You can also browse categories directly using the icons on the <strong>bottom bar</strong>.</div></div>';h+=footerHTML();return h}
 function renderStage(stageId){var s=STAGES.find(function(x){return x.id===stageId});if(!s)return'';var h='<button class="back-btn" data-back="home">← Back to stages</button>';h+='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> anytime.</div></div>';h+='<p class="priority-label">✦ Priority for '+s.name+'</p>';var first=true;s.pri.forEach(function(k){var cat=R[k];if(!cat)return;var label=s.labels[k]||cat.title;var all=cat.sections?Object.values(cat.sections).reduce(function(a,b){return a.concat(b)},[]):(cat.resources||[]);var openClass=first?' open':'';h+='<div class="res-section"><button class="sec-toggle'+openClass+'" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si">'+(iconMap[k]||'📌')+'</span>'+label+'<span class="badge">'+all.length+'</span><span class="chev">▼</span></button><div class="sec-content'+openClass+'">';all.forEach(function(r){h+=card(r)});h+='</div></div>';first=false});h+=footerHTML();return h}
 function renderCategory(key){var cat=R[key];if(!cat)return'';var h='<div class="crisis-banner"><span class="ci">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988">988</a> anytime.</div></div>';if(cat.sections){var first=true;Object.keys(cat.sections).forEach(function(name){var res=cat.sections[name];var openClass=first?' open':'';h+='<div class="res-section"><button class="sec-toggle'+openClass+'" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si">'+(iconMap[key]||'📌')+'</span>'+name+'<span class="badge">'+res.length+'</span><span class="chev">▼</span></button><div class="sec-content'+openClass+'">';res.forEach(function(r){h+=card(r)});h+='</div></div>';first=false})}else if(cat.resources){cat.resources.forEach(function(r){h+=card(r)})}h+='<div style="font-size:11px;color:var(--tx3);text-align:center;margin-top:16px;font-style:italic">Resources last verified: February 2026</div>';if(key==='data'||key==='jails'){h+='<div style="margin-top:14px;padding:14px;background:rgba(144,205,244,0.08);border:1.5px solid rgba(37,99,235,0.12);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6;text-align:center"><strong style="color:var(--info)">🔬 Want more detail?</strong><br>Explore facility programs, policies, statistics, 175+ years of history, and 44 primary source documents on the <a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener" style="color:var(--info);font-weight:600">Maine DOC Research Platform →</a></div>'}h+=footerHTML();return h}
 function renderAbout(){var h='<div class="about-section">';h+='<div class="welcome-hdr" style="padding-bottom:12px"><div class="logo-mark">🌿</div><h2>About RecoveryConnect</h2></div>';h+='<p>RecoveryConnect is a <strong>free, open resource navigator</strong> for individuals navigating reentry and recovery in Maine. Our goal is to connect people with the right resources at the right time — whether you\'re planning your release, just came home, or building forward.</p>';h+='<p>Every resource listed here has been individually verified by our team. We update this tool regularly and welcome feedback on any listing that needs attention.</p>';h+='<div class="stat-row"><div class="stat"><div class="num">100+</div><div class="label">Resources</div></div><div class="stat"><div class="num">12</div><div class="label">Categories</div></div><div class="stat"><div class="num">16</div><div class="label">Counties</div></div></div>';h+='<h3 style="margin-top:16px">🏛️ For Probation & Reentry Staff</h3>';h+='<p>RecoveryConnect can be embedded on any website or shared as a direct link. We track usage analytics (no personal data) to understand which resources get used most. We\'d love to partner with your office to make sure this tool serves your clients well.</p>';h+='<div style="margin-top:14px;padding:14px;background:rgba(144,205,244,0.08);border:1.5px solid rgba(37,99,235,0.12);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6"><strong style="color:var(--info)">🔬 Maine DOC Research Platform</strong><br>Need facility details, program eligibility, MDOC policies, recidivism data, or historical documents? Visit our companion research platform.<br><a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener" style="color:var(--info);font-weight:600;display:inline-flex;align-items:center;gap:4px;margin-top:6px">Explore the MDOC Platform →</a></div>';h+='<h3 style="margin-top:12px">📊 How Resources Are Organized</h3>';h+='<p>Resources are organized by <strong>stage of reentry</strong> (Pre-Release, Just Released, Building Forward) and by <strong>category</strong> (MAT, Housing, Legal Aid, etc). The stage-based view automatically prioritizes the most urgent resources first.</p>';h+='<div class="updated">Resources last verified: February 2026 · Built with care in Maine</div>';h+='<h3 style="margin-top:12px">♿ Accessibility</h3>';h+='<p>RecoveryConnect is committed to digital accessibility. This tool is designed to meet <strong>WCAG 2.1 Level AA</strong> standards. Features include keyboard navigation, screen reader support, semantic HTML structure, and focus indicators. If you experience any accessibility barriers, please contact us.</p>';h+='<h3 style="margin-top:12px">⚠️ Disclaimer</h3>';h+='<p>RecoveryConnect is a resource directory only. It is not a substitute for professional medical, legal, or crisis advice. Resource availability may change without notice. Always verify current information by contacting providers directly. If you are in immediate danger, call <strong>911</strong>. For mental health or substance use crises, call or text <strong>988</strong>.</p>';h+='<div style="margin-top:16px;padding:12px;background:rgba(229,62,62,0.08);border-radius:var(--r);font-size:12px;color:var(--tx2);line-height:1.6"><strong style="color:var(--accent)">📄 Open Source — MIT License</strong><br>RecoveryConnect is free and open source software by <strong>Whysice</strong>. Anyone can use, modify, and share this tool. We just ask that you keep the attribution. <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener" style="color:var(--accent)">Learn more about the MIT License →</a></div>';h+=footerHTML();h+='</div>';return h}
