@@ -6,8 +6,8 @@
 <meta name="description" content="Free recovery and reentry resource navigator for Maine. Find treatment, housing, legal aid, benefits, transportation, and more.">
 <meta name="author" content="Whysice">
 <meta name="copyright" content="© 2025–2026 Whysice">
-<meta name="theme-color" content="#0D2818" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#F2EDE7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1B26" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4EDDF" media="(prefers-color-scheme: light)">
 <meta name="color-scheme" content="dark light">
 <meta name="format-detection" content="telephone=yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,25 +33,29 @@
 <script defer data-domain="recovery-connect.netlify.app" src="https://plausible.io/js/script.js"></script>
 <style>
 :root {
-  --bg: #081F12;
-  --bg-panel: #0E2A18;
-  --bg-card: #133520;
-  --bg-card-hover: #1A4A2E;
-  --accent: #E53E3E;
-  --accent-dark: #C53030;
-  --accent-glow: rgba(229,62,62,0.08);
-  --accent-light: rgba(229,62,62,0.1);
-  --accent-warm: #E53E3E;
-  --crisis: #FBD38D;
-  --crisis-bg: rgba(251,211,141,0.08);
-  --success: #68D391;
-  --info: #90CDF4;
-  --info-bg: rgba(144,205,244,0.08);
-  --tx: #F0F4F0;
-  --tx2: #D5DFD8;
-  --tx3: #A8BCAF;
-  --bd: rgba(255,255,255,0.18);
-  --bd-active: rgba(229,62,62,0.55);
+  --bg: #0F1B26;
+  --bg-panel: #16263A;
+  --bg-card: #1F3349;
+  --bg-card-hover: #2A4159;
+  --accent: #E8A04C;
+  --accent-dark: #C68536;
+  --accent-glow: rgba(232,160,76,0.10);
+  --accent-light: rgba(232,160,76,0.14);
+  --accent-warm: #E8A04C;
+  --crisis: #FFB3A8;
+  --crisis-bg: rgba(255,179,168,0.10);
+  --crisis-strong: #FF7A6A;
+  --success: #8FCFA6;
+  --info: #93C5E0;
+  --info-bg: rgba(147,197,224,0.10);
+  --tx: #F5EDDC;
+  --tx2: #DCD2BE;
+  --tx3: #B5AB97;
+  --bd: rgba(245,237,220,0.18);
+  --bd-active: rgba(232,160,76,0.60);
+  --on-accent: #1A1208;
+  --on-success: #0A1F12;
+  --emergency: #B91C1C;
   --r: 12px;
   --rs: 8px;
   --shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -64,53 +68,62 @@
   --mob-bar-h: 56px;
 }
 [data-theme="light"] {
-  --bg: #F2EDE7;--bg-panel: #FEFCFA;--bg-card: #FFF8F2;--bg-card-hover: #FFF1E8;
-  --accent: #B22424;--accent-dark: #8C1F1F;--accent-glow: rgba(178,36,36,0.08);--accent-light: rgba(178,36,36,0.10);--accent-warm: #B22424;
-  --crisis: #B91C1C;--crisis-bg: rgba(185,28,28,0.06);--success: #15803D;--info: #1D4ED8;--info-bg: rgba(29,78,216,0.07);
-  --tx: #14241A;--tx2: #2E4636;--tx3: #5B7866;--bd: #BFB8AF;--bd-active: rgba(178,36,36,0.45);
-  --shadow: 0 4px 20px rgba(0,0,0,0.04);--shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+  --bg: #F4EDDF;--bg-panel: #FDFAF2;--bg-card: #FFFFFF;--bg-card-hover: #FFF7E8;
+  --accent: #9A4514;--accent-dark: #7A360F;--accent-glow: rgba(154,69,20,0.08);--accent-light: rgba(154,69,20,0.10);--accent-warm: #9A4514;
+  --crisis: #9B1C1C;--crisis-bg: rgba(155,28,28,0.06);--crisis-strong: #9B1C1C;--success: #2E6B3A;--info: #1F4E73;--info-bg: rgba(31,78,115,0.07);
+  --tx: #1E1810;--tx2: #3D3424;--tx3: #5F5547;--bd: #C8BDA7;--bd-active: rgba(154,69,20,0.55);--on-accent: #FFFFFF;--on-success: #FFFFFF;--emergency: #9B1C1C;
+  --shadow: 0 4px 20px rgba(0,0,0,0.05);--shadow-lg: 0 8px 30px rgba(0,0,0,0.09);
 }
-[data-theme="light"] .icon-bar{background:#FAF7F3;box-shadow:2px 0 16px rgba(0,0,0,0.04)}
+[data-theme="light"] .icon-bar{background:#FDFAF2;box-shadow:2px 0 16px rgba(0,0,0,0.04)}
 [data-theme="light"] .panel{box-shadow:4px 0 30px rgba(0,0,0,0.06)}
-[data-theme="light"] .logo-mark{box-shadow:0 4px 12px rgba(197,48,48,0.2)}
-[data-theme="light"] .cta-open{box-shadow:0 4px 14px rgba(197,48,48,0.25)}
-[data-theme="light"] .cta-open:hover{box-shadow:0 6px 20px rgba(197,48,48,0.3)}
+[data-theme="light"] .logo-mark{box-shadow:0 4px 12px rgba(154,69,20,0.2)}
+[data-theme="light"] .cta-open{box-shadow:0 4px 14px rgba(154,69,20,0.25)}
+[data-theme="light"] .cta-open:hover{box-shadow:0 6px 20px rgba(154,69,20,0.3)}
 [data-theme="light"] .toast{color:#fff}
-[data-theme="light"] body{background-image:radial-gradient(ellipse at 30% 10%,rgba(197,48,48,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(22,163,74,0.02) 0%,transparent 40%)}
-[data-theme="light"] .icon-bar .sb-btn{color:#7A9484}
-[data-theme="light"] .icon-bar .sb-btn:hover{color:var(--accent);background:rgba(197,48,48,0.06)}
-[data-theme="light"] .icon-bar .sb-btn.active{color:var(--accent);background:rgba(197,48,48,0.08)}
-[data-theme="light"] .icon-bar .sb-btn.crisis-btn{color:#DC2626}
-[data-theme="light"] .icon-bar .sb-btn.crisis-btn:hover,[data-theme="light"] .icon-bar .sb-btn.crisis-btn.active{color:#DC2626;background:rgba(220,38,38,0.06)}
+[data-theme="light"] body{background-image:radial-gradient(ellipse at 30% 10%,rgba(154,69,20,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(46,107,58,0.02) 0%,transparent 40%)}
+[data-theme="light"] .icon-bar .sb-btn{color:#4A5547}
+[data-theme="light"] .icon-bar .sb-btn:hover{color:var(--accent);background:rgba(154,69,20,0.06)}
+[data-theme="light"] .icon-bar .sb-btn.active{color:var(--accent);background:rgba(154,69,20,0.08)}
+[data-theme="light"] .icon-bar .sb-btn.crisis-btn{color:#9B1C1C}
+[data-theme="light"] .icon-bar .sb-btn.crisis-btn:hover,[data-theme="light"] .icon-bar .sb-btn.crisis-btn.active{color:#9B1C1C;background:rgba(155,28,28,0.06)}
 .theme-toggle{width:56px;min-height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px;border:none;background:transparent;color:var(--tx3);cursor:pointer;font-size:1.1rem;transition:var(--ease);font-family:var(--font-body);position:relative;padding:4px 2px}
-.theme-toggle:hover{background:rgba(229,62,62,0.08);color:var(--accent)}
+.theme-toggle:hover{background:rgba(232,160,76,0.08);color:var(--accent)}
 .theme-toggle .sb-label{font-size:.6rem;letter-spacing:.01em;line-height:1}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(ellipse at 30% 10%,rgba(229,62,62,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(104,211,145,0.03) 0%,transparent 40%);color:var(--tx);line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-height:100vh;text-rendering:optimizeLegibility;overscroll-behavior-y:none}
+body{font-family:var(--font-body);background:var(--bg);background-image:radial-gradient(ellipse at 30% 10%,rgba(232,160,76,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(143,207,166,0.03) 0%,transparent 40%);color:var(--tx);line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-height:100vh;text-rendering:optimizeLegibility;overscroll-behavior-y:none}
 button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
 :focus{outline:none}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;box-shadow:0 0 0 5px rgba(229,62,62,0.25)}
-[data-theme="light"] :focus-visible{box-shadow:0 0 0 5px rgba(178,36,36,0.18)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;box-shadow:0 0 0 6px rgba(232,160,76,0.32),0 0 0 8px rgba(0,0,0,0.4)}
+[data-theme="light"] :focus-visible{box-shadow:0 0 0 6px rgba(154,69,20,0.22),0 0 0 8px rgba(255,255,255,0.7)}
+.panel-body :focus-visible,.panel-body a,.panel-body button{scroll-margin-top:72px;scroll-margin-bottom:20px}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-.skip-link{position:absolute;top:-100%;left:8px;background:var(--accent);color:#fff;padding:8px 16px;border-radius:var(--rs);z-index:9999;font-size:14px;text-decoration:none;font-weight:600}
+.skip-link{position:absolute;top:-100%;left:8px;background:var(--accent);color:var(--on-accent);padding:8px 16px;border-radius:var(--rs);z-index:9999;font-size:14px;text-decoration:none;font-weight:700}
 .skip-link:focus{top:8px}
 .widget-wrap{position:fixed;top:0;left:0;height:100vh;display:flex;z-index:1000;pointer-events:none}
 .widget-wrap>*{pointer-events:auto}
-.icon-bar{width:var(--bar-w);height:100vh;background:#061A0E;border-right:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:2px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;z-index:2;box-shadow:2px 0 16px rgba(0,0,0,0.25);flex-shrink:0}
-.icon-bar::-webkit-scrollbar{display:none}
+.icon-bar{width:var(--bar-w);height:100vh;background:#0A1722;border-right:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;padding:8px 0 18px;gap:2px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(232,160,76,0.4) transparent;z-index:2;box-shadow:2px 0 16px rgba(0,0,0,0.25);flex-shrink:0;scroll-behavior:smooth;position:relative}
+.icon-bar.has-overflow{-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 24px),transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 24px),transparent 100%)}
+.icon-bar.has-overflow.at-bottom{-webkit-mask-image:none;mask-image:none}
+.icon-bar::-webkit-scrollbar{width:5px;height:5px}
+.icon-bar::-webkit-scrollbar-track{background:transparent}
+.icon-bar::-webkit-scrollbar-thumb{background:rgba(232,160,76,0.4);border-radius:3px}
+.icon-bar::-webkit-scrollbar-thumb:hover{background:rgba(232,160,76,0.65)}
+[data-theme="light"] .icon-bar{scrollbar-color:rgba(154,69,20,0.4) transparent}
+[data-theme="light"] .icon-bar::-webkit-scrollbar-thumb{background:rgba(154,69,20,0.4)}
+[data-theme="light"] .icon-bar::-webkit-scrollbar-thumb:hover{background:rgba(154,69,20,0.6)}
 .sb-btn{width:56px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:transparent;border:none;border-radius:10px;cursor:pointer;color:var(--tx3);font-size:.6rem;letter-spacing:.01em;transition:var(--ease);padding:4px 2px;position:relative;font-family:var(--font-body);flex-shrink:0}
 .sb-btn .sb-icon{font-size:1.25rem;line-height:1;transition:var(--ease)}
 .sb-btn .sb-label{line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:54px}
-.sb-btn:hover{background:rgba(229,62,62,0.08);color:var(--accent);transform:scale(1.03)}
+.sb-btn:hover{background:rgba(232,160,76,0.08);color:var(--accent);transform:scale(1.03)}
 .sb-btn:active{transform:scale(0.96)}
-.sb-btn.active{color:#fff;background:rgba(229,62,62,0.14)}
+.sb-btn.active{color:#fff;background:rgba(232,160,76,0.14)}
 .sb-btn.active::before{content:'';position:absolute;left:0;top:10px;bottom:10px;width:3px;background:var(--accent);border-radius:0 3px 3px 0}
 .sb-btn.crisis-btn{color:var(--crisis)}
-.sb-btn.crisis-btn:hover,.sb-btn.crisis-btn.active{color:#fff;background:rgba(251,211,141,0.12)}
+.sb-btn.crisis-btn:hover,.sb-btn.crisis-btn.active{color:#fff;background:rgba(255,179,168,0.12)}
 .sb-btn.crisis-btn.active::before{background:var(--crisis)}
 .sb-div{width:36px;height:1px;background:rgba(255,255,255,0.08);margin:4px 0;flex-shrink:0}
 .sidebar-footer{margin-top:auto;padding-top:6px;display:flex;flex-direction:column;align-items:center;gap:2px}
@@ -125,17 +138,17 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
 .panel-action-btn:hover{background:var(--bg-card);color:var(--tx)}
 .panel-body{padding:18px 20px 40px}
 .welcome-hdr{text-align:center;padding:8px 0 16px;animation:fadeIn .4s ease both}
-.welcome-hdr .logo-mark{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;box-shadow:0 4px 12px rgba(229,62,62,0.3)}
+.welcome-hdr .logo-mark{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;box-shadow:0 4px 12px rgba(232,160,76,0.3)}
 .welcome-hdr h2,.welcome-hdr h3{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-.01em;margin-bottom:4px;font-family:var(--font-display)}
 kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;background:var(--bg-card);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;color:var(--tx);box-shadow:0 1px 0 var(--bd)}
 .welcome-hdr p{font-size:14px;color:var(--tx2);line-height:1.65;max-width:340px;margin:0 auto}
-.crisis-banner{background:var(--crisis-bg);border:1.5px solid rgba(220,38,38,0.15);border-radius:var(--r);padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:fadeIn .3s ease both}
+.crisis-banner{background:var(--crisis-bg);border:1.5px solid rgba(155,28,28,0.15);border-radius:var(--r);padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:fadeIn .3s ease both}
 .crisis-banner .ci{font-size:18px;flex-shrink:0;margin-top:0}
 .crisis-banner .ct{font-size:13.5px;color:var(--tx2);line-height:1.6}
 .crisis-banner .ct strong{color:var(--crisis);font-weight:700}
 .crisis-banner a{color:var(--crisis);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:700;transition:var(--ease)}
 .crisis-banner a:hover,.crisis-banner a:focus-visible{text-decoration-thickness:3px}
-.info-banner{background:var(--info-bg);border:1.5px solid rgba(37,99,235,0.12);border-radius:var(--r);padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:fadeIn .3s ease both}
+.info-banner{background:var(--info-bg);border:1.5px solid rgba(31,78,115,0.12);border-radius:var(--r);padding:11px 14px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;animation:fadeIn .3s ease both}
 .info-banner .ci{font-size:16px;flex-shrink:0;margin-top:1px}
 .info-banner .ct{font-size:13px;color:var(--tx2);line-height:1.6}
 .info-banner a{color:var(--info);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;font-weight:600}
@@ -148,33 +161,33 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .stage-card:nth-child(2){animation-delay:.1s}
 .stage-card:nth-child(3){animation-delay:.15s}
 .stage-card:hover{background:var(--bg-card-hover);border-color:var(--bd-active);transform:translateY(-1px);box-shadow:var(--shadow)}
-.stage-card.active{border-color:var(--accent);background:rgba(229,62,62,0.08)}
+.stage-card.active{border-color:var(--accent);background:rgba(232,160,76,0.08)}
 .stage-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.stage-card:nth-child(1) .stage-icon{background:rgba(229,62,62,0.1)}
-.stage-card:nth-child(2) .stage-icon{background:rgba(229,62,62,0.1)}
-.stage-card:nth-child(3) .stage-icon{background:rgba(104,211,145,0.1)}
-.stage-card[data-stage="now"]{border-color:rgba(229,62,62,0.55);background:rgba(229,62,62,0.06)}
-.stage-card[data-stage="now"] .stage-icon{background:rgba(229,62,62,0.18)}
+.stage-card:nth-child(1) .stage-icon{background:rgba(232,160,76,0.1)}
+.stage-card:nth-child(2) .stage-icon{background:rgba(232,160,76,0.1)}
+.stage-card:nth-child(3) .stage-icon{background:rgba(143,207,166,0.1)}
+.stage-card[data-stage="now"]{border-color:rgba(232,160,76,0.55);background:rgba(232,160,76,0.06)}
+.stage-card[data-stage="now"] .stage-icon{background:rgba(232,160,76,0.18)}
 .stage-card[data-stage="now"] .stage-name{color:var(--accent)}
-.stage-card[data-stage="setback"]{border-color:rgba(144,205,244,0.4)}
-.stage-card[data-stage="setback"] .stage-icon{background:rgba(144,205,244,0.12)}
+.stage-card[data-stage="setback"]{border-color:rgba(147,197,224,0.4)}
+.stage-card[data-stage="setback"] .stage-icon{background:rgba(147,197,224,0.12)}
 .stage-card[data-stage="setback"] .stage-name{color:var(--info)}
-.stage-card[data-stage="pre"] .stage-icon{background:rgba(229,62,62,0.1)}
-.stage-card[data-stage="just"] .stage-icon{background:rgba(229,62,62,0.1)}
-.stage-card[data-stage="building"] .stage-icon{background:rgba(104,211,145,0.1)}
+.stage-card[data-stage="pre"] .stage-icon{background:rgba(232,160,76,0.1)}
+.stage-card[data-stage="just"] .stage-icon{background:rgba(232,160,76,0.1)}
+.stage-card[data-stage="building"] .stage-icon{background:rgba(143,207,166,0.1)}
 .honest-tag{margin-top:28px;padding:10px 14px;font-size:11.5px;font-style:italic;color:var(--tx3);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);line-height:1.6;letter-spacing:.01em}
 .helper-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 14px;padding:10px 14px;background:var(--bg-card);border:1.5px dashed var(--bd);border-radius:var(--rs);font-size:12.5px;color:var(--tx2);font-family:var(--font-body)}
 .helper-toggle button{background:transparent;border:1.5px solid var(--bd);color:var(--tx2);padding:6px 12px;border-radius:var(--rs);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:var(--ease)}
 .helper-toggle button:hover{border-color:var(--accent);color:var(--accent)}
-.helper-toggle.on{border-style:solid;border-color:rgba(144,205,244,0.45);background:var(--info-bg)}
+.helper-toggle.on{border-style:solid;border-color:rgba(147,197,224,0.45);background:var(--info-bg)}
 .helper-toggle.on button{border-color:var(--info);color:var(--info)}
-.helper-banner{padding:10px 14px;margin-bottom:14px;background:var(--info-bg);border:1.5px solid rgba(144,205,244,0.35);border-radius:var(--rs);font-size:12.5px;color:var(--tx2);line-height:1.55}
+.helper-banner{padding:10px 14px;margin-bottom:14px;background:var(--info-bg);border:1.5px solid rgba(147,197,224,0.35);border-radius:var(--rs);font-size:12.5px;color:var(--tx2);line-height:1.55}
 .rcard .rvf{font-size:10.5px;color:var(--tx3);margin-top:8px;font-style:italic;letter-spacing:.01em}
 .packet-btn{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:10px 14px;background:var(--bg-card);color:var(--tx);border:1.5px solid var(--bd);border-radius:var(--rs);font-family:var(--font-display);font-size:13px;font-weight:700;cursor:pointer;transition:var(--ease)}
 .packet-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
 .packet-btn .pi{font-size:16px}
 .packet-meta{font-size:11.5px;color:var(--tx3);margin-bottom:14px;line-height:1.55}
-.packet-print-btn{display:inline-flex;align-items:center;gap:8px;margin:6px 0 18px;padding:11px 18px;background:var(--accent);color:#fff;border:none;border-radius:var(--rs);font-family:var(--font-display);font-size:14px;font-weight:700;cursor:pointer;transition:var(--ease);box-shadow:0 4px 14px rgba(229,62,62,0.25)}
+.packet-print-btn{display:inline-flex;align-items:center;gap:8px;margin:6px 0 18px;padding:11px 18px;background:var(--accent);color:var(--on-accent);border:none;border-radius:var(--rs);font-family:var(--font-display);font-size:14px;font-weight:700;cursor:pointer;transition:var(--ease);box-shadow:0 4px 14px rgba(232,160,76,0.25)}
 .packet-print-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
 .packet-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
 .packet-item{padding:12px 14px;border:1.5px solid var(--bd);border-radius:var(--rs);background:var(--bg-card)}
@@ -205,7 +218,7 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .res-section:nth-child(2){animation-delay:.05s}.res-section:nth-child(3){animation-delay:.1s}.res-section:nth-child(4){animation-delay:.15s}.res-section:nth-child(5){animation-delay:.2s}.res-section:nth-child(6){animation-delay:.25s}.res-section:nth-child(7){animation-delay:.3s}
 .sec-toggle{width:100%;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;color:var(--tx);font-family:var(--font-display);font-size:14px;font-weight:600;transition:var(--ease);text-align:left}
 .sec-toggle:hover{background:var(--bg-card-hover);border-color:var(--bd-active)}
-.sec-toggle.open{border-radius:var(--r) var(--r) 0 0;border-bottom-color:transparent;background:rgba(229,62,62,0.08)}
+.sec-toggle.open{border-radius:var(--r) var(--r) 0 0;border-bottom-color:transparent;background:rgba(232,160,76,0.08)}
 .sec-toggle .si{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--accent-glow)}
 .sec-toggle .sec-label{flex:1;min-width:0;text-align:left}
 .sec-toggle .chev{margin-left:auto;font-size:11px;color:var(--tx3);transition:transform var(--ease);flex-shrink:0}
@@ -219,12 +232,12 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .rcard .rh{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
 .rcard .rn{font-size:14.5px;font-weight:700;color:var(--accent);line-height:1.35;font-family:var(--font-display)}
 .rcard .rtag{font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:.4px;flex-shrink:0;margin-top:2px}
-.tag-free{background:rgba(104,211,145,0.16);color:#9CE5B5;border:1px solid rgba(104,211,145,0.3)}
-.tag-call{background:rgba(229,62,62,0.16);color:#FCA5A5;border:1px solid rgba(229,62,62,0.35)}
+.tag-free{background:rgba(143,207,166,0.16);color:#9CE5B5;border:1px solid rgba(143,207,166,0.3)}
+.tag-call{background:rgba(232,160,76,0.16);color:#FCA5A5;border:1px solid rgba(232,160,76,0.35)}
 .tag-online{background:rgba(167,139,250,0.18);color:#C4B5FD;border:1px solid rgba(167,139,250,0.35)}
 .tag-location{background:rgba(246,173,85,0.18);color:#FBD7A4;border:1px solid rgba(246,173,85,0.35)}
 [data-theme="light"] .tag-free{background:rgba(21,128,61,0.12);color:#0F5132;border:1px solid rgba(21,128,61,0.35)}
-[data-theme="light"] .tag-call{background:rgba(178,36,36,0.10);color:#7A1818;border:1px solid rgba(178,36,36,0.35)}
+[data-theme="light"] .tag-call{background:rgba(154,69,20,0.10);color:#7A1818;border:1px solid rgba(154,69,20,0.35)}
 [data-theme="light"] .tag-online{background:rgba(91,33,182,0.10);color:#4C1D95;border:1px solid rgba(91,33,182,0.35)}
 [data-theme="light"] .tag-location{background:rgba(180,83,9,0.10);color:#7A3A05;border:1px solid rgba(180,83,9,0.35)}
 .rcard .rd{font-size:13px;color:var(--tx2);margin-top:6px;line-height:1.65}
@@ -233,15 +246,15 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .rcard .ra{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center}
 .rbtn{font-family:var(--font-body);font-size:12px;font-weight:600;padding:7px 12px;border-radius:7px;border:1.5px solid var(--bd);background:transparent;color:var(--tx2);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:var(--ease)}
 .rbtn:hover{background:var(--bg-card);color:var(--tx);border-color:var(--bd-active)}
-.rbtn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.rbtn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .rbtn.primary:hover{background:var(--accent-dark)}
-.rbtn.green{background:var(--success);border-color:var(--success);color:#fff}
-.rbtn.green:hover{background:#15803D}
-.rbtn.directions{background:var(--accent-warm);border-color:var(--accent-warm);color:#fff}
+.rbtn.green{background:var(--success);border-color:var(--success);color:var(--on-success)}
+.rbtn.green:hover{background:#2E6B3A}
+.rbtn.directions{background:var(--accent-warm);border-color:var(--accent-warm);color:var(--on-accent)}
 .rbtn.directions:hover{background:#B45309}
 .rcard .raddr{font-size:12px;color:var(--tx3);margin-top:5px;display:flex;align-items:center;gap:5px}
 .rcard .raddr .pin{font-size:12px}
-.dir-result{font-size:11px;color:var(--accent);font-weight:600;margin-top:4px;padding:6px 10px;background:rgba(229,62,62,0.08);border-radius:var(--rs);display:none;align-items:center;gap:6px;animation:fadeIn .25s ease}
+.dir-result{font-size:11px;color:var(--accent);font-weight:600;margin-top:4px;padding:6px 10px;background:rgba(232,160,76,0.08);border-radius:var(--rs);display:none;align-items:center;gap:6px;animation:fadeIn .25s ease}
 .dir-result.show{display:flex}
 .dir-result .dir-time{font-weight:700}
 .dir-result .dir-dist{color:var(--tx2);font-weight:500}
@@ -249,11 +262,11 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .rfb{display:flex;gap:3px;align-items:center}
 .rfb-label{font-size:10px;color:var(--tx3);margin-right:2px;font-weight:500}
 .rfb button{padding:5px 9px;font-size:12px;border:1.5px solid var(--bd);border-radius:6px;background:var(--bg-panel);cursor:pointer;color:var(--tx3);transition:var(--ease);font-family:inherit;min-width:36px}
-.rfb button.y:hover,.rfb button.y.act{border-color:var(--success);color:var(--success);background:rgba(22,163,74,0.05)}
-.rfb button.n:hover,.rfb button.n.act{border-color:var(--crisis);color:var(--crisis);background:rgba(220,38,38,0.04)}
+.rfb button.y:hover,.rfb button.y.act{border-color:var(--success);color:var(--success);background:rgba(46,107,58,0.05)}
+.rfb button.n:hover,.rfb button.n.act{border-color:var(--crisis);color:var(--crisis);background:rgba(155,28,28,0.04)}
 .share-btn{padding:5px 10px;font-size:11px;border:1.5px solid var(--bd);border-radius:6px;background:var(--bg-panel);cursor:pointer;color:var(--tx3);transition:var(--ease);font-family:inherit;display:inline-flex;align-items:center;gap:4px;font-weight:500}
-.share-btn:hover{border-color:var(--info);color:var(--info);background:rgba(144,205,244,0.05)}
-.share-btn.copied{border-color:var(--success);color:var(--success);background:rgba(22,163,74,0.05)}
+.share-btn:hover{border-color:var(--info);color:var(--info);background:rgba(147,197,224,0.05)}
+.share-btn.copied{border-color:var(--success);color:var(--success);background:rgba(46,107,58,0.05)}
 .back-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13.5px;font-weight:600;color:var(--tx3);background:none;border:none;cursor:pointer;padding:0;margin-bottom:14px;transition:var(--ease)}
 .back-btn:hover{color:var(--accent);transform:translateX(-2px)}
 .priority-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--accent);margin-bottom:12px;padding-left:2px;font-family:var(--font-display)}
@@ -261,14 +274,14 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .about-section h3{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:8px;font-family:var(--font-display)}
 .about-section p{font-size:13.5px;color:var(--tx2);line-height:1.65;margin-bottom:12px}
 .about-section .stat-row{display:flex;gap:8px;margin:14px 0}
-.about-section .stat{flex:1;background:rgba(229,62,62,0.08);border-radius:var(--r);padding:12px;text-align:center}
+.about-section .stat{flex:1;background:rgba(232,160,76,0.08);border-radius:var(--r);padding:12px;text-align:center}
 .about-section .stat .num{font-size:22px;font-weight:700;color:var(--accent)}
 .about-section .stat .label{font-size:10px;font-weight:600;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
 .about-section .updated{font-size:11px;color:var(--tx3);font-style:italic;padding-top:8px;border-top:1px solid var(--bd);margin-top:12px}
 .site-footer{font-size:10px;color:var(--tx3);text-align:center;padding:16px 12px 8px;border-top:1px solid var(--bd);margin-top:20px;line-height:1.6}
 .site-footer a{color:var(--tx3);text-decoration:none;border-bottom:1px dotted var(--tx3)}
 .site-footer a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-.site-footer .license-badge{display:inline-block;background:rgba(229,62,62,0.1);color:var(--accent);font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.3px;margin-left:4px}
+.site-footer .license-badge{display:inline-block;background:rgba(232,160,76,0.1);color:var(--accent);font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.3px;margin-left:4px}
 .demo-page{margin-left:var(--bar-w);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;transition:margin-left var(--ease);overflow:auto}
 .demo-page.shifted{margin-left:calc(var(--bar-w) + var(--panel-w))}
 .demo-content{text-align:center;max-width:460px;animation:fadeIn .5s ease both}
@@ -277,10 +290,10 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .demo-content h1 span{color:var(--accent)}
 .demo-content p{font-size:16px;color:var(--tx2);line-height:1.65}
 .demo-content .hint{font-size:12.5px;color:var(--tx3);margin-top:24px;display:flex;align-items:center;justify-content:center;gap:8px}
-.demo-content .hint span{display:inline-block;background:rgba(229,62,62,0.1);border:1px solid rgba(229,62,62,0.2);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--accent)}
-.cta-open{margin-top:20px;padding:13px 30px;font-size:16px;font-weight:700;background:var(--accent);color:#fff;border:none;border-radius:var(--r);cursor:pointer;font-family:var(--font-display);transition:var(--ease);box-shadow:0 4px 14px rgba(229,62,62,0.3);letter-spacing:-.01em}
-.cta-open:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(229,62,62,0.4)}
-.cta-open:active{transform:translateY(0);box-shadow:0 2px 8px rgba(229,62,62,0.3)}
+.demo-content .hint span{display:inline-block;background:rgba(232,160,76,0.1);border:1px solid rgba(232,160,76,0.2);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--accent)}
+.cta-open{margin-top:20px;padding:13px 30px;font-size:16px;font-weight:700;background:var(--accent);color:var(--on-accent);border:none;border-radius:var(--r);cursor:pointer;font-family:var(--font-display);transition:var(--ease);box-shadow:0 4px 14px rgba(232,160,76,0.3);letter-spacing:-.01em}
+.cta-open:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,76,0.4)}
+.cta-open:active{transform:translateY(0);box-shadow:0 2px 8px rgba(232,160,76,0.3)}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--tx);color:#fff;padding:10px 18px;border-radius:var(--r);font-size:13px;font-weight:600;font-family:inherit;opacity:0;transition:all .25s var(--ease);z-index:99999;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast.ok{background:var(--success)}
@@ -557,7 +570,7 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 }
 
 /* ═══ STICKY MOBILE EMERGENCY CTA — always-visible 988 ═══ */
-.emergency-fab{position:fixed;display:none;z-index:9998;font-family:var(--font-display);font-weight:700;font-size:14px;text-decoration:none;color:#fff;background:var(--accent);border:2px solid #fff;border-radius:999px;padding:12px 18px;box-shadow:0 6px 22px rgba(229,62,62,0.5),0 2px 6px rgba(0,0,0,0.3);align-items:center;gap:8px;min-height:48px;letter-spacing:.01em}
+.emergency-fab{position:fixed;display:none;z-index:9998;font-family:var(--font-display);font-weight:700;font-size:14px;text-decoration:none;color:#fff;background:var(--emergency);border:2px solid #fff;border-radius:999px;padding:12px 18px;box-shadow:0 6px 22px rgba(155,28,28,0.55),0 2px 6px rgba(0,0,0,0.35);align-items:center;gap:8px;min-height:48px;letter-spacing:.01em}
 .emergency-fab:hover,.emergency-fab:focus-visible{background:var(--accent-dark)}
 .emergency-fab .efab-icon{font-size:18px;line-height:1}
 [data-theme="light"] .emergency-fab{border-color:#fff;color:#fff}
@@ -577,16 +590,16 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .back-btn{min-height:40px;padding:6px 4px;margin-left:-4px}
 
 /* Better resource-card hover/focus indication */
-.rcard:focus-within{border-color:var(--bd-active);box-shadow:0 2px 14px rgba(229,62,62,0.12)}
-[data-theme="light"] .rcard:focus-within{box-shadow:0 2px 14px rgba(178,36,36,0.10)}
+.rcard:focus-within{border-color:var(--bd-active);box-shadow:0 2px 14px rgba(232,160,76,0.12)}
+[data-theme="light"] .rcard:focus-within{box-shadow:0 2px 14px rgba(154,69,20,0.10)}
 
 /* Scrollbar visibility for keyboard users */
 .icon-bar:focus-within::-webkit-scrollbar,.panel:focus-within::-webkit-scrollbar{display:initial;width:6px;height:6px}
 .icon-bar:focus-within{scrollbar-width:thin}
 
 /* Better contrast on toggles in light theme */
-[data-theme="light"] .sec-toggle.open{background:rgba(178,36,36,0.07)}
-[data-theme="light"] .stage-card.active{background:rgba(178,36,36,0.07)}
+[data-theme="light"] .sec-toggle.open{background:rgba(154,69,20,0.07)}
+[data-theme="light"] .stage-card.active{background:rgba(154,69,20,0.07)}
 
 /* Improve toast contrast and add status variant */
 .toast{font-weight:700;letter-spacing:.01em;border:1px solid rgba(255,255,255,0.12)}
@@ -617,11 +630,11 @@ a[href^="tel:"]{white-space:nowrap}
 }
 
 /* High-contrast focus for the emergency FAB */
-.emergency-fab:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px rgba(229,62,62,0.5)}
+.emergency-fab:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px rgba(232,160,76,0.5)}
 
 /* ═══ PRINT ═══ */
 @media print{
-  .widget-wrap{position:static!important;height:auto!important}.icon-bar{display:none!important}.panel{position:static!important;transform:none!important;width:100%!important;height:auto!important;border:none!important;box-shadow:none!important;overflow:visible!important}.panel-hdr{position:static!important}.panel-action-btn{display:none!important}.demo-page{display:none!important}.sec-content{display:block!important}.sec-toggle .chev{display:none!important}.sec-toggle{pointer-events:none}.rfb{display:none!important}.share-btn{display:none!important}.rcard-actions{display:none!important}.rbtn.directions{display:none!important}.dir-result{display:none!important}.emergency-fab{display:none!important}.rcard{break-inside:avoid;page-break-inside:avoid}.res-section{break-inside:avoid;page-break-inside:avoid}.toast{display:none!important}.skip-link{display:none!important}.theme-toggle{display:none!important}body{background:#fff!important;color:#1E293B!important}*{color:#1E293B!important}.rcard .rn{color:#C53030!important}.panel-title{color:#C53030!important}.about-section h3{color:#C53030!important}.rbtn{border-color:#CBD5E0!important}.rbtn.primary,.rbtn.green{color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.site-footer{border-top-color:#E2E8F0!important}a[href]::after{content:" (" attr(href) ")";font-size:9px;color:#64748B!important;word-break:break-all}.rbtn a[href]::after,.site-footer a[href]::after,a[href^="tel:"]::after{content:none}@page{margin:0.75in}
+  .widget-wrap{position:static!important;height:auto!important}.icon-bar{display:none!important}.panel{position:static!important;transform:none!important;width:100%!important;height:auto!important;border:none!important;box-shadow:none!important;overflow:visible!important}.panel-hdr{position:static!important}.panel-action-btn{display:none!important}.demo-page{display:none!important}.sec-content{display:block!important}.sec-toggle .chev{display:none!important}.sec-toggle{pointer-events:none}.rfb{display:none!important}.share-btn{display:none!important}.rcard-actions{display:none!important}.rbtn.directions{display:none!important}.dir-result{display:none!important}.emergency-fab{display:none!important}.rcard{break-inside:avoid;page-break-inside:avoid}.res-section{break-inside:avoid;page-break-inside:avoid}.toast{display:none!important}.skip-link{display:none!important}.theme-toggle{display:none!important}body{background:#fff!important;color:#1E293B!important}*{color:#1E293B!important}.rcard .rn{color:#9A4514!important}.panel-title{color:#9A4514!important}.about-section h3{color:#9A4514!important}.rbtn{border-color:#CBD5E0!important}.rbtn.primary,.rbtn.green,.rbtn.directions{background:#fff!important;color:#1E1810!important;border-color:#888!important}.site-footer{border-top-color:#E2E8F0!important}a[href]::after{content:" (" attr(href) ")";font-size:9px;color:#64748B!important;word-break:break-all}.rbtn a[href]::after,.site-footer a[href]::after,a[href^="tel:"]::after{content:none}@page{margin:0.75in}
 }
 </style>
 </head>
@@ -695,11 +708,11 @@ function footerHTML(){return '<div class="site-footer">© 2025–2026 <a href="h
 function renderCrisis(){var h='<div class="crisis-banner" role="region" aria-label="Crisis information"><span class="ci" aria-hidden="true">🆘</span><div class="ct"><strong>In immediate danger? Call <a href="tel:911">911</a>.</strong><br>Everything below is free, confidential, and available 24/7.</div></div>';R.crisis.resources.forEach(function(r){h+=card(r)});h+='<div style="margin-top:16px;padding:12px;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);font-size:11.5px;color:var(--tx3);line-height:1.6"><strong style="color:var(--tx2)"><span aria-hidden="true">⚠️ </span>Important</strong><br>RecoveryConnect is a resource directory only and is not a substitute for professional medical, legal, or crisis advice. If you are in immediate physical danger, call <strong><a href="tel:911">911</a></strong>. For a mental health or substance use crisis, call or text <strong><a href="tel:988">988</a></strong>.</div>';h+=footerHTML();return h}
 function renderHome(){var hint=isMobileLayout()?'<strong>bottom bar</strong>':'<strong>left sidebar</strong>';var helper=!!surveyState.helper;var question=helper?'What do they need next?':'Where are you right now?';var headerSub=helper?'You\'re building a list for someone else. Pick where they are — we\'ll surface what fits.':'Free, no judgment, no barriers. Pick where you are — we\'ll surface what fits.';var h='<div class="welcome-hdr"><div class="logo-mark" aria-hidden="true">🌿</div><h3>'+(helper?'Helping Someone':'Find Resources')+'</h3><p>'+headerSub+'</p></div>';h+='<div class="crisis-banner" role="region" aria-label="Crisis hotlines"><span class="ci" aria-hidden="true">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988" aria-label="Call 988 Suicide and Crisis Lifeline">988</a> or <a href="tel:18006624357" aria-label="Call SAMHSA at 1-800-662-4357">1-800-662-4357</a> anytime, day or night.</div></div>';h+='<div class="helper-toggle'+(helper?' on':'')+'" role="group" aria-label="Who is this for?"><span>'+(helper?'<strong>Helper mode on</strong> — copy is in third person':'Helping someone else? Switch to helper mode to build a packet for them.')+'</span><button type="button" data-helper-toggle aria-pressed="'+(helper?'true':'false')+'">'+(helper?'Switch off':'Helper mode')+'</button></div>';h+='<p class="stage-label" id="stageQuestion">'+question+'</p><div class="stage-sel" role="group" aria-labelledby="stageQuestion">';STAGES.forEach(function(s){var desc=helper&&s.descHelper?s.descHelper:s.desc;h+='<button class="stage-card" type="button" data-stage="'+s.id+'" data-stage-key="'+s.id+'" aria-label="'+s.name+': '+desc+'"><div class="stage-icon" aria-hidden="true">'+s.icon+'</div><div class="stage-info"><div class="stage-name">'+s.name+'</div><div class="stage-desc">'+desc+'</div></div><span class="stage-arrow" aria-hidden="true">→</span></button>'});h+='</div>';h+='<div class="info-banner" role="note"><span class="ci" aria-hidden="true">💡</span><div class="ct">You can also browse categories directly using the icons on the '+hint+'.</div></div>';h+=footerHTML();return h}
 function renderStage(stageId){var s=STAGES.find(function(x){return x.id===stageId});if(!s)return'';var helper=!!surveyState.helper;var h='<button class="back-btn" type="button" data-back="home" aria-label="Back to stage selection"><span aria-hidden="true">← </span>Back to stages</button>';h+='<div class="crisis-banner" role="region" aria-label="Crisis hotline"><span class="ci" aria-hidden="true">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988" aria-label="Call 988 Crisis Lifeline">988</a> anytime.</div></div>';if(helper)h+='<div class="helper-banner" role="note"><strong>Helper mode:</strong> Build a Pocket Packet of resources for the person you\'re helping.</div>';if(s.packet&&s.packet.length){h+='<button class="packet-btn" type="button" data-packet="'+s.id+'" aria-label="Open Pocket Packet — a one-page printable handout for '+s.name+'"><span class="pi" aria-hidden="true">📄</span><span>Pocket Packet — print one-page handout</span></button>'}h+='<p class="priority-label"><span aria-hidden="true">✦ </span>Priority for '+s.name+'</p>';var first=true;s.pri.forEach(function(k){var cat=R[k];if(!cat)return;var label=s.labels[k]||cat.title;var all=cat.sections?Object.values(cat.sections).reduce(function(a,b){return a.concat(b)},[]):(cat.resources||[]);var openClass=first?' open':'';h+='<div class="res-section"><button class="sec-toggle'+openClass+'" type="button" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si" aria-hidden="true">'+(iconMap[k]||'📌')+'</span><span class="sec-label">'+label+'</span><span class="badge" aria-label="'+all.length+' resources">'+all.length+'</span><span class="chev" aria-hidden="true">▼</span></button><div class="sec-content'+openClass+'">';all.forEach(function(r){h+=card(r)});h+='</div></div>';first=false});h+=footerHTML();return h}
-function renderCategory(key){var cat=R[key];if(!cat)return'';var h='<div class="crisis-banner" role="region" aria-label="Crisis hotline"><span class="ci" aria-hidden="true">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988" aria-label="Call 988 Crisis Lifeline">988</a> anytime.</div></div>';if(cat.sections){var first=true;Object.keys(cat.sections).forEach(function(name){var res=cat.sections[name];var openClass=first?' open':'';h+='<div class="res-section"><button class="sec-toggle'+openClass+'" type="button" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si" aria-hidden="true">'+(iconMap[key]||'📌')+'</span><span class="sec-label">'+name+'</span><span class="badge" aria-label="'+res.length+' resources">'+res.length+'</span><span class="chev" aria-hidden="true">▼</span></button><div class="sec-content'+openClass+'">';res.forEach(function(r){h+=card(r)});h+='</div></div>';first=false})}else if(cat.resources){cat.resources.forEach(function(r){h+=card(r)})}h+='<div style="font-size:11.5px;color:var(--tx3);text-align:center;margin-top:16px;font-style:italic">Resources last verified: February 2026</div>';if(key==='data'||key==='jails'){h+='<div style="margin-top:14px;padding:14px;background:rgba(144,205,244,0.08);border:1.5px solid rgba(37,99,235,0.18);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6;text-align:center"><strong style="color:var(--info)"><span aria-hidden="true">🔬 </span>Want more detail?</strong><br>Explore facility programs, policies, statistics, 175+ years of history, and 44 primary source documents on the <a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--info);font-weight:700">Maine DOC Research Platform <span aria-hidden="true">→</span><span class="sr-only"> (opens in new tab)</span></a></div>'}h+=footerHTML();return h}
-function renderAbout(){var h='<div class="about-section">';h+='<div class="welcome-hdr" style="padding-bottom:12px"><div class="logo-mark" aria-hidden="true">🌿</div><h3>About RecoveryConnect</h3></div>';h+='<p>RecoveryConnect is a <strong>free, open resource navigator</strong> for individuals navigating reentry and recovery in Maine. Our goal is to connect people with the right resources at the right time — whether you\'re planning your release, just came home, or building forward.</p>';h+='<p>Every resource listed here has been individually verified by our team. We update this tool regularly and welcome feedback on any listing that needs attention.</p>';h+='<div class="stat-row" role="list" aria-label="Resource statistics"><div class="stat" role="listitem"><div class="num">100+</div><div class="label">Resources</div></div><div class="stat" role="listitem"><div class="num">12</div><div class="label">Categories</div></div><div class="stat" role="listitem"><div class="num">16</div><div class="label">Counties</div></div></div>';h+='<h3 style="margin-top:16px"><span aria-hidden="true">🏛️ </span>For Probation &amp; Reentry Staff</h3>';h+='<p>RecoveryConnect can be embedded on any website or shared as a direct link. We track usage analytics (no personal data) to understand which resources get used most. We\'d love to partner with your office to make sure this tool serves your clients well.</p>';h+='<div style="margin-top:14px;padding:14px;background:rgba(144,205,244,0.08);border:1.5px solid rgba(37,99,235,0.18);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6"><strong style="color:var(--info)"><span aria-hidden="true">🔬 </span>Maine DOC Research Platform</strong><br>Need facility details, program eligibility, MDOC policies, recidivism data, or historical documents? Visit our companion research platform.<br><a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--info);font-weight:700;display:inline-flex;align-items:center;gap:4px;margin-top:6px">Explore the MDOC Platform <span aria-hidden="true">→</span><span class="sr-only"> (opens in new tab)</span></a></div>';h+='<h3 style="margin-top:12px"><span aria-hidden="true">📊 </span>How Resources Are Organized</h3>';h+='<p>Resources are organized by <strong>stage of reentry</strong> (Pre-Release, Just Released, Building Forward) and by <strong>category</strong> (MAT, Housing, Legal Aid, etc). The stage-based view automatically prioritizes the most urgent resources first.</p>';h+='<h3 style="margin-top:12px"><span aria-hidden="true">⌨️ </span>Keyboard Shortcuts</h3>';h+='<ul style="font-size:13.5px;color:var(--tx2);line-height:1.7;margin:6px 0 12px 22px"><li><kbd>Esc</kbd> — close the open panel</li><li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> — move between buttons and links</li><li><kbd>Enter</kbd> or <kbd>Space</kbd> — activate the focused control</li></ul>';h+='<div class="updated">Resources last verified: February 2026 · Built with care in Maine</div>';h+='<h3 style="margin-top:12px"><span aria-hidden="true">♿ </span>Accessibility</h3>';h+='<p>RecoveryConnect is committed to digital accessibility. This tool targets <strong>WCAG 2.2 Level AA</strong> conformance and incorporates many Level AAA practices. Features include:</p>';h+='<ul style="font-size:13.5px;color:var(--tx2);line-height:1.7;margin:6px 0 12px 22px;padding:0"><li>Full keyboard navigation with visible focus indicators</li><li>Screen reader support via semantic HTML and ARIA landmarks</li><li>Reduced-motion support for vestibular safety</li><li>Forced-colors / Windows High Contrast support</li><li>Tap targets sized for ease of use on mobile (≥44×44 px)</li><li>Light and dark themes with adequate color contrast</li><li>Always-visible emergency 988 button on mobile</li><li>Print-friendly stylesheet for offline reference</li><li>Resizable text up to 200% without loss of content</li></ul>';h+='<p style="font-size:13px">If you experience any accessibility barriers, please <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-y25CEr_wZse1ROecTkGFEhoAM_HzvJQWyNZAo-ZSalI6IA/viewform" target="_blank" rel="noopener noreferrer">let us know</a> — we will address issues as quickly as we can.</p>';h+='<h3 style="margin-top:12px">⚠️ Disclaimer</h3>';h+='<p>RecoveryConnect is a resource directory only. It is not a substitute for professional medical, legal, or crisis advice. Resource availability may change without notice. Always verify current information by contacting providers directly. If you are in immediate danger, call <strong>911</strong>. For mental health or substance use crises, call or text <strong>988</strong>.</p>';h+='<div style="margin-top:16px;padding:12px;background:rgba(229,62,62,0.08);border-radius:var(--r);font-size:12px;color:var(--tx2);line-height:1.6"><strong style="color:var(--accent)">📄 Open Source — MIT License</strong><br>RecoveryConnect is free and open source software by <strong>Whysice</strong>. Anyone can use, modify, and share this tool. We just ask that you keep the attribution. <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener" style="color:var(--accent)">Learn more about the MIT License →</a></div>';h+=footerHTML();h+='</div>';return h}
+function renderCategory(key){var cat=R[key];if(!cat)return'';var h='<div class="crisis-banner" role="region" aria-label="Crisis hotline"><span class="ci" aria-hidden="true">🆘</span><div class="ct"><strong>In crisis?</strong> Call <a href="tel:988" aria-label="Call 988 Crisis Lifeline">988</a> anytime.</div></div>';if(cat.sections){var first=true;Object.keys(cat.sections).forEach(function(name){var res=cat.sections[name];var openClass=first?' open':'';h+='<div class="res-section"><button class="sec-toggle'+openClass+'" type="button" data-toggle aria-expanded="'+(first?'true':'false')+'"><span class="si" aria-hidden="true">'+(iconMap[key]||'📌')+'</span><span class="sec-label">'+name+'</span><span class="badge" aria-label="'+res.length+' resources">'+res.length+'</span><span class="chev" aria-hidden="true">▼</span></button><div class="sec-content'+openClass+'">';res.forEach(function(r){h+=card(r)});h+='</div></div>';first=false})}else if(cat.resources){cat.resources.forEach(function(r){h+=card(r)})}h+='<div style="font-size:11.5px;color:var(--tx3);text-align:center;margin-top:16px;font-style:italic">Resources last verified: February 2026</div>';if(key==='data'||key==='jails'){h+='<div style="margin-top:14px;padding:14px;background:rgba(147,197,224,0.08);border:1.5px solid rgba(31,78,115,0.18);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6;text-align:center"><strong style="color:var(--info)"><span aria-hidden="true">🔬 </span>Want more detail?</strong><br>Explore facility programs, policies, statistics, 175+ years of history, and 44 primary source documents on the <a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--info);font-weight:700">Maine DOC Research Platform <span aria-hidden="true">→</span><span class="sr-only"> (opens in new tab)</span></a></div>'}h+=footerHTML();return h}
+function renderAbout(){var h='<div class="about-section">';h+='<div class="welcome-hdr" style="padding-bottom:12px"><div class="logo-mark" aria-hidden="true">🌿</div><h3>About RecoveryConnect</h3></div>';h+='<p>RecoveryConnect is a <strong>free, open resource navigator</strong> for individuals navigating reentry and recovery in Maine. Our goal is to connect people with the right resources at the right time — whether you\'re planning your release, just came home, or building forward.</p>';h+='<p>Every resource listed here has been individually verified by our team. We update this tool regularly and welcome feedback on any listing that needs attention.</p>';h+='<div class="stat-row" role="list" aria-label="Resource statistics"><div class="stat" role="listitem"><div class="num">100+</div><div class="label">Resources</div></div><div class="stat" role="listitem"><div class="num">12</div><div class="label">Categories</div></div><div class="stat" role="listitem"><div class="num">16</div><div class="label">Counties</div></div></div>';h+='<h3 style="margin-top:16px"><span aria-hidden="true">🏛️ </span>For Probation &amp; Reentry Staff</h3>';h+='<p>RecoveryConnect can be embedded on any website or shared as a direct link. We track usage analytics (no personal data) to understand which resources get used most. We\'d love to partner with your office to make sure this tool serves your clients well.</p>';h+='<div style="margin-top:14px;padding:14px;background:rgba(147,197,224,0.08);border:1.5px solid rgba(31,78,115,0.18);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6"><strong style="color:var(--info)"><span aria-hidden="true">🔬 </span>Maine DOC Research Platform</strong><br>Need facility details, program eligibility, MDOC policies, recidivism data, or historical documents? Visit our companion research platform.<br><a href="https://maine-doc-platform.netlify.app/" target="_blank" rel="noopener noreferrer" style="color:var(--info);font-weight:700;display:inline-flex;align-items:center;gap:4px;margin-top:6px">Explore the MDOC Platform <span aria-hidden="true">→</span><span class="sr-only"> (opens in new tab)</span></a></div>';h+='<h3 style="margin-top:12px"><span aria-hidden="true">📊 </span>How Resources Are Organized</h3>';h+='<p>Resources are organized by <strong>stage of reentry</strong> (Pre-Release, Just Released, Building Forward) and by <strong>category</strong> (MAT, Housing, Legal Aid, etc). The stage-based view automatically prioritizes the most urgent resources first.</p>';h+='<h3 style="margin-top:12px"><span aria-hidden="true">⌨️ </span>Keyboard Shortcuts</h3>';h+='<ul style="font-size:13.5px;color:var(--tx2);line-height:1.7;margin:6px 0 12px 22px"><li><kbd>Esc</kbd> — close the open panel</li><li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> — move between buttons and links</li><li><kbd>Enter</kbd> or <kbd>Space</kbd> — activate the focused control</li></ul>';h+='<div class="updated">Resources last verified: February 2026 · Built with care in Maine</div>';h+='<h3 style="margin-top:12px"><span aria-hidden="true">♿ </span>Accessibility</h3>';h+='<p>RecoveryConnect is committed to digital accessibility. This tool targets <strong>WCAG 2.2 Level AA</strong> conformance and incorporates many Level AAA practices. Features include:</p>';h+='<ul style="font-size:13.5px;color:var(--tx2);line-height:1.7;margin:6px 0 12px 22px;padding:0"><li>Full keyboard navigation with visible focus indicators</li><li>Screen reader support via semantic HTML and ARIA landmarks</li><li>Reduced-motion support for vestibular safety</li><li>Forced-colors / Windows High Contrast support</li><li>Tap targets sized for ease of use on mobile (≥44×44 px)</li><li>Light and dark themes with adequate color contrast</li><li>Always-visible emergency 988 button on mobile</li><li>Print-friendly stylesheet for offline reference</li><li>Resizable text up to 200% without loss of content</li></ul>';h+='<p style="font-size:13px">If you experience any accessibility barriers, please <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-y25CEr_wZse1ROecTkGFEhoAM_HzvJQWyNZAo-ZSalI6IA/viewform" target="_blank" rel="noopener noreferrer">let us know</a> — we will address issues as quickly as we can.</p>';h+='<h3 style="margin-top:12px">⚠️ Disclaimer</h3>';h+='<p>RecoveryConnect is a resource directory only. It is not a substitute for professional medical, legal, or crisis advice. Resource availability may change without notice. Always verify current information by contacting providers directly. If you are in immediate danger, call <strong>911</strong>. For mental health or substance use crises, call or text <strong>988</strong>.</p>';h+='<div style="margin-top:16px;padding:12px;background:rgba(232,160,76,0.08);border-radius:var(--r);font-size:12px;color:var(--tx2);line-height:1.6"><strong style="color:var(--accent)">📄 Open Source — MIT License</strong><br>RecoveryConnect is free and open source software by <strong>Whysice</strong>. Anyone can use, modify, and share this tool. We just ask that you keep the attribution. <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener" style="color:var(--accent)">Learn more about the MIT License →</a></div>';h+=footerHTML();h+='</div>';return h}
 function findResource(catKey,name){var cat=R[catKey];if(!cat)return null;var pool=cat.sections?Object.values(cat.sections).reduce(function(a,b){return a.concat(b)},[]):(cat.resources||[]);for(var i=0;i<pool.length;i++){if(pool[i].n===name)return pool[i]}return null}
 function renderPacket(stageId){var s=STAGES.find(function(x){return x.id===stageId});if(!s||!s.packet)return'';var helper=!!surveyState.helper;var headline=helper?'A pocket packet for someone you\'re helping':'Your pocket packet — fold in a wallet or pocket';var h='<button class="back-btn" type="button" data-back="stage_'+s.id+'" aria-label="Back to '+s.name+' resources"><span aria-hidden="true">← </span>Back to '+s.name+'</button>';h+='<div class="welcome-hdr" style="padding-bottom:8px"><div class="logo-mark" aria-hidden="true">📄</div><h3>Pocket Packet · '+s.name+'</h3><p>'+headline+'. Six resources, one page. Print it, fold it, keep it.</p></div>';h+='<button class="packet-print-btn" type="button" data-packet-print aria-label="Print pocket packet"><span aria-hidden="true">🖨️</span><span>Print this packet</span></button>';h+='<div class="packet-meta">Crisis: <strong>988</strong> (call or text) · Emergency: <strong>911</strong> · Info & referrals: <strong>211</strong></div>';h+='<div class="packet-list">';s.packet.forEach(function(p){var r=findResource(p.cat,p.name);if(!r)return;h+='<div class="packet-item"><div class="pi-n">'+r.n+'</div>';if(r.d)h+='<div class="pi-d">'+r.d+'</div>';if(r.ph)h+='<div class="pi-ph">📞 '+r.ph+'</div>';if(r.addr)h+='<div class="pi-addr">📍 '+r.addr+'</div>';if(r.u&&!r.ph)h+='<div class="pi-addr">🔗 '+r.u.replace(/^https?:\/\//,'')+'</div>';h+='</div>'});h+='</div>';h+='<div class="packet-fine">RecoveryConnect · recovery-connect.netlify.app · Verified February 2026. This is a resource directory, not professional advice. Resource availability changes — call before traveling.</div>';h+=footerHTML();return h}
-function renderFeedback(){var FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSd-y25CEr_wZse1ROecTkGFEhoAM_HzvJQWyNZAo-ZSalI6IA/viewform';var ext=' target="_blank" rel="noopener noreferrer"';var newTab='<span class="sr-only"> (opens in new tab)</span>';var h='<div class="about-section">';h+='<div class="welcome-hdr" style="padding-bottom:12px"><div class="logo-mark" style="background:linear-gradient(135deg,#805AD5,#6B46C1)" aria-hidden="true">💬</div><h3>Feedback &amp; Requests</h3><p>Help us make RecoveryConnect better. Your input directly shapes this tool.</p></div>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Request a resource (opens form in new tab)"><div class="fc-icon" style="background:rgba(22,163,74,0.16)" aria-hidden="true">📬</div><div class="fc-info"><div class="fc-title">Request a Resource'+newTab+'</div><div class="fc-desc">Know a program, hotline, or service we should add? Let us know and we\'ll verify and list it.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Report an issue (opens form in new tab)"><div class="fc-icon" style="background:rgba(229,62,62,0.16)" aria-hidden="true">🐛</div><div class="fc-info"><div class="fc-title">Report an Issue'+newTab+'</div><div class="fc-desc">Found a broken link, wrong number, or outdated info? Flag it and we\'ll fix it fast.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Send general feedback (opens form in new tab)"><div class="fc-icon" style="background:rgba(144,205,244,0.16)" aria-hidden="true">💡</div><div class="fc-info"><div class="fc-title">General Feedback'+newTab+'</div><div class="fc-desc">Ideas, suggestions, or just want to say hi? We read every message.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Partner with us (opens form in new tab)"><div class="fc-icon" style="background:rgba(251,211,141,0.16)" aria-hidden="true">🤝</div><div class="fc-info"><div class="fc-title">Partner With Us'+newTab+'</div><div class="fc-desc">Probation office, reentry org, or service provider? Let\'s connect and make this tool work for your clients.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<div style="margin-top:16px;padding:12px;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6;text-align:center">All submissions are reviewed by the RecoveryConnect team.<br>No personal data is stored by this tool.</div>';h+=footerHTML();h+='</div>';return h}
+function renderFeedback(){var FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSd-y25CEr_wZse1ROecTkGFEhoAM_HzvJQWyNZAo-ZSalI6IA/viewform';var ext=' target="_blank" rel="noopener noreferrer"';var newTab='<span class="sr-only"> (opens in new tab)</span>';var h='<div class="about-section">';h+='<div class="welcome-hdr" style="padding-bottom:12px"><div class="logo-mark" style="background:linear-gradient(135deg,#5A8FB0,#3D6B8F)" aria-hidden="true">💬</div><h3>Feedback &amp; Requests</h3><p>Help us make RecoveryConnect better. Your input directly shapes this tool.</p></div>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Request a resource (opens form in new tab)"><div class="fc-icon" style="background:rgba(46,107,58,0.16)" aria-hidden="true">📬</div><div class="fc-info"><div class="fc-title">Request a Resource'+newTab+'</div><div class="fc-desc">Know a program, hotline, or service we should add? Let us know and we\'ll verify and list it.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Report an issue (opens form in new tab)"><div class="fc-icon" style="background:rgba(232,160,76,0.16)" aria-hidden="true">🐛</div><div class="fc-info"><div class="fc-title">Report an Issue'+newTab+'</div><div class="fc-desc">Found a broken link, wrong number, or outdated info? Flag it and we\'ll fix it fast.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Send general feedback (opens form in new tab)"><div class="fc-icon" style="background:rgba(147,197,224,0.16)" aria-hidden="true">💡</div><div class="fc-info"><div class="fc-title">General Feedback'+newTab+'</div><div class="fc-desc">Ideas, suggestions, or just want to say hi? We read every message.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<a href="'+FORM_URL+'"'+ext+' class="feedback-card" style="text-decoration:none" aria-label="Partner with us (opens form in new tab)"><div class="fc-icon" style="background:rgba(255,179,168,0.16)" aria-hidden="true">🤝</div><div class="fc-info"><div class="fc-title">Partner With Us'+newTab+'</div><div class="fc-desc">Probation office, reentry org, or service provider? Let\'s connect and make this tool work for your clients.</div></div><span class="fc-arrow" aria-hidden="true">→</span></a>';h+='<div style="margin-top:16px;padding:12px;background:var(--bg-card);border:1.5px solid var(--bd);border-radius:var(--r);font-size:12.5px;color:var(--tx2);line-height:1.6;text-align:center">All submissions are reviewed by the RecoveryConnect team.<br>No personal data is stored by this tool.</div>';h+=footerHTML();h+='</div>';return h}
 var curPanel=null,panelOpen=false,lastFocus=null,_baseTitle=document.title;
 function isMobileLayout(){return window.matchMedia('(max-width: 640px)').matches}
 function showPanel(id){var panel=document.querySelector('.panel');var body=document.getElementById('pBody');var title=document.getElementById('pTitle');var demo=document.getElementById('demo');document.querySelectorAll('.sb-btn').forEach(function(b){b.classList.remove('active');b.removeAttribute('aria-current')});var ab=document.querySelector('.sb-btn[data-panel="'+id+'"]');if(ab){ab.classList.add('active');ab.setAttribute('aria-current','page')}var content='',tt='RecoveryConnect',plain='RecoveryConnect';if(id==='crisis'){content=renderCrisis();tt='🆘 Need Help Now';plain='Need Help Now';track('panel_view','crisis');plausible('Panel View',{panel:'crisis'})}else if(id==='home'){content=renderHome();tt='🌿 Find Resources';plain='Find Resources';track('panel_view','home');plausible('Panel View',{panel:'home'})}else if(id==='about'){content=renderAbout();tt='ℹ️ About';plain='About';track('panel_view','about');plausible('Panel View',{panel:'about'})}else if(id==='feedback'){content=renderFeedback();tt='💬 Feedback & Requests';plain='Feedback & Requests';track('panel_view','feedback');plausible('Panel View',{panel:'feedback'})}else if(id.indexOf('stage_')===0){var sid=id.replace('stage_','');content=renderStage(sid);var st=STAGES.find(function(x){return x.id===sid});tt=st?st.icon+' '+st.name:'Resources';plain=st?st.name:'Resources';surveyState.stage=sid;track('panel_view','stage_'+sid);plausible('Stage Selected',{stage:sid})}else if(id.indexOf('packet_')===0){var pid=id.replace('packet_','');content=renderPacket(pid);var pst=STAGES.find(function(x){return x.id===pid});tt=pst?'📄 Pocket Packet · '+pst.name:'Pocket Packet';plain=pst?'Pocket Packet · '+pst.name:'Pocket Packet';track('panel_view','packet_'+pid);plausible('Pocket Packet',{stage:pid})}else if(R[id]){content=renderCategory(id);tt=R[id].title;plain=R[id].title;track('panel_view',id);plausible('Panel View',{panel:id})}body.innerHTML=content;title.textContent=tt;panel.classList.add('open');panel.setAttribute('aria-hidden','false');if(demo){demo.classList.add('shifted');if(isMobileLayout())demo.setAttribute('aria-hidden','true')}if(!panelOpen)lastFocus=document.activeElement;panelOpen=true;curPanel=id;body.scrollTop=0;document.title=plain+' — RecoveryConnect';wireEvents(body);try{panel.focus({preventScroll:true})}catch(e){panel.focus()}}
@@ -707,9 +720,10 @@ window.showPanel=showPanel;
 function closePanel(){var panel=document.querySelector('.panel');panel.classList.remove('open');panel.setAttribute('aria-hidden','true');var demo=document.getElementById('demo');if(demo){demo.classList.remove('shifted');demo.setAttribute('aria-hidden','false')}document.querySelectorAll('.sb-btn').forEach(function(b){b.classList.remove('active');b.removeAttribute('aria-current')});panelOpen=false;curPanel=null;document.title=_baseTitle;if(lastFocus&&typeof lastFocus.focus==='function'){try{lastFocus.focus()}catch(e){}}}
 function wireEvents(root){var _secSeq=0;root.querySelectorAll('[data-toggle]').forEach(function(btn){_secSeq++;var c=btn.nextElementSibling;if(c&&!c.id){c.id='rc_sec_'+Date.now().toString(36)+'_'+_secSeq;c.setAttribute('role','region');c.setAttribute('aria-label',btn.textContent.replace(/[▼▶]/g,'').trim())}if(c)btn.setAttribute('aria-controls',c.id);btn.addEventListener('click',function(){var cc=this.nextElementSibling;this.classList.toggle('open');cc.classList.toggle('open');this.setAttribute('aria-expanded',cc.classList.contains('open'))})});root.querySelectorAll('[data-stage]').forEach(function(btn){btn.addEventListener('click',function(){showPanel('stage_'+this.dataset.stage)})});root.querySelectorAll('[data-back]').forEach(function(btn){btn.addEventListener('click',function(){showPanel(this.dataset.back)})});root.querySelectorAll('[data-helper-toggle]').forEach(function(btn){btn.addEventListener('click',function(){surveyState.helper=!surveyState.helper;plausible('Helper Mode',{on:surveyState.helper});showPanel('home')})});root.querySelectorAll('[data-packet]').forEach(function(btn){btn.addEventListener('click',function(){showPanel('packet_'+this.dataset.packet)})});root.querySelectorAll('[data-packet-print]').forEach(function(btn){btn.addEventListener('click',function(){document.body.classList.add('body-packet');track('packet_print',surveyState.stage||'','','print');plausible('Packet Print',{stage:surveyState.stage||''});setTimeout(function(){window.print();setTimeout(function(){document.body.classList.remove('body-packet')},500)},50)})});root.querySelectorAll('[data-trk="click"]').forEach(function(a){a.addEventListener('click',function(){track('click',this.dataset.rn,this.dataset.ru,this.dataset.at);plausible('Resource Click',{resource:this.dataset.rn,type:this.dataset.at})})});root.querySelectorAll('.rfb button').forEach(function(b){b.addEventListener('click',function(){this.closest('.rfb').querySelectorAll('button').forEach(function(x){x.classList.remove('act')});this.classList.add('act');var up=this.classList.contains('y');track(up?'thumbs_up':'thumbs_down',this.dataset.rn,'','feedback');plausible('Feedback',{resource:this.dataset.rn,type:up?'thumbs_up':'thumbs_down'});toast(up?'Thanks for confirming!':'Thanks — we\'ll look into it','ok')})});root.querySelectorAll('.share-btn').forEach(function(btn){btn.addEventListener('click',function(){shareResource(this.dataset.sn,this.dataset.sph,this.dataset.su);var b=this;b.classList.add('copied');b.innerHTML='✓ Copied';setTimeout(function(){b.classList.remove('copied');b.innerHTML='📤 Share'},2000)})});root.querySelectorAll('.rbtn.directions').forEach(function(btn){btn.addEventListener('click',function(){var addr=this.dataset.addr;var rn=this.dataset.rn;var resultId='dir_'+rn.replace(/[^a-zA-Z0-9]/g,'_');var resultEl=document.getElementById(resultId);var dirBtn=this;dirBtn.textContent='📍 Locating...';dirBtn.disabled=true;if(!navigator.geolocation){window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(addr)+'&travelmode=driving','_blank');dirBtn.textContent='🧭 Directions';dirBtn.disabled=false;return}navigator.geolocation.getCurrentPosition(function(pos){var lat=pos.coords.latitude;var lng=pos.coords.longitude;var origin=lat+','+lng;var mapsUrl='https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(origin)+'&destination='+encodeURIComponent(addr)+'&travelmode=driving';if(resultEl){resultEl.innerHTML='🚗 <a href="'+mapsUrl+'" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px solid var(--accent)">Open in Google Maps</a> <span class="dir-dist">for turn-by-turn directions from your location</span>';resultEl.classList.add('show')}window.open(mapsUrl,'_blank');dirBtn.textContent='🧭 Directions';dirBtn.disabled=false;track('directions',rn,addr,'directions');plausible('Directions',{resource:rn})},function(err){window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(addr)+'&travelmode=driving','_blank');dirBtn.textContent='🧭 Directions';dirBtn.disabled=false;if(resultEl){resultEl.innerHTML='📍 <span class="dir-dist">Location access denied. Google Maps will ask for your location.</span>';resultEl.classList.add('show')}},{enableHighAccuracy:false,timeout:8000,maximumAge:300000})})})}
 document.querySelectorAll('.sb-btn[data-panel]').forEach(function(btn){btn.addEventListener('click',function(){var id=this.dataset.panel;if(panelOpen&&curPanel===id)closePanel();else showPanel(id)})});document.getElementById('pClose').addEventListener('click',closePanel);document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panelOpen)closePanel()});
-var themeBtn=document.getElementById('themeToggle');var themeIcon=themeBtn.querySelector('.theme-icon');var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var savedTheme=localStorage.getItem('rc-theme')||(prefersDark?'dark':'dark');document.documentElement.setAttribute('data-theme',savedTheme);if(themeIcon)themeIcon.textContent=savedTheme==='dark'?'☀️':'🌙';themeBtn.setAttribute('aria-label',savedTheme==='dark'?'Switch to light mode':'Switch to dark mode');themeBtn.setAttribute('aria-pressed',savedTheme==='light'?'true':'false');themeBtn.addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme')||'dark';var next=cur==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);localStorage.setItem('rc-theme',next);if(themeIcon)themeIcon.textContent=next==='dark'?'☀️':'🌙';themeBtn.setAttribute('aria-label',next==='dark'?'Switch to light mode':'Switch to dark mode');themeBtn.setAttribute('aria-pressed',next==='light'?'true':'false');var metas=document.querySelectorAll('meta[name="theme-color"]');metas.forEach(function(m){m.removeAttribute('media')});if(metas[0])metas[0].setAttribute('content',next==='dark'?'#0D2818':'#F2EDE7');plausible('Theme Toggle',{theme:next})});
+var themeBtn=document.getElementById('themeToggle');var themeIcon=themeBtn.querySelector('.theme-icon');var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var savedTheme=localStorage.getItem('rc-theme')||(prefersDark?'dark':'dark');document.documentElement.setAttribute('data-theme',savedTheme);if(themeIcon)themeIcon.textContent=savedTheme==='dark'?'☀️':'🌙';themeBtn.setAttribute('aria-label',savedTheme==='dark'?'Switch to light mode':'Switch to dark mode');themeBtn.setAttribute('aria-pressed',savedTheme==='light'?'true':'false');themeBtn.addEventListener('click',function(){var cur=document.documentElement.getAttribute('data-theme')||'dark';var next=cur==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);localStorage.setItem('rc-theme',next);if(themeIcon)themeIcon.textContent=next==='dark'?'☀️':'🌙';themeBtn.setAttribute('aria-label',next==='dark'?'Switch to light mode':'Switch to dark mode');themeBtn.setAttribute('aria-pressed',next==='light'?'true':'false');var metas=document.querySelectorAll('meta[name="theme-color"]');metas.forEach(function(m){m.removeAttribute('media')});if(metas[0])metas[0].setAttribute('content',next==='dark'?'#0F1B26':'#F4EDDF');plausible('Theme Toggle',{theme:next})});
 var efab=document.querySelector('.emergency-fab');if(efab){efab.addEventListener('click',function(){track('click','988 Emergency','tel:988','phone');plausible('Emergency 988 Tap',{source:'fab'})})}
 if(window.matchMedia('(max-width: 640px)').matches){showPanel('home')}
+var sb=document.querySelector('.icon-bar');function updateSbOverflow(){if(!sb)return;var hasOverflow=sb.scrollHeight>sb.clientHeight+2;sb.classList.toggle('has-overflow',hasOverflow);var atBottom=sb.scrollTop+sb.clientHeight>=sb.scrollHeight-2;sb.classList.toggle('at-bottom',atBottom)}if(sb){updateSbOverflow();sb.addEventListener('scroll',updateSbOverflow,{passive:true});window.addEventListener('resize',updateSbOverflow);if(window.ResizeObserver){new ResizeObserver(updateSbOverflow).observe(sb)}}
 window.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panelOpen){var demoBtn=document.querySelector('.cta-open');if(demoBtn&&document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('emergency-fab')){demoBtn.focus()}}});
 })();
 </script>
