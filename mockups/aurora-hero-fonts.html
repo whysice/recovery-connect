@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora — Hero Font Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Instrument+Serif:ital@0;1&family=Libre+Caslon+Display&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Clash+Display&family=Space+Grotesk:wght@500;600&family=Syne:wght@600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#0A0A0F;--ink:#13141C;
+  --text:#ECEAF6;--text2:#B3AEC9;--text3:#817BA0;
+  --accent:#B79BE6;--accent-2:#9DAAF2;--petal:#E9DEF0;--frost:#D7DAEA;
+  --hair:rgba(236,234,246,0.08);
+  --tanzanite:#3B3D8F;--amethyst:#7A3B9D;--iris:#A461C9;--periwinkle:#7C8AE0;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--obsidian);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.aurora{position:fixed;inset:-20% -10%;z-index:0;pointer-events:none;filter:blur(70px);opacity:.5}
+.aurora i{position:absolute;border-radius:50%;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite}
+.aurora i:nth-child(1){width:46vw;height:46vw;left:-6%;top:-8%;background:radial-gradient(circle,var(--amethyst),transparent 62%)}
+.aurora i:nth-child(2){width:42vw;height:42vw;right:-8%;top:6%;background:radial-gradient(circle,var(--tanzanite),transparent 62%);animation-delay:-8s}
+.aurora i:nth-child(3){width:40vw;height:40vw;left:30%;top:40%;background:radial-gradient(circle,var(--iris),transparent 60%);animation-delay:-15s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4%,4%) scale(1.1)}}
+.wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:48px 36px 90px}
+.lead{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);margin-bottom:10px}
+.opt{padding:46px 0;border-bottom:1px solid var(--hair)}
+.optlabel{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:20px;display:flex;gap:10px;align-items:center}
+.optlabel .n{width:24px;height:24px;border-radius:7px;background:linear-gradient(150deg,var(--amethyst),var(--tanzanite));display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600}
+.optlabel em{font-style:normal;color:var(--text2)}
+h1{font-weight:500;font-size:clamp(48px,8vw,92px);line-height:.98;letter-spacing:-.02em}
+.grad{background:linear-gradient(108deg,var(--accent-2),var(--accent) 50%,var(--petal));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* font per option */
+.f-playfair h1{font-family:'Playfair Display',serif}
+.f-playfair h1 .it{font-style:italic}
+.f-cormorant h1{font-family:'Cormorant Garamond',serif;font-weight:600}
+.f-cormorant h1 .it{font-style:italic;font-weight:500}
+.f-instrument h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(56px,9vw,104px)}
+.f-instrument h1 .it{font-style:italic}
+.f-caslon h1{font-family:'Libre Caslon Display',serif;font-weight:400}
+.f-dmserif h1{font-family:'DM Serif Display',serif;font-weight:400}
+.f-dmserif h1 .it{font-style:italic}
+.f-bricolage h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.03em}
+.f-clash h1{font-family:'Clash Display','Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em}
+.f-syne h1{font-family:'Syne',sans-serif;font-weight:700;letter-spacing:-.02em}
+.f-space h1{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.03em}
+.note{position:fixed;left:16px;bottom:14px;z-index:6;font-size:11px;color:var(--text2);background:rgba(10,10,15,.8);border:1px solid var(--hair);padding:7px 13px;border-radius:999px;backdrop-filter:blur(8px)}
+.hd{font-family:'Playfair Display',serif;font-size:30px;margin-bottom:6px;color:var(--text)}
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div>
+<div class="wrap">
+  <p class="lead">Same Aurora hero · the only thing changing is the big display font</p>
+  <div class="hd" style="margin-bottom:30px">Pick the headline font</div>
+
+  <div class="opt f-instrument"><div class="optlabel"><span class="n">1</span> Instrument Serif <em>— light, literary, very whysice.studio</em></div><h1>You're not <span class="grad">starting from <span class="it">nothing.</span></span></h1></div>
+
+  <div class="opt f-cormorant"><div class="optlabel"><span class="n">2</span> Cormorant Garamond <em>— elegant, high-contrast serif</em></div><h1>You're not <span class="grad">starting from <span class="it">nothing.</span></span></h1></div>
+
+  <div class="opt f-playfair"><div class="optlabel"><span class="n">3</span> Playfair Display <em>— classic editorial serif</em></div><h1>You're not <span class="grad">starting from <span class="it">nothing.</span></span></h1></div>
+
+  <div class="opt f-caslon"><div class="optlabel"><span class="n">4</span> Libre Caslon Display <em>— stately, magazine</em></div><h1>You're not <span class="grad">starting from nothing.</span></h1></div>
+
+  <div class="opt f-dmserif"><div class="optlabel"><span class="n">5</span> DM Serif Display <em>— bold, confident serif</em></div><h1>You're not <span class="grad">starting from <span class="it">nothing.</span></span></h1></div>
+
+  <div class="opt f-bricolage"><div class="optlabel"><span class="n">6</span> Bricolage Grotesque <em>— modern, friendly sans</em></div><h1>You're not <span class="grad">starting from nothing.</span></h1></div>
+
+  <div class="opt f-syne"><div class="optlabel"><span class="n">7</span> Syne <em>— bold, distinctive, design-forward sans</em></div><h1>You're not <span class="grad">starting from nothing.</span></h1></div>
+
+  <div class="opt f-space"><div class="optlabel"><span class="n">8</span> Space Grotesk <em>— clean techy sans</em></div><h1>You're not <span class="grad">starting from nothing.</span></h1></div>
+</div>
+<div class="note">Aurora · hero font options — tell me a number</div>
+</body>
+</html>
