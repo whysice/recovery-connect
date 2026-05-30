@@ -30,49 +30,60 @@
 <meta name="twitter:image" content="https://recovery-connect.netlify.app/og-image.png">
 <meta name="twitter:image:alt" content="RecoveryConnect — Recovery and reentry resources across Maine">
 <title>RecoveryConnect — Maine Reentry Resource Navigator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
 <script defer data-domain="recovery-connect.netlify.app" src="https://plausible.io/js/script.js"></script>
 <style>
 :root {
-  --bg: #0F1B26;
-  --bg-panel: #16263A;
-  --bg-card: #1F3349;
-  --bg-card-hover: #2A4159;
-  --accent: #E8A04C;
-  --accent-dark: #C68536;
-  --accent-glow: rgba(232,160,76,0.10);
-  --accent-light: rgba(232,160,76,0.14);
-  --accent-warm: #E8A04C;
-  --crisis: #FFB3A8;
-  --crisis-bg: rgba(255,179,168,0.10);
-  --crisis-strong: #FF7A6A;
-  --success: #8FCFA6;
-  --info: #93C5E0;
-  --info-bg: rgba(147,197,224,0.10);
-  --tx: #F5EDDC;
-  --tx2: #DCD2BE;
-  --tx3: #C2B8A4;
-  --bd: rgba(245,237,220,0.18);
-  --bd-active: rgba(232,160,76,0.60);
-  --on-accent: #1A1208;
-  --on-success: #0A1F12;
-  --emergency: #B91C1C;
-  --r: 12px;
-  --rs: 8px;
-  --shadow: 0 4px 20px rgba(0,0,0,0.2);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.3);
+  /* ── Aurora · dark (Obsidian + jewel palette) ── */
+  --bg: #0A0A0F;
+  --bg-panel: #13141C;
+  --bg-card: #171922;
+  --bg-card-hover: #1E2130;
+  --accent: #B79BE6;            /* light iris — AA on dark, links/headings */
+  --accent-dark: #9DAAF2;       /* light periwinkle */
+  --accent-glow: rgba(164,97,201,0.12);
+  --accent-light: rgba(164,97,201,0.20);
+  --accent-warm: #B79BE6;
+  --jewel-1: #3B3D8F;           /* tanzanite */
+  --jewel-2: #7A3B9D;           /* amethyst */
+  --jewel-3: #A461C9;           /* iris */
+  --jewel-4: #7C8AE0;           /* periwinkle */
+  --crisis: #E0A9C8;
+  --crisis-bg: rgba(164,97,201,0.12);
+  --crisis-strong: #D98AB6;
+  --success: #8FE0C2;
+  --info: #9DAAF2;
+  --info-bg: rgba(124,138,224,0.12);
+  --tx: #ECEAF6;
+  --tx2: #B3AEC9;
+  --tx3: #817BA0;
+  --bd: rgba(236,234,246,0.12);
+  --bd-active: rgba(164,97,201,0.55);
+  --on-accent: #140C1C;
+  --on-success: #08130E;
+  --emergency: #B5347A;
+  --r: 14px;
+  --rs: 9px;
+  --shadow: 0 8px 28px rgba(0,0,0,0.34);
+  --shadow-lg: 0 14px 40px rgba(0,0,0,0.46);
   --ease: 0.25s cubic-bezier(0.4,0,0.2,1);
   --bar-w: 0px;
   --panel-w: 100vw;
-  --font-body: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
-  --font-display: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-hero: 'Instrument Serif', Georgia, serif;
   --mob-bar-h: 56px;
 }
 [data-theme="light"] {
-  --bg: #F4EDDF;--bg-panel: #FDFAF2;--bg-card: #FFFFFF;--bg-card-hover: #FFF7E8;
-  --accent: #9A4514;--accent-dark: #7A360F;--accent-glow: rgba(154,69,20,0.08);--accent-light: rgba(154,69,20,0.10);--accent-warm: #9A4514;
-  --crisis: #9B1C1C;--crisis-bg: rgba(155,28,28,0.06);--crisis-strong: #9B1C1C;--success: #2E6B3A;--info: #1F4E73;--info-bg: rgba(31,78,115,0.07);
-  --tx: #1E1810;--tx2: #3D3424;--tx3: #5F5547;--bd: #C8BDA7;--bd-active: rgba(154,69,20,0.55);--on-accent: #FFFFFF;--on-success: #FFFFFF;--emergency: #9B1C1C;
-  --shadow: 0 4px 20px rgba(0,0,0,0.05);--shadow-lg: 0 8px 30px rgba(0,0,0,0.09);
+  /* ── Aurora · light (Paper / Frost + deep jewels for AA) ── */
+  --bg: #F5F4F8;--bg-panel: #FFFFFF;--bg-card: #FFFFFF;--bg-card-hover: #F3F0FA;
+  --accent: #6A2E8F;--accent-dark: #3B3D8F;--accent-glow: rgba(122,59,157,0.08);--accent-light: rgba(122,59,157,0.12);--accent-warm: #6A2E8F;
+  --jewel-1: #3B3D8F;--jewel-2: #7A3B9D;--jewel-3: #8E4CB6;--jewel-4: #5560C4;
+  --crisis: #9B2D6F;--crisis-bg: rgba(155,45,111,0.07);--crisis-strong: #9B2D6F;--success: #1E7A5A;--info: #3B3D8F;--info-bg: rgba(59,61,143,0.07);
+  --tx: #1A1726;--tx2: #4A4560;--tx3: #6F6A85;--bd: #D9D5E6;--bd-active: rgba(122,59,157,0.55);--on-accent: #FFFFFF;--on-success: #FFFFFF;--emergency: #9B2D6F;
+  --shadow: 0 8px 26px rgba(40,30,70,0.08);--shadow-lg: 0 16px 40px rgba(40,30,70,0.12);
 }
 [data-theme="light"] .icon-bar{background:#FDFAF2;box-shadow:2px 0 16px rgba(0,0,0,0.04)}
 [data-theme="light"] .panel{box-shadow:4px 0 30px rgba(0,0,0,0.06)}
