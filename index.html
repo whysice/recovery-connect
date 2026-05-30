@@ -62,7 +62,7 @@
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.3);
   --ease: 0.25s cubic-bezier(0.4,0,0.2,1);
   --bar-w: 0px;
-  --panel-w: min(420px, calc(100vw - var(--bar-w)));
+  --panel-w: 100vw;
   --font-body: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
   --font-display: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
   --mob-bar-h: 56px;
@@ -136,7 +136,7 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
 .panel-hdr-actions{display:flex;align-items:center;gap:4px}
 .panel-action-btn{width:30px;height:30px;border:none;border-radius:8px;background:transparent;color:var(--tx3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:var(--ease);font-family:inherit}
 .panel-action-btn:hover{background:var(--bg-card);color:var(--tx)}
-.panel-body{padding:18px 20px 40px}
+.panel-body{padding:18px 20px 40px;max-width:960px;margin-left:auto;margin-right:auto}
 .welcome-hdr{text-align:center;padding:8px 0 16px;animation:fadeIn .4s ease both}
 .welcome-hdr .logo-mark{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 10px;box-shadow:0 4px 12px rgba(232,160,76,0.3)}
 .welcome-hdr h2,.welcome-hdr h3{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-.01em;margin-bottom:4px;font-family:var(--font-display)}
@@ -283,7 +283,7 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .site-footer a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 .site-footer .license-badge{display:inline-block;background:rgba(232,160,76,0.1);color:var(--accent);font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.3px;margin-left:4px}
 .demo-page{margin-left:var(--bar-w);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;transition:margin-left var(--ease);overflow:auto}
-.demo-page.shifted{margin-left:calc(var(--bar-w) + var(--panel-w))}
+.demo-page.shifted{display:none}
 .demo-content{text-align:center;max-width:460px;animation:fadeIn .5s ease both}
 .demo-content .hero-icon{font-size:48px;margin-bottom:12px}
 .demo-content h1{font-size:32px;font-weight:700;color:var(--tx);letter-spacing:-.02em;margin-bottom:6px;font-family:var(--font-display)}
@@ -314,12 +314,12 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 
 /* ─── Desktop large (1201px+) ─── */
 @media(min-width:1201px){
-  :root{--panel-w:min(560px, calc(50vw))}
+  :root{--panel-w:100vw}
 }
 
 /* ─── Desktop medium (901–1200px) ─── */
 @media(min-width:901px) and (max-width:1200px){
-  :root{--panel-w:min(480px, calc(100vw - var(--bar-w) - 40px))}
+  :root{--panel-w:100vw}
 }
 
 /* ─── Tablet (641–900px) ─── */
@@ -648,6 +648,8 @@ a[href^="tel:"]{white-space:nowrap}
 .emergency-fab:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px rgba(232,160,76,0.5)}
 
 /* ═══ HEADER NAV (replaces sidebar) ═══ */
+/* Full-width app bar; inner content aligns with the centered panel body */
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;max-width:960px;margin:0 auto;min-width:0}
 .panel-hdr .home-btn{margin-right:2px}
 .panel-title{flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 
@@ -695,12 +697,14 @@ a[href^="tel:"]{white-space:nowrap}
 <div class="widget-wrap" role="complementary" aria-label="RecoveryConnect Resource Navigator">
   <main class="panel" id="mainPanel" role="region" aria-labelledby="pTitle" tabindex="-1" aria-hidden="true">
     <div class="panel-hdr">
-      <button class="panel-action-btn home-btn" id="pHome" aria-label="Back to home" type="button"><span aria-hidden="true">🏠</span></button>
-      <h2 class="panel-title" id="pTitle">RecoveryConnect</h2>
-      <div class="panel-hdr-actions">
-        <button class="panel-action-btn" id="themeToggle" aria-label="Toggle light or dark mode" type="button"><span class="theme-icon" aria-hidden="true">🌙</span></button>
-        <button class="panel-action-btn" aria-label="Print this page" onclick="window.print()" type="button"><span aria-hidden="true">🖨️</span></button>
-        <button class="panel-action-btn" aria-label="Close panel" id="pClose" type="button"><span aria-hidden="true">✕</span></button>
+      <div class="hdr-inner">
+        <button class="panel-action-btn home-btn" id="pHome" aria-label="Back to home" type="button"><span aria-hidden="true">🏠</span></button>
+        <h2 class="panel-title" id="pTitle">RecoveryConnect</h2>
+        <div class="panel-hdr-actions">
+          <button class="panel-action-btn" id="themeToggle" aria-label="Toggle light or dark mode" type="button"><span class="theme-icon" aria-hidden="true">🌙</span></button>
+          <button class="panel-action-btn" aria-label="Print this page" onclick="window.print()" type="button"><span aria-hidden="true">🖨️</span></button>
+          <button class="panel-action-btn" aria-label="Close panel" id="pClose" type="button"><span aria-hidden="true">✕</span></button>
+        </div>
       </div>
     </div>
     <div class="panel-body" id="pBody"></div>
