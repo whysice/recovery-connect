@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction C — Modern Mono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C0A0A;
+  --panel:#15110F;
+  --ink:#F0EAE2;
+  --ink2:#A89E90;
+  --ink3:#6F6557;
+  --copper:#C68A5B;
+  --copper-bright:#DDA376;
+  --line:rgba(198,138,91,0.22);
+  --hair:rgba(240,234,226,0.07);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden}
+.glow{position:fixed;top:-25%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse at center,rgba(198,138,91,.10),transparent 60%);z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 34px}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:28px 0}
+nav .brand{font-family:var(--mono);font-size:14px;letter-spacing:.04em;color:var(--ink);text-transform:uppercase}
+nav .brand b{color:var(--copper)}
+nav .links{display:flex;gap:8px;align-items:center}
+nav .links span{font-family:var(--mono);font-size:12px;color:var(--ink2);cursor:pointer;padding:8px 12px;border-radius:8px;transition:all .2s}
+nav .links span:hover{color:var(--copper);background:var(--hair)}
+nav .links .crisis{border:1px solid var(--line);color:var(--copper)}
+
+.hero{padding:96px 0 64px;max-width:780px}
+.tagline{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--ink2);border:1px solid var(--hair);border-radius:999px;padding:7px 14px;margin-bottom:30px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--copper);box-shadow:0 0 10px var(--copper);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(50px,8.5vw,96px);line-height:1;letter-spacing:-.015em}
+.hero h1 .o{color:var(--copper);font-style:italic}
+.hero .lede{font-size:19px;color:var(--ink2);margin:28px 0 0;max-width:540px;line-height:1.55}
+.cta-row{display:flex;align-items:center;gap:14px;margin-top:40px;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-size:15px;font-weight:500;text-decoration:none;padding:13px 26px;border-radius:11px;cursor:pointer;transition:all .22s;border:1px solid transparent;display:inline-flex;gap:8px;align-items:center}
+.btn.solid{background:var(--copper);color:#1B120A}
+.btn.solid:hover{background:var(--copper-bright);transform:translateY(-2px)}
+.btn.ghost{border-color:var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--copper);color:var(--copper)}
+.stats{display:flex;gap:34px;margin-top:50px;padding-top:30px;border-top:1px solid var(--hair)}
+.stats .s b{font-family:var(--serif);font-size:36px;color:var(--copper);font-weight:600;display:block;line-height:1}
+.stats .s span{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase}
+
+.sec{padding:30px 0 0}
+.sec-h{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.sec-h h2{font-family:var(--serif);font-weight:500;font-size:34px}
+.sec-h .ln{flex:1;height:1px;background:var(--hair)}
+.sec-h .count{font-family:var(--mono);font-size:12px;color:var(--ink3)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:14px}
+.cat{position:relative;background:var(--panel);border:1px solid var(--hair);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:border-color .25s,transform .25s,background .25s;display:flex;flex-direction:column;min-height:142px;overflow:hidden}
+.cat::after{content:'';position:absolute;inset:0;border-radius:14px;padding:1px;background:linear-gradient(135deg,var(--copper),transparent 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .25s}
+.cat:hover{transform:translateY(-3px);background:#1A1411}
+.cat:hover::after{opacity:1}
+.cat .idx{font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.cat h3{font-family:var(--serif);font-weight:600;font-size:22px;margin:auto 0 6px;line-height:1.1}
+.cat:hover h3{color:var(--copper)}
+.cat p{font-size:13px;color:var(--ink2)}
+.cat .ct{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:10px}
+.cat.crisis{grid-column:1/-1;flex-direction:row;align-items:center;gap:18px;min-height:0;background:linear-gradient(120deg,rgba(198,138,91,.12),var(--panel));border-color:var(--line)}
+.cat.crisis h3{margin:0;color:var(--copper)}
+.cat.crisis p{margin:0}
+.cat.crisis .arrow{margin-left:auto;font-size:20px;color:var(--copper)}
+
+.resource{margin-top:48px;background:var(--panel);border:1px solid var(--hair);border-radius:16px;padding:30px;position:relative}
+.resource .r-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.resource h4{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--copper)}
+.resource .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--hair);border-radius:6px;padding:5px 10px;white-space:nowrap}
+.resource p{color:var(--ink2);margin-top:12px;max-width:560px}
+.resource .r-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.resource .r-actions .btn{font-size:14px;padding:11px 20px}
+.resource .vf{font-family:var(--mono);margin-top:20px;font-size:11px;color:var(--ink3);letter-spacing:.03em}
+
+footer{padding:84px 0 64px;color:var(--ink3);font-family:var(--mono);font-size:12px;text-align:center}
+.note{position:fixed;left:16px;bottom:14px;z-index:5;font-family:var(--mono);font-size:11px;color:var(--ink2);background:rgba(12,10,10,.75);border:1px solid var(--hair);padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <nav>
+    <div class="brand">RECOVERY<b>CONNECT</b></div>
+    <div class="links"><span>Find help</span><span>About</span><span class="crisis">⚑ Crisis 988</span></div>
+  </nav>
+
+  <header class="hero">
+    <div class="tagline"><span class="dot"></span> Free · Anonymous · Verified Feb 2026</div>
+    <h1>Recovery resources,<br>without the <span class="o">maze.</span></h1>
+    <p class="lede">A small, deliberate map of the help that exists across Maine — treatment, housing, legal aid, and the next right step.</p>
+    <div class="cta-row">
+      <a href="#" class="btn solid">Find resources →</a>
+      <a href="tel:988" class="btn ghost">Call or text 988</a>
+    </div>
+    <div class="stats">
+      <div class="s"><b>100+</b><span>Resources</span></div>
+      <div class="s"><b>12</b><span>Categories</span></div>
+      <div class="s"><b>16</b><span>Counties</span></div>
+    </div>
+  </header>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Browse by need</h2><div class="ln"></div><div class="count">12 categories</div></div>
+    <div class="grid">
+      <a href="#" class="cat crisis"><div><h3>Need help now</h3><p>Hotlines that answer 24/7 — call or text.</p></div><div class="arrow">→</div></a>
+      <a href="#" class="cat"><div class="idx">01</div><h3>MAT &amp; Naloxone</h3><p>Same-day addiction meds &amp; free Narcan.</p><div class="ct">15 resources →</div></a>
+      <a href="#" class="cat"><div class="idx">02</div><h3>Housing</h3><p>Shelter tonight &amp; longer-term housing.</p><div class="ct">3 resources →</div></a>
+      <a href="#" class="cat"><div class="idx">03</div><h3>Legal aid</h3><p>Free legal help &amp; clearing your record.</p><div class="ct">6 resources →</div></a>
+      <a href="#" class="cat"><div class="idx">04</div><h3>Benefits</h3><p>MaineCare, SNAP &amp; heating help.</p><div class="ct">11 resources →</div></a>
+    </div>
+
+    <div class="resource">
+      <div class="r-top"><h4>988 Suicide &amp; Crisis Lifeline</h4><span class="tag">Phone · 24/7</span></div>
+      <p>Free, confidential, around the clock. Maine-based crisis specialists are ready to talk — call or text any time, day or night.</p>
+      <div class="r-actions">
+        <a href="tel:988" class="btn solid">Call 988</a>
+        <a href="#" class="btn ghost">Website</a>
+        <a href="#" class="btn ghost">Share</a>
+      </div>
+      <div class="vf">// verified february 2026</div>
+    </div>
+  </section>
+
+  <footer>// recoveryconnect — built with care in maine · open source</footer>
+</div>
+<div class="note">Direction C · "Modern Mono" — dark + serif/mono mix</div>
+</body>
+</html>
