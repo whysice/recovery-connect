@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direction B — Editorial Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F1E9;        /* warm paper */
+  --bg2:#FFFFFF;
+  --ink:#241C16;       /* near-black warm */
+  --ink2:#5A5046;
+  --ink3:#8A8073;
+  --copper:#A5612E;    /* deep copper for AA on light */
+  --copper-soft:#B98A5E;
+  --line:rgba(36,28,22,0.12);
+  --hair:rgba(36,28,22,0.08);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:0 36px}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:30px 0}
+nav .brand{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.01em}
+nav .brand span{color:var(--copper)}
+nav .links{display:flex;gap:28px;font-size:15px;color:var(--ink2)}
+nav .links span{cursor:pointer}
+nav .links span:hover{color:var(--copper)}
+nav .pill{border:1px solid var(--ink);border-radius:999px;padding:9px 18px;color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;transition:all .2s}
+nav .pill:hover{background:var(--ink);color:var(--bg)}
+
+.hero{padding:70px 0 56px;max-width:820px}
+.kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,8vw,86px);line-height:1.02;letter-spacing:-.02em}
+.hero .lede{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(19px,2.6vw,26px);color:var(--ink2);margin:26px 0 14px;max-width:620px;line-height:1.45}
+.hero .sub{font-size:16px;color:var(--ink2);max-width:540px}
+.cta-row{display:flex;align-items:center;gap:14px;margin-top:36px;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-size:16px;font-weight:600;text-decoration:none;padding:14px 28px;border-radius:999px;cursor:pointer;transition:all .22s;border:1px solid transparent;display:inline-flex;gap:8px;align-items:center}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn.solid:hover{background:var(--copper)}
+.btn.ghost{border-color:var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--copper);color:var(--copper)}
+.meta-badges{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
+.meta-badges span{font-size:13px;color:var(--ink2);background:var(--bg2);border:1px solid var(--hair);border-radius:999px;padding:8px 15px}
+.meta-badges b{color:var(--copper);font-weight:600}
+
+.sec{padding:58px 0 0;border-top:1px solid var(--hair);margin-top:64px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:34px}
+.sec-h h2{font-family:var(--serif);font-weight:500;font-size:38px}
+.sec-h .count{font-size:13px;color:var(--ink3)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:16px}
+.cat{background:var(--bg2);border:1px solid var(--hair);border-radius:16px;padding:24px;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;gap:8px;min-height:150px}
+.cat:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(36,28,22,.10);border-color:var(--copper-soft)}
+.cat .ic{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--copper);width:40px;height:40px;border-radius:11px;background:rgba(165,97,46,.09);display:flex;align-items:center;justify-content:center}
+.cat h3{font-family:var(--serif);font-weight:600;font-size:21px;margin-top:6px;line-height:1.15}
+.cat p{font-size:13.5px;color:var(--ink2);flex:1}
+.cat .ct{font-size:12px;color:var(--ink3);letter-spacing:.04em}
+.cat.crisis{grid-column:1/-1;background:#2A1C12;border-color:transparent;color:#F3E7DA;min-height:0;flex-direction:row;align-items:center;gap:16px}
+.cat.crisis .ic{background:rgba(214,158,110,.18);color:#E2A977}
+.cat.crisis h3{color:#F3E7DA;margin:0}
+.cat.crisis p{color:#C9B8A6;margin:0}
+.cat.crisis:hover{transform:translateY(-3px)}
+
+.resource{margin-top:48px;background:var(--bg2);border:1px solid var(--hair);border-radius:18px;padding:30px;box-shadow:0 10px 30px rgba(36,28,22,.05)}
+.resource .r-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.resource h4{font-family:var(--serif);font-weight:600;font-size:25px;color:var(--copper)}
+.resource .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);background:rgba(165,97,46,.08);border-radius:999px;padding:5px 12px;white-space:nowrap;font-weight:600}
+.resource p{color:var(--ink2);margin-top:12px;max-width:560px}
+.resource .r-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.resource .r-actions .btn{font-size:14px;padding:11px 20px}
+.resource .vf{margin-top:18px;font-size:12px;color:var(--ink3)}
+
+footer{padding:80px 0 60px;color:var(--ink3);font-size:13px;text-align:center}
+.note{position:fixed;left:16px;bottom:14px;z-index:5;font-size:11px;color:var(--ink2);background:rgba(255,255,255,.85);border:1px solid var(--hair);padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand">Recovery<span>Connect</span></div>
+    <div class="links" style="align-items:center"><span>Find help</span><span>About</span><a class="pill" href="tel:988">Crisis · 988</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="kicker">Recovery &amp; reentry · Maine</div>
+    <h1>The next right step, made findable.</h1>
+    <p class="lede">Treatment, housing, legal aid, benefits — a small, deliberate collection of the help that actually exists.</p>
+    <p class="sub">Free, anonymous, and built to be used. No sign-up, no judgment, no barriers.</p>
+    <div class="cta-row">
+      <a href="#" class="btn solid">Find resources →</a>
+      <a href="tel:988" class="btn ghost">Call or text 988</a>
+    </div>
+    <div class="meta-badges"><span><b>100+</b> resources</span><span><b>16</b> counties</span><span>Verified <b>Feb 2026</b></span><span>Free &amp; anonymous</span></div>
+  </header>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Browse by need</h2><div class="count">12 categories</div></div>
+    <div class="grid">
+      <a href="#" class="cat crisis"><div class="ic">!</div><div><h3>Need help now</h3><p>Hotlines that answer 24/7 — call or text.</p></div></a>
+      <a href="#" class="cat"><div class="ic">Rx</div><h3>MAT &amp; Naloxone</h3><p>Same-day addiction meds &amp; free Narcan.</p><div class="ct">15 resources</div></a>
+      <a href="#" class="cat"><div class="ic">H</div><h3>Housing</h3><p>Shelter tonight &amp; longer-term housing.</p><div class="ct">3 resources</div></a>
+      <a href="#" class="cat"><div class="ic">§</div><h3>Legal aid</h3><p>Free legal help &amp; clearing your record.</p><div class="ct">6 resources</div></a>
+      <a href="#" class="cat"><div class="ic">$</div><h3>Benefits</h3><p>MaineCare, SNAP &amp; heating help.</p><div class="ct">11 resources</div></a>
+      <a href="#" class="cat"><div class="ic">◷</div><h3>Mental health</h3><p>Counseling, warmlines &amp; peer support.</p><div class="ct">5 resources</div></a>
+    </div>
+
+    <div class="resource">
+      <div class="r-top"><h4>988 Suicide &amp; Crisis Lifeline</h4><span class="tag">Phone · 24/7</span></div>
+      <p>Free, confidential, around the clock. Maine-based crisis specialists are ready to talk — call or text any time, day or night.</p>
+      <div class="r-actions">
+        <a href="tel:988" class="btn solid">Call 988</a>
+        <a href="#" class="btn ghost">Website</a>
+        <a href="#" class="btn ghost">Share</a>
+      </div>
+      <div class="vf">✓ Verified February 2026</div>
+    </div>
+  </section>
+
+  <footer>RecoveryConnect — built with care in Maine · Open source</footer>
+</div>
+<div class="note">Direction B · "Editorial" — warm paper, light theme</div>
+</body>
+</html>
