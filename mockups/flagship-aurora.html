@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecoveryConnect — Aurora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* base — Obsidian / Ink */
+  --obsidian:#0A0A0F;
+  --ink:#13141C;
+  --panel:#171922;
+  --panel-2:#1E2130;
+  /* jewels */
+  --tanzanite:#3B3D8F;
+  --amethyst:#7A3B9D;
+  --iris:#A461C9;
+  --periwinkle:#7C8AE0;
+  /* lights — Frost / Petal / Paper */
+  --paper:#F5F4F8;
+  --frost:#D7DAEA;
+  --petal:#E9DEF0;
+  /* roles */
+  --text:#ECEAF6;
+  --text2:#B3AEC9;     /* muted lavender — AA on dark */
+  --text3:#817BA0;
+  --accent:#B79BE6;    /* light iris for links/AA */
+  --accent-2:#9DAAF2;  /* light periwinkle */
+  --line:rgba(164,97,201,0.22);
+  --hair:rgba(236,234,246,0.08);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{background:var(--obsidian);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* ── Aurora mesh background ── */
+.aurora{position:fixed;inset:-20% -10%;z-index:0;pointer-events:none;filter:blur(70px);opacity:.55}
+.aurora i{position:absolute;display:block;border-radius:50%;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite}
+.aurora i:nth-child(1){width:46vw;height:46vw;left:-6%;top:-8%;background:radial-gradient(circle,var(--amethyst),transparent 62%);animation-delay:0s}
+.aurora i:nth-child(2){width:42vw;height:42vw;right:-8%;top:6%;background:radial-gradient(circle,var(--tanzanite),transparent 62%);animation-delay:-6s}
+.aurora i:nth-child(3){width:40vw;height:40vw;left:24%;top:34%;background:radial-gradient(circle,var(--iris),transparent 60%);animation-delay:-13s}
+.aurora i:nth-child(4){width:34vw;height:34vw;right:14%;top:48%;background:radial-gradient(circle,var(--periwinkle),transparent 62%);animation-delay:-19s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(4%,5%) scale(1.12)}66%{transform:translate(-4%,-3%) scale(.94)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 36px}
+
+/* ── nav ── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:30px 0}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:-.01em;color:var(--text)}
+.brand .mark{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 210deg,var(--tanzanite),var(--amethyst),var(--iris),var(--periwinkle),var(--tanzanite));box-shadow:0 0 22px rgba(164,97,201,.45)}
+.brand b{font-weight:600;background:linear-gradient(100deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-r{display:flex;align-items:center;gap:6px}
+.nav-r span{font-size:14.5px;color:var(--text2);cursor:pointer;padding:9px 13px;border-radius:9px;transition:all .2s}
+.nav-r span:hover{color:var(--text);background:var(--hair)}
+.nav-r .crisis{border:1px solid var(--line);color:var(--accent);font-weight:500}
+.nav-r .crisis:hover{background:rgba(164,97,201,.12);color:var(--petal)}
+
+/* ── hero ── */
+.hero{padding:104px 0 78px;max-width:820px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);border:1px solid var(--hair);border-radius:999px;padding:8px 16px;margin-bottom:32px}
+.eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--iris);box-shadow:0 0 12px var(--iris);animation:pip 2.6s ease-in-out infinite}
+@keyframes pip{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(52px,9vw,108px);line-height:.96;letter-spacing:-.02em}
+.hero h1 .grad{background:linear-gradient(108deg,var(--accent-2) 0%,var(--accent) 48%,var(--petal) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 em{font-style:italic;font-weight:400}
+.hero .lede{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(20px,2.7vw,28px);color:var(--frost);line-height:1.4;margin:30px 0 14px;max-width:600px}
+.hero .sub{font-size:16.5px;color:var(--text2);max-width:540px}
+.cta-row{display:flex;align-items:center;gap:14px;margin-top:40px;flex-wrap:wrap}
+.btn{font-family:var(--sans);font-size:16px;font-weight:500;text-decoration:none;padding:14px 28px;border-radius:13px;cursor:pointer;transition:all .24s;border:1px solid transparent;display:inline-flex;gap:9px;align-items:center}
+.btn.solid{position:relative;color:#140C1C;background:linear-gradient(100deg,var(--periwinkle),var(--iris));box-shadow:0 8px 28px rgba(164,97,201,.34)}
+.btn.solid:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(164,97,201,.46)}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--iris);color:var(--petal)}
+.stats{display:flex;gap:38px;margin-top:54px;padding-top:30px;border-top:1px solid var(--hair)}
+.stats .s b{font-family:var(--serif);font-weight:600;font-size:38px;line-height:1;background:linear-gradient(120deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.stats .s span{font-size:11.5px;color:var(--text3);letter-spacing:.09em;text-transform:uppercase;margin-top:7px;display:block}
+
+/* ── section ── */
+.sec{padding:36px 0 0}
+.sec-h{display:flex;align-items:center;gap:16px;margin:46px 0 32px}
+.sec-h h2{font-family:var(--serif);font-weight:500;font-size:36px}
+.sec-h .ln{flex:1;height:1px;background:var(--hair)}
+.sec-h .count{font-size:12.5px;color:var(--text3);letter-spacing:.04em}
+
+/* ── category cards ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(244px,1fr));gap:15px}
+.cat{position:relative;background:linear-gradient(165deg,var(--panel),var(--ink));border:1px solid var(--hair);border-radius:17px;padding:23px;text-decoration:none;color:inherit;transition:transform .26s,border-color .26s;display:flex;flex-direction:column;min-height:152px;overflow:hidden}
+.cat::before{content:'';position:absolute;inset:0;border-radius:17px;padding:1px;background:linear-gradient(140deg,var(--iris),transparent 42%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .26s}
+.cat:hover{transform:translateY(-4px)}
+.cat:hover::before{opacity:1}
+.cat .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:19px;color:var(--petal);background:linear-gradient(150deg,rgba(122,59,157,.4),rgba(59,61,143,.32));border:1px solid var(--hair)}
+.cat h3{font-family:var(--serif);font-weight:600;font-size:22px;margin:auto 0 6px;line-height:1.12}
+.cat:hover h3{color:var(--petal)}
+.cat p{font-size:13.5px;color:var(--text2)}
+.cat .ct{font-size:11.5px;color:var(--text3);letter-spacing:.04em;margin-top:11px}
+.cat.crisis{grid-column:1/-1;flex-direction:row;align-items:center;gap:18px;min-height:0;background:linear-gradient(110deg,rgba(122,59,157,.26),rgba(59,61,143,.16) 70%,var(--panel));border-color:var(--line)}
+.cat.crisis .ic{background:linear-gradient(150deg,var(--amethyst),var(--tanzanite));color:#fff}
+.cat.crisis h3{margin:0}
+.cat.crisis p{margin:0;color:var(--frost)}
+.cat.crisis .arrow{margin-left:auto;font-size:22px;color:var(--accent)}
+
+/* ── resource card ── */
+.resource{margin-top:50px;position:relative;background:linear-gradient(165deg,var(--panel-2),var(--ink));border:1px solid var(--hair);border-radius:20px;padding:32px}
+.resource::before{content:'';position:absolute;left:0;top:26px;bottom:26px;width:3px;border-radius:3px;background:linear-gradient(var(--iris),var(--periwinkle))}
+.resource .pad{padding-left:14px}
+.resource .r-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.resource h4{font-family:var(--serif);font-weight:600;font-size:27px;background:linear-gradient(100deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.resource .tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);border:1px solid var(--hair);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.resource p{color:var(--text2);margin-top:13px;max-width:560px}
+.resource .r-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.resource .r-actions .btn{font-size:14.5px;padding:11px 21px}
+.resource .vf{margin-top:20px;font-size:12px;color:var(--text3);letter-spacing:.03em}
+
+footer{padding:96px 0 70px;color:var(--text3);font-size:13px;text-align:center}
+.note{position:fixed;left:16px;bottom:14px;z-index:6;font-size:11px;color:var(--text2);background:rgba(10,10,15,.75);border:1px solid var(--hair);padding:7px 13px;border-radius:999px;backdrop-filter:blur(8px)}
+@media (prefers-reduced-motion: reduce){.aurora i{animation:none}.pip{animation:none}}
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i><i></i></div>
+<div class="grain"></div>
+<div class="wrap">
+  <nav>
+    <div class="brand"><span class="mark"></span>Recovery<b>Connect</b></div>
+    <div class="nav-r"><span>Find help</span><span>About</span><span class="crisis">Crisis · 988</span></div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow"><span class="pip"></span> Recovery &amp; reentry · Maine</div>
+    <h1>You're not<br><span class="grad">starting from <em>nothing.</em></span></h1>
+    <p class="lede">A calm, deliberate map of the help that already exists — treatment, housing, legal aid, and the next right step.</p>
+    <p class="sub">Free, anonymous, and built to be used at 3 a.m. or in a parole office. No sign-up, no judgment, no barriers.</p>
+    <div class="cta-row">
+      <a href="#" class="btn solid">Find resources →</a>
+      <a href="tel:988" class="btn ghost">Call or text 988</a>
+    </div>
+    <div class="stats">
+      <div class="s"><b>100+</b><span>Resources</span></div>
+      <div class="s"><b>12</b><span>Categories</span></div>
+      <div class="s"><b>16</b><span>Counties</span></div>
+      <div class="s"><b>Feb 2026</b><span>Last verified</span></div>
+    </div>
+  </header>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Where are you right now?</h2><div class="ln"></div><div class="count">12 categories</div></div>
+    <div class="grid">
+      <a href="#" class="cat crisis"><div class="ic">SOS</div><div><h3>Need help now</h3><p>Hotlines that answer 24/7 — call or text, no wait.</p></div><div class="arrow">→</div></a>
+      <a href="#" class="cat"><div class="ic">Rx</div><h3>MAT &amp; Naloxone</h3><p>Same-day addiction meds &amp; free Narcan.</p><div class="ct">15 resources →</div></a>
+      <a href="#" class="cat"><div class="ic">⌂</div><h3>Housing</h3><p>Shelter tonight &amp; longer-term housing.</p><div class="ct">3 resources →</div></a>
+      <a href="#" class="cat"><div class="ic">§</div><h3>Legal aid</h3><p>Free legal help &amp; clearing your record.</p><div class="ct">6 resources →</div></a>
+      <a href="#" class="cat"><div class="ic">$</div><h3>Benefits</h3><p>MaineCare, SNAP &amp; heating help.</p><div class="ct">11 resources →</div></a>
+      <a href="#" class="cat"><div class="ic">♥</div><h3>Mental health</h3><p>Counseling, warmlines &amp; peer support.</p><div class="ct">5 resources →</div></a>
+    </div>
+
+    <div class="resource"><div class="pad">
+      <div class="r-top"><h4>988 Suicide &amp; Crisis Lifeline</h4><span class="tag">Phone · 24/7</span></div>
+      <p>Free, confidential, around the clock. Maine-based crisis specialists are ready to talk — call or text any time, day or night.</p>
+      <div class="r-actions">
+        <a href="tel:988" class="btn solid">Call 988</a>
+        <a href="#" class="btn ghost">Website</a>
+        <a href="#" class="btn ghost">Share</a>
+      </div>
+      <div class="vf">✓ Verified February 2026</div>
+    </div></div>
+  </section>
+
+  <footer>RecoveryConnect — built with care in Maine · Open source (MIT)</footer>
+</div>
+<div class="note">Flagship · "Aurora" — Tanzanite · Amethyst · Iris · Periwinkle on Obsidian</div>
+</body>
+</html>
