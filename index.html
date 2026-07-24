@@ -137,7 +137,8 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
 .panel-hdr-actions{display:flex;align-items:center;gap:4px}
 .panel-action-btn{width:30px;height:30px;border:none;border-radius:0;background:transparent;color:var(--tx3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:var(--ease);font-family:inherit}
 .panel-action-btn:hover{background:var(--bg-card);color:var(--tx)}
-.panel-body{padding:18px 20px 40px;max-width:960px;margin-left:auto;margin-right:auto}
+.panel-body{padding:18px 20px 110px;max-width:960px;margin-left:auto;margin-right:auto}
+.demo-page{padding-bottom:120px!important}
 .welcome-hdr{text-align:center;padding:8px 0 16px;animation:fadeIn .4s ease both}
 .welcome-hdr .logo-mark{width:auto;height:auto;background:none;border-radius:0;display:inline-flex;align-items:center;justify-content:center;font-size:34px;color:var(--success);margin:0 auto 6px;box-shadow:none;line-height:1}
 .welcome-hdr h2,.welcome-hdr h3{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-.01em;margin-bottom:4px;font-family:var(--font-display)}
@@ -271,7 +272,7 @@ kbd{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:.85em;backgr
 .share-btn.copied{border-color:var(--success);color:var(--success);background:rgba(30,122,90,0.05)}
 .back-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13.5px;font-weight:600;color:var(--tx3);background:none;border:none;cursor:pointer;padding:0;margin-bottom:14px;transition:var(--ease)}
 .back-btn:hover{color:var(--accent);transform:translateX(-2px)}
-.priority-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--accent);margin-bottom:12px;padding-left:2px;font-family:var(--font-display)}
+.priority-label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin:6px 0 14px;padding-left:2px;font-family:var(--font-display)}
 .about-section{animation:fadeIn .3s ease both}
 .about-section h3{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:8px;font-family:var(--font-display)}
 .about-section p{font-size:13.5px;color:var(--tx2);line-height:1.65;margin-bottom:12px}
@@ -752,18 +753,21 @@ a[href^="tel:"]{white-space:nowrap}
 .search-empty{padding:18px 14px;text-align:center;font-size:13.5px;color:var(--tx2);background:var(--bg-card);border:1px dashed var(--bd);border-radius:var(--r);line-height:1.6}
 
 /* ═══ GROUPED CATEGORY HEADERS (#10) ═══ */
-.cat-group-h{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--tx3);margin:20px 0 8px;font-family:var(--font-display)}
+.cat-group-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:var(--tx2);margin:26px 0 12px;padding-top:14px;border-top:1px solid var(--bd);font-family:var(--font-display)}
+.cat-group-h:first-of-type{border-top:none;padding-top:0;margin-top:14px}
 
 /* ═══ MAINE MAP LANDING ═══ */
 .maine-landing{max-width:760px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;animation:fadeIn .5s ease both;padding:8px 4px 24px}
 .maine-landing .ml-title{font-family:var(--font-hero);font-size:clamp(40px,7vw,68px);font-weight:400;color:var(--tx);letter-spacing:-.01em;line-height:1;margin:0 0 8px}
 .maine-landing .ml-title span{color:var(--accent)}
 .maine-landing .ml-sub{font-size:15.5px;color:var(--tx2);line-height:1.55;margin:0 auto 6px;max-width:480px}
-.ml-map-wrap{width:100%;max-width:520px;margin:10px auto 14px;position:relative;display:flex;justify-content:center}
-.maine-svg{width:100%;height:auto;max-height:68vh;display:block}
-.county-poly{fill:var(--bg-card);stroke:var(--tx);stroke-width:.7;stroke-linejoin:round;cursor:pointer;transition:fill .15s;outline:none}
-[data-theme="light"] .county-poly{fill:#fff;stroke:var(--ink,#241C16);stroke-opacity:.55}
-.county-poly:hover,.county-poly:focus-visible{fill:var(--accent);stroke:var(--accent-dark);stroke-width:.9}
+.ml-map-wrap{width:100%;max-width:560px;margin:14px auto 18px;position:relative;display:flex;justify-content:center;padding:24px 0}
+.ml-map-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 68% 62% at 50% 50%,rgba(232,160,76,0.09) 0%,rgba(232,160,76,0.04) 42%,transparent 72%);pointer-events:none;z-index:0}
+[data-theme="light"] .ml-map-wrap::before{background:radial-gradient(ellipse 68% 62% at 50% 50%,rgba(154,69,20,0.06) 0%,rgba(154,69,20,0.03) 42%,transparent 72%)}
+.maine-svg{width:100%;height:auto;max-height:68vh;display:block;position:relative;z-index:1}
+.county-poly{fill:#EEE4CE;stroke:#241C16;stroke-opacity:.62;stroke-width:.6;stroke-linejoin:round;cursor:pointer;transition:fill .18s,stroke-opacity .18s;outline:none}
+[data-theme="light"] .county-poly{fill:#FFFFFF;stroke:#241C16;stroke-opacity:.55}
+.county-poly:hover,.county-poly:focus-visible{fill:var(--accent);stroke:var(--accent-dark);stroke-opacity:1;stroke-width:.9}
 .county-poly:active{fill:var(--accent-dark)}
 .county-tooltip{position:absolute;pointer-events:none;background:var(--bg-panel);border:1px solid var(--bd-active);color:var(--tx);font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:0;box-shadow:var(--shadow);opacity:0;transform:translate(-50%,-100%) translateY(-10px);transition:opacity .15s;font-family:var(--font-body);white-space:nowrap;z-index:5}
 .county-tooltip.show{opacity:1}
