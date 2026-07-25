@@ -30,6 +30,12 @@
 <meta name="twitter:image" content="https://recovery-connect.netlify.app/og-image.png">
 <meta name="twitter:image:alt" content="RecoveryConnect: Recovery and reentry resources across Maine">
 <title>RecoveryConnect: Maine Reentry Resource Navigator</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <script defer data-domain="recovery-connect.netlify.app" src="https://plausible.io/js/script.js"></script>
 <style>
 :root {
@@ -960,5 +966,6 @@ window.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panelOpen){v
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>if(window.lucide){lucide.createIcons()}</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}</script>
 </body>
 </html>

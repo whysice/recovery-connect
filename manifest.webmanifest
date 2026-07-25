@@ -1,0 +1,50 @@
+{
+  "name": "RecoveryConnect — Maine Reentry Resource Navigator",
+  "short_name": "RecoveryConnect",
+  "description": "Free recovery and reentry resource navigator for Maine. Find treatment, housing, legal aid, benefits, transportation, and more.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F1B26",
+  "theme_color": "#0F1B26",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["health", "medical", "social", "utilities"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Crisis (988)",
+      "short_name": "Crisis",
+      "description": "Call or text 988 for immediate crisis support",
+      "url": "/?panel=crisis",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Find Resources",
+      "short_name": "Resources",
+      "description": "Browse recovery and reentry resources",
+      "url": "/?panel=home",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
