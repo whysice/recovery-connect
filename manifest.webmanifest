@@ -36,14 +36,14 @@
       "name": "Crisis (988)",
       "short_name": "Crisis",
       "description": "Call or text 988 for immediate crisis support",
-      "url": "/?panel=crisis",
+      "url": "/?view=crisis",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Find Resources",
       "short_name": "Resources",
       "description": "Browse recovery and reentry resources",
-      "url": "/?panel=home",
+      "url": "/?view=home",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]

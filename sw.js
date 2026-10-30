@@ -34,8 +34,13 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put('/index.html', copy));
+          // Only refresh the offline shell from a successful response for the app
+          // document itself; never store error pages or other paths under /index.html.
+          const isShell = url.pathname === '/' || url.pathname === '/index.html';
+          if (isShell && res && res.ok && res.type === 'basic') {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put('/index.html', copy));
+          }
           return res;
         })
         .catch(() => caches.match('/index.html'))
