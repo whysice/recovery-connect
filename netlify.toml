@@ -1,0 +1,12 @@
+# RecoveryConnect is a static site served from the repository root; the only build step writes version.json.
+[build]
+  publish = "."
+  command = "node scripts/version.mjs"
+
+# version.json carries the date of the deployed commit, so the Whysice hub can show when this site last changed.
+[[headers]]
+  for = "/version.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "no-cache"
+    Content-Type = "application/json; charset=utf-8"
