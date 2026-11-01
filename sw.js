@@ -1,4 +1,4 @@
-const CACHE = 'rc-shell-v1';
+const CACHE = 'rc-shell-v2';
 const SHELL = [
   '/',
   '/index.html',
@@ -7,7 +7,9 @@ const SHELL = [
   '/favicon-32.png',
   '/icon-192.png',
   '/icon-512.png',
-  '/apple-touch-icon.png'
+  '/apple-touch-icon.png',
+  '/whysice-motion.css',
+  '/whysice-motion.js'
 ];
 
 self.addEventListener('install', (event) => {
